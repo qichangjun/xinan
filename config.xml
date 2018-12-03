@@ -96,7 +96,7 @@
     <allow-navigation href="http://192.168.1.55:8101" sessionid="2fd87ef8" />
     <allow-navigation href="http://120.79.0.57:3000" />
     <plugin name="call-number" spec="~0.0.2" />
+    <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
-    <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
 </widget>

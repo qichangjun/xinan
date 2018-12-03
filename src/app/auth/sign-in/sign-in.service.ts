@@ -47,6 +47,21 @@ export class SignService {
             );
     }
 
+    signInWithPassword(mobile: string,password : string){
+        let post_data = {
+            mobile : mobile,
+            password : password
+        }
+        return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.signIn,post_data,{})
+        .toPromise()
+        .then(res =>
+                this._httpHanldeService.extractDataSuccess(res)
+            )
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
     resetPass(mobile: string, password:string ,verifyCode : string,reqId : string){
         let post_data = {
             mobile : mobile,

@@ -110,7 +110,6 @@ export class RetrievePassPage implements OnInit {
 
     // 重置密码
     async toResetPass(formValue, errors) {
-        console.log(formValue);
         // 检查用户输入是否有误
         this.checkAll(errors);
         let password = formValue.password1

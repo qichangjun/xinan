@@ -172,27 +172,31 @@ export class SignInPage implements OnInit {
     }
 
     // 点击密码登录按钮
-    toSignInPass(formValue, errors) {
+    async toSignInPass(formValue, errors) {
         console.log(formValue);
         // 检查用户输入是否有误
         this.checkPass(errors);
         if (this.vertify_pass.ok) {
             let password = formValue.password
-            console.log(hex_md5(password))
-            wilddog.auth().signInWithPhoneAndPassword(formValue.phone, formValue.password).then((user)=>{
-                // 获取用户
-                console.log(user);
-                if(user && user.uid){
-                    localStorage.setItem('token',user.__authManager.Wa.idToken);
-                    localStorage.setItem('userInfo',JSON.stringify(user));
+            password = hex_md5(password)
+            try{
+                let res = await this.signService.signInWithPassword(formValue.phone,password)
+                if(res){
+                    let token = res.token || '123accessToken'
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('userInfo',JSON.stringify({
+                        mobile : formValue.phone,
+                        username : formValue.phone,
+                        identityNumber : res.identityNumber,
+                        nickname : '心安天使',
+                        address : res.address,
+                        weChatBindField : res.weChatBindField
+                    }));
                     this.back();
-                    this.showToast('登陆成功');
                 }
-           }).catch((error)=> {1370174
-                // 错误处理
-                console.log(error);
-                this.showErrorToast(error.message)
-            });
+            }catch(err){
+                this.showErrorToast(err)
+            }
             // this.apollo.watchQuery<any>({
             //     query: login,
             //     variables: {
@@ -223,7 +227,7 @@ export class SignInPage implements OnInit {
             try{
                 let res = await this.signService.signIn(formValue.phone,formValue.code,this.reqId)
                 if(res){
-                    if (res.isFirstReg){
+                    if (res.initalPswd){
                         const toast = await this.toastCtrl.create({
                             message: '注册成功，初始化密码为:' + res.initalPswd + ',请尽快设置新的密码',
                             duration: 6000,
@@ -426,10 +430,11 @@ export class SignInPage implements OnInit {
     // 关闭登录页面
     back() {
         this.clear();
-        window.history.back();
+        // window.history.back();
         // console.log('back');
         // this.navCtrl.navigateBack('/tabs/(me:me)');
         // this.router.navigate(['/tabs'], { queryParams: { id: 4 } });
+        this.router.navigate(['/']);
     }
 
     

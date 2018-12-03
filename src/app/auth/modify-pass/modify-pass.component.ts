@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import { sendValidationCode, resetPassword, verifyPassword, updateCurrentUserInfo } from '../../shared/graphql-tag';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SignService } from '../sign-in/sign-in.service';
+declare var hex_md5 : any;
 @Component({
     selector: 'app-modify-pass',
     templateUrl: './modify-pass.component.html',
@@ -166,31 +167,39 @@ export class ModifyPassComponent implements OnInit {
     }
 
     // 重置密码 - 手机号验证码
-    toResetPass(formValue, errors) {
+    async toResetPass(formValue, errors) {
         // console.log(formValue);
         // 检查用户输入是否有误
         this.checkCode(errors);
-
         if (this.data_code.ok) {
-            this.apollo.mutate({
-                mutation: resetPassword,
-                variables: {
-                    mobile: this.data_code.phone,
-                    validationCode: formValue.code,
-                    password: formValue.password1
-                }
-            }).subscribe((val) => {
-                // console.log(val);
-                if (val && val.data && val.data.resetPassword) {
-                    const send = val.data.resetPassword;
-                    if (send.code === 200) {
-                        this.back();
-                        this.showToast('密码修改成功，请重新登录');
-                    } else {
-                        this.showErrorToast(send.message);
-                    }
-                }
-            });
+            try{
+                let password = formValue.password1
+                password = hex_md5(password)
+                await this.signService.resetPass(this.data_code.phone,formValue.password1,this.data_code.code,this.reqId)
+                this.back();
+                this.showToast('密码修改成功，请重新登录');
+            }catch(err){
+                this.showErrorToast(err);
+            }
+            // this.apollo.mutate({
+            //     mutation: resetPassword,
+            //     variables: {
+            //         mobile: this.data_code.phone,
+            //         validationCode: formValue.code,
+            //         password: formValue.password1
+            //     }
+            // }).subscribe((val) => {
+            //     // console.log(val);
+            //     if (val && val.data && val.data.resetPassword) {
+            //         const send = val.data.resetPassword;
+            //         if (send.code === 200) {
+            //             this.back();
+            //             this.showToast('密码修改成功，请重新登录');
+            //         } else {
+            //             this.showErrorToast(send.message);
+            //         }
+            //     }
+            // });
         }
     }
 
@@ -201,6 +210,7 @@ export class ModifyPassComponent implements OnInit {
             try{
                 let res = await this.signService.getCode(this.data_code.phone)
                 this.reqId = res.RequestId
+                this.data_code.status = false;
                 this.timer = setInterval(() => {
                     if (this.data_code.status === false && this.data_code.time > 0) {
                         this.data_code.info = '短信验证码(' + this.data_code.time-- + 's)';
@@ -266,33 +276,25 @@ export class ModifyPassComponent implements OnInit {
         // 检查用户输入是否有误
         this.checkPass(errors, async (flag) => {
             if (flag) {
-                try{
-                    await this.signService.resetPass(this.data_code.phone,formValue.password1,this.data_code.code,this.reqId)
-                    this.back();
-                }catch(err){
-                    this.showErrorToast(err);
-                }
-                
-
-                // this.apollo.mutate({
-                //     mutation: updateCurrentUserInfo,
-                //     variables: {
-                //         updateCurrentUserInput: {
-                //             password: formValue.password1
-                //         }
-                //     }
-                // }).subscribe((val) => {
-                //     // console.log(val);
-                //     if (val && val.data && val.data.updateCurrentUserInfo) {
-                //         const send = val.data.updateCurrentUserInfo;
-                //         if (send.code === 200) {
-                //             this.back();
-                //             this.showToast('密码修改成功，请重新登录');
-                //         } else {
-                //             this.showErrorToast(send.message);
-                //         }
-                //     }
-                // });
+                this.apollo.mutate({
+                    mutation: updateCurrentUserInfo,
+                    variables: {
+                        updateCurrentUserInput: {
+                            password: formValue.password1
+                        }
+                    }
+                }).subscribe((val) => {
+                    // console.log(val);
+                    if (val && val.data && val.data.updateCurrentUserInfo) {
+                        const send = val.data.updateCurrentUserInfo;
+                        if (send.code === 200) {
+                            this.back();
+                            this.showToast('密码修改成功，请重新登录');
+                        } else {
+                            this.showErrorToast(send.message);
+                        }
+                    }
+                });
             }
         });
     }

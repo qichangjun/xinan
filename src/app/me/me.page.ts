@@ -157,16 +157,20 @@ export class MePage implements OnInit, OnEnter, OnDestroy {
     }
 
     getUserInfo() {
-        var user = wilddog.auth().currentUser;
-        if (user != null) {
-            this.userInfo.email  = user.email;
-            this.userInfo.mobile  = user.phone
-            this.userInfo.userId = user.uid; 
-        } else {
-        // 没有用户信息
-            let userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
-            this.userInfo.mobile =  userInfo.phone
-        }
+        let userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
+        console.log(userInfo)
+        this.userInfo.mobile = userInfo.mobile
+        this.userInfo.nickname.value = userInfo.nickname
+        // var user = wilddog.auth().currentUser;
+        // if (user != null) {
+        //     this.userInfo.email  = user.email;
+        //     this.userInfo.mobile  = user.phone
+        //     this.userInfo.userId = user.uid; 
+        // } else {
+        // // 没有用户信息
+        //     let userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
+        //     this.userInfo.mobile =  userInfo.phone
+        // }
         // this.apollo.watchQuery<any>({
         //     query: findCurrentUserInfo
         // }).valueChanges.subscribe((val) => {
