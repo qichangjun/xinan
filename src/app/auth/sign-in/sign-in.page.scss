@@ -1,0 +1,161 @@
+ion-content {
+    --background: #fff;
+}
+
+ion-list {
+    background: #fff;
+}
+
+.auth-page {
+
+    padding: 5rem 30px 30px 30px;
+
+    //title
+    .title-1 {
+        color: #424242;
+        margin: 1rem 0 1rem !important;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .list {
+
+        .item {
+
+            color: #c8c7cc;
+            --border-color: #e6e6e6;
+
+            .item-inner {
+                border-bottom: 0.55px solid #e6e6e6;
+            }
+        }
+
+        .item-interactive.item-has-focus {
+            --highlight-height: 2px;
+            --highlight-color-focused: #e83030;
+        }
+
+        //修改placeholder颜色
+        ion-input input::-ms-input-placeholder,
+        ion-input input::-webkit-input-placeholder,
+        ion-input input::-moz-placeholder {
+            color: #c8c7cc;
+        }
+    }
+
+    .eye {
+        border-bottom: 1px solid #e6e6e6;
+        text-align: right;
+    }
+
+    //密码显示隐藏
+    .eye-open-close {
+        color: #bdbdbd;
+        margin-bottom: -10px !important;
+
+        .iconfont {
+            font-size: 1.8rem;
+        }
+
+    }
+
+    //忘记密码
+    .forget-pass {
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    //help
+    .help {
+        color: #666;
+
+        .iconfont {
+            font-size: 1.4rem;
+        }
+
+    }
+
+    //获取验证码按钮
+    .get-code {
+        border-bottom: 1px solid #e6e6e6;
+        text-align: right;
+
+        &::before {
+            display: inline-block;
+            content: "|";
+            color: #e6e6e6;
+            float: left;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    }
+
+    .dividing-line {
+        line-height: 45px;
+    }
+
+    .get-code-btn {
+        font-size: 14px;
+        font-weight: normal;
+        margin-bottom: -10px !important;
+    }
+
+
+    //验证码登录提示
+    .info {
+        color: #999;
+    }
+
+    //微信登陆
+    .wechat-box {
+        margin-top: 8rem;
+        margin-bottom: 150px;
+    }
+
+    footer {
+        // position: absolute;
+        // bottom: 30px;
+    }
+
+    //其他登录方式
+    .other {
+        margin-top: 30px;
+        font-size: 14px;
+
+        a {
+            color: #999;
+        }
+
+        span {
+            color: #e6e6e6;
+        }
+    }
+
+    //公约
+    .treaty {
+        color: #999;
+        font-size: 14px;
+
+        a {
+            color: var(--ion-color-secondary);
+            text-decoration: none;
+        }
+
+    }
+
+    //enable-btn
+    .enable-btn {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .disable-btn {
+        opacity: 0.5;
+    }
+
+    [type=submit] {
+        -webkit-appearance: none;
+    }
+
+}

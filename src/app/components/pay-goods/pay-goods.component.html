@@ -1,0 +1,12 @@
+<ion-row *ngIf="data" (click)="details(data.id)">
+    <ion-col no-padding size="4">
+        <ion-img src="{{data.img}}"></ion-img>
+    </ion-col>
+    <ion-col no-padding size="8" class="pro-name">
+        <ion-text class="name">{{data.title}}</ion-text>
+        <ion-text class="add">
+            ￥{{data.price}}
+            <span>x{{data.num}}</span>
+        </ion-text>
+    </ion-col>
+</ion-row>

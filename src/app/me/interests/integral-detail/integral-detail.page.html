@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>积分详情</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <div class="join-title">
+        <ion-card no-margin *ngFor="let integral of integrals">
+            <ion-img src="{{integral.imgUrl}}"></ion-img>
+            <ion-card-header>
+                <ion-card-title>
+                    <p>{{integral.name}}</p>
+                </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <p>{{integral.price}}</p>
+            </ion-card-content>
+        </ion-card>
+        <ion-list lines="none">
+            <ion-item no-padding lines="none">
+                <ion-label>
+                    <p class="name" *ngFor="let item of items">{{item.title}}<span>{{item.lab}}</span></p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>

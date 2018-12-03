@@ -1,0 +1,105 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+}
+
+.card-list {
+    .address-card {
+        background: #fff;
+        padding: 0 12px 12px 12px;
+
+        .address-card-header {
+
+            .set-default {
+                display: inline-block;
+                line-height: 35px;
+
+                ion-checkbox {
+                    zoom: 0.7;
+                }
+            }
+
+            .handle-btns {
+                display: inline-block;
+                text-align: right;
+            }
+        }
+
+        .address-card-content {
+            border-top: 1px solid #e6e6e6;
+
+            .receiver {
+                font-size: 18px;
+                font-weight: bold;
+                color: #424242;
+            }
+
+            .receiver-phone {
+                font-size: 14px;
+                font-weight: bold;
+                color: #666;
+            }
+
+            .address-detail {
+                padding-top: 14px;
+                font-size: 14px;
+                line-height: 1.71;
+                color: #999;
+            }
+        }
+    }
+}
+
+.add-btn {
+    background: #fff;
+    border-radius: var(--border-radius);
+}
+
+.no-address {
+    padding: 74px 0 0;
+
+    .serve {
+        margin-left: 25%;
+        width: 114px;
+        height: 83px;
+
+        img {
+            width: 114px;
+            height: 83px;
+
+        }
+    }
+
+    p {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 500;
+        color: #999999;
+        margin: 16px;
+    }
+
+    .add-btn_ {
+        color: #424242;
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.white {
+    color: #666666;
+    --border-color: #fff;
+    --box-shadow: 0px 3px 12px 0 rgba(0, 0, 0, 0.1);
+    --background: #fff;
+    --background-focused: #fff;
+    --background-activated: #fff;
+}

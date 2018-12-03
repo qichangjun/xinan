@@ -1,0 +1,241 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(home:home)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{type ? '心安救助专项基金' : '心安乐捐(意外)'}}</ion-title>
+        <ion-buttons slot="end" class="end" *ngIf="type === true">
+            <ion-button (click)="share()">
+                <ion-icon name="md-share"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="pic"></div>
+
+    <ion-card class="info-card">
+        <ion-card-header>
+            <ion-row>
+                <ion-col size="3">
+                    <ion-avatar>
+                        <img src="../../assets/imgs/shang_img2@2x.png" alt="">
+                    </ion-avatar>
+                </ion-col>
+                <ion-col size="7">
+                    <ion-card-title>林慧光 <ion-icon name="female" color="primary"></ion-icon>
+                    </ion-card-title>
+                    <ion-card-subtitle padding-top (click)="alertMes()"><a class="link">查看个人主页</a></ion-card-subtitle>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-icon name="ios-arrow-forward" size="large" padding-top></ion-icon>
+                </ion-col>
+            </ion-row>
+        </ion-card-header>
+        <ion-card-content *ngIf="!type" text-center class="resue-count">
+            <ion-row>
+                <ion-col>
+                    <p>已捐金额</p>
+                    <h6>26560</h6>
+                </ion-col>
+                <ion-col>
+                    <p>机构义捐</p>
+                    <h6>10000</h6>
+                </ion-col>
+                <ion-col>
+                    <p>所需资金</p>
+                    <h6>26560</h6>
+                </ion-col>
+                <ion-col>
+                    <p>参与人数</p>
+                    <h6>26560</h6>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-detail-card">
+        <ion-card-content>
+            <h5>事件情况</h5>
+            <p>我叫林惠光今年28岁，我弟弟叫林惠良今年25岁，家住安徽省阜阳市太和县马集乡臧庄村委刘小庄54号，自2011年鼻子长期流血经检查血小班减少，皮肤黏膜出血6年，到现在已花光30万有余，现在需手术，需20万，募集15万，特此借助爱心平台向您发起求助，盼望您能伸出援手，祝我们一家度过危难，也希望您能帮忙转发扩散这条求助信息，让爱心传递到世界各个角落。在这里深深感谢每一位无私转发的爱心人士，让生命得以延续，感激不尽，本人在此保证所有善款都将用于患者治疗！好心人一生平安！</p>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-detail-card">
+        <ion-card-content>
+            <h5>审核展示</h5>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col size="2">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large" margin-top></ion-icon>
+                            <div class="timeline-line"></div>
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col>
+                                    <span>小爱</span> <br>
+                                    <small>2018.07.11 审核通过</small>
+                                </ion-col>
+                                <ion-col routerLink="/comment" size="2" no-padding margin-top>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 2</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                调查未发现有不予救助和不符合加入条件的。
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col size="2">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large" margin-top></ion-icon>
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col>
+                                    <span>小爱</span> <br>
+                                    <small>2018.07.11 医院确认</small>
+                                </ion-col>
+                                <ion-col size="2" no-padding margin-top>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 0</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                广州市高澜保险公估有限公司的调查人员通过走访四川大学华西医院，确认会员严术芳于2017年6月14日首次病理诊断患肺腺癌属实，且确诊时间已过等待期。
+
+                                <div class="timeline-imglist">
+                                    <img *ngFor="let img of [1,2,3,4]" src="../../../../assets/imgs/banner_shangcheng@2x.png"
+                                        alt="">
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-detail-card">
+        <ion-card-content>
+            <h5>救助过程</h5>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col size="2">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large" margin-top></ion-icon>
+                            <div class="timeline-line"></div>
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col>
+                                    <span>林慧光</span> <br>
+                                    <small>2018.07.11 更新</small>
+                                </ion-col>
+                                <ion-col size="2" no-padding margin-top>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 2</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                调查未发现有不予救助和不符合加入。
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col size="2">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large" margin-top></ion-icon>
+                            <div class="timeline-line"></div>
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col>
+                                    <span>林慧光</span> <br>
+                                    <small>2018.07.11 救助完成</small>
+                                </ion-col>
+                                <ion-col size="2" no-padding margin-top>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 2</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                提现人：林惠光 <br>
+                                提现账号：6228****7273
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col size="2">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large" margin-top></ion-icon>
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col>
+                                    <span>林慧光</span> <br>
+                                    <small>2018.07.11 公示期</small>
+                                </ion-col>
+                                <ion-col size="2" no-padding margin-top>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 2</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                筹款人提前结束
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <div padding-horizontal class="resue-donate">
+        <ion-row *ngIf="!type && id">
+            <ion-col>
+                <ion-button expand="block" color="secondary" fill="outline" shape="round" routerLink="/donation_record">乐捐记录</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="block" color="secondary" shape="round" routerLink="/update_progress">更新进展</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!type && !id">
+            <ion-col>
+                <ion-button expand="block" shape="round" routerLink="/donation">我要捐款</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="type && id">
+            <ion-col>
+                <ion-button expand="block" color="secondary" shape="round" routerLink="/update_progress">更新进展</ion-button>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div class="serve" *ngIf="isShare === true"></div>
+    <div class="share" *ngIf="isShare === true">
+        <ion-card no-padding no-margin>
+            <ion-label class="title">救助事件标题</ion-label>
+            <div class="imgs">
+                <img src="../../../../assets/imgs/img_qrcode.png">
+            </div>
+            <ion-row>
+                <ion-col size="3" align-self-center *ngFor="let c of cons" (click)="alertMes()">
+                    <div class="img-serve">
+                        <img src="{{c.imgUrl}}" alt="">
+                    </div>
+                    <ion-label no-margin>{{c.title}}</ion-label>
+                </ion-col>
+
+            </ion-row>
+
+        </ion-card>
+        <div class="button" (click)="share()">取消</div>
+    </div>
+</ion-content>

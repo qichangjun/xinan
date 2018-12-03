@@ -1,0 +1,15 @@
+<div class="product">
+    <ion-row>
+        <ion-col size="6" *ngFor="let data of products" (click)="goDetails(data.id)">
+            <ion-row align-items-center justify-content-center>
+                <img src="{{data.imageurl}}" />
+            </ion-row>
+            <ion-row class="car_tit">
+                <p>{{data.title}}</p>
+            </ion-row>
+            <ion-row class="car_prc">
+                <p>{{data.price}}</p>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+</div>

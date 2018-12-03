@@ -1,0 +1,125 @@
+<ion-header color="white" no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>登录</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="auth-page">
+
+        <h1 class="title-1">心安救助欢迎您！</h1>
+
+        <!-- S 密码登录 -->
+        <div *ngIf="method == 0">
+            <form #passFormRef="ngForm" (ngSubmit)="toSignInPass(passFormRef.value, [phoneRef.errors, passRef.errors])">
+                <ion-list>
+                    <ion-item no-padding>
+                        <ion-label position="floating">请输入手机号码</ion-label>
+                        <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                            [(ngModel)]="phone" #phoneRef="ngModel"></ion-input>
+                    </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入密码</ion-label>
+                                <ion-input type="{{eyeshow?'text':'password'}}" color="dark" name="password" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="vertify_pass.password" #passRef="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow = !eyeshow"
+                                no-padding>
+                                <i class="iconfont {{eyeshow?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="clear" padding-vertical>
+                        <a class="forget-pass" float-left routerLink="/auth/retrieve-pass">忘记密码</a>
+                        <a class="help" (click)="helpInfo()" float-right><i class="iconfont icon-help"></i></a>
+                    </div>
+
+                    <ion-row padding-vertical>
+                        <ion-col size="6">
+                            <ion-button color="primary" expand="block" shape="round" type="submit" [ngClass]="{'disable-btn': !(phoneRef.valid && passRef.valid)}">登录</ion-button>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-button color="medium" fill="clear" expand="block" routerLink="/tabs">随便逛逛</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </form>
+        </div>
+        <!-- E 密码登录 -->
+
+        <!-- S 验证码登录 -->
+        <div *ngIf="method == 1">
+            <form #codeFormRef="ngForm" (ngSubmit)="toSignInCode(codeFormRef.value, [phoneRef.errors, codeRef.errors])">
+                <ion-list>
+                    <ion-item no-padding>
+                        <ion-label position="floating">请输入手机号码</ion-label>
+                        <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                            [(ngModel)]="phone" #phoneRef="ngModel"></ion-input>
+                    </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="7" no-padding class="get-code-item">
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入验证码</ion-label>
+                                <ion-input type="number" color="dark" name="code" required minlength="6" [(ngModel)]="vertify_code.code"
+                                    #codeRef="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="5" class="get-code">
+                            <ion-button solt="end" fill="clear" color="{{phoneRef.valid && vertify_code.status ? 'warning' : 'medium'}}"
+                                class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>
+                                {{vertify_code.info}}</ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="info clear" padding-top>
+                        如果您所填手机号未注册过APP，系统默认以该手机号注册。
+                    </div>
+
+                    <ion-row padding-vertical>
+                        <ion-col size="6">
+                            <ion-button color="primary" [ngClass]="{'disable-btn': !(phoneRef.valid && codeRef.valid)}"
+                                expand="block" shape="round" type="submit">登录</ion-button>
+                        </ion-col>
+                        <ion-col size="6">
+                            <ion-button color="medium" fill="clear" expand="block" routerLink="/tabs">随便逛逛</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-list>
+            </form>
+        </div>
+        <!-- E 验证码登录 -->
+
+        <!-- S 微信登录 -->
+        <div *ngIf="method == 3" class="wechat-box">
+            <!-- <ion-button color="primary" expand="block" shape="round" (click)="signInWechat()">微信登录</ion-button> -->
+            <ion-button color="medium" fill="clear" expand="block" routerLink="/tabs">随便逛逛</ion-button>
+        </div>
+        <!-- E 微信登录 -->
+
+        <footer>
+            <!-- S 其他登录方式 -->
+            <div class="other">
+                <!-- <a *ngIf="method != 3" (click)="method = 3" padding-end>微信登录</a> -->
+                <!-- <a *ngIf="method == 3" (click)="method = 0" padding-end>密码登录</a>
+                <span> | </span> -->
+                <a *ngIf="method != 1" (click)="method = 1" padding-start>验证码登录</a>
+                <a *ngIf="method != 0" (click)="method = 0" padding-start>密码登录</a>
+                <!-- <a *ngIf="method != 4" (click)="method = 4" padding-start>手机，密码注册</a> -->
+            </div>
+            <!-- E 其他登录方式 -->
+
+            <p class="treaty" padding-vertical>登录即代表同意<a routerLink="/treaty">《“心安救”平台会员公约》</a></p>
+        </footer>
+
+    </div>
+</ion-content>

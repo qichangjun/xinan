@@ -1,0 +1,326 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-buttons {
+        width: 35%;
+
+        ion-icon {
+            font-size: 24px;
+        }
+
+        ion-icon:nth-child(1) {
+            margin-right: 28px;
+        }
+
+    }
+
+    ion-title {
+        padding-left: 14px !important;
+    }
+
+}
+
+ion-slide {
+    height: 180px;
+
+    img {
+        width: 343px;
+        height: 160px;
+        border-radius: 8px;
+        box-shadow: 0px 1.5px 4px 0 rgba(0, 0, 0, 0.12);
+    }
+}
+
+ion-content {
+
+    .slides {
+        background: #f7f7f7;
+    }
+
+    ngb-progressbar {
+        width: 100%;
+    }
+
+    ion-segment {
+        height: 52px;
+        --background-checked: #e83030;
+        background: #e83030;
+        --border-color-disabled: #e83030;
+        --border-color-checked: #fff;
+
+        ion-segment-button {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+
+    .cont {
+
+        h1 {
+            margin: 10px 12px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #424242;
+
+            .h_s {
+                float: right;
+
+                span {
+                    color: #999999;
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                .h_s_num {
+                    color: #2cd2ce;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .jsgs {
+            margin: 30px 12px 10px;
+        }
+
+        .car_s {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 0;
+            box-shadow: none;
+
+            ion-col {
+
+                ion-label {
+                    font-size: 11px;
+                    color: #999;
+                    text-align: center;
+                    font-weight: 500;
+
+                    span {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #424242;
+                    }
+                }
+
+                .num {
+                    color: #424242;
+                }
+            }
+        }
+    }
+
+    .car_l {
+        margin: 13.5px 12px;
+        background-color: #fff;
+        position: relative;
+
+        ion-col {
+            height: 116px;
+            padding: 10px;
+
+            img {
+                height: 100%;
+            }
+
+            h3 {
+                margin: 5px 0;
+                font-size: 12px;
+                font-weight: 500;
+                color: #999999;
+            }
+
+            div {
+                margin-top: 16px;
+
+                p {
+                    font-size: 12px;
+                    color: #bdbdbd;
+                    font-weight: bold;
+                    display: contents;
+
+                    .ljgm {
+                        float: right;
+                        color: #e83030;
+                        display: flex;
+                        align-items: center
+                    }
+
+                    ion-icon {
+                        width: 18px;
+                        height: 18px;
+                        margin-left: 5px;
+                        padding: 2px;
+                        box-shadow: 0px 3px 8px 0 rgba(232, 48, 48, 0.2);
+                        border-radius: 18px;
+                        background-color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+
+    .car_notice {
+        margin: 16px 12px;
+        padding: 20px 10px;
+        position: relative;
+
+        ion-card-header {
+            border-bottom: 2px solid #f7f7f7;
+
+            // ion-label {
+            //     margin: 0;
+            // }
+
+            ion-row {
+                margin-bottom: 10px;
+
+                .car_tit {
+                    width: 70%;
+                    color: #424242;
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                span {
+                    position: absolute;
+                    text-align: center;
+                    right: -18px;
+                    box-shadow: 0px 3px 8px 0 rgba(232, 48, 48, 0.2);
+                    background-image: linear-gradient(160deg, #f32c5b, #dd0d0d);
+                    font-weight: bold;
+                    color: #ffffff;
+                }
+
+                .notice {
+                    width: 30%;
+
+                    span {
+                        font-size: 13px;
+                        display: inline-block;
+                        height: 24px;
+                        line-height: 24px;
+                        width: 73px;
+                        border-radius: 12px;
+                    }
+                }
+
+                .donation {
+
+                    span {
+                        height: 30px;
+                        width: 73px;
+                        right: 0;
+                        line-height: 30px;
+                        border-radius: 15px;
+                    }
+                }
+            }
+
+            .lab_details {
+                font-size: 11px;
+                font-weight: 500;
+                color: #6b9dff;
+            }
+        }
+
+        ion-card-content {
+            .car_cont {
+                padding: 15px 0 13.5px 0;
+
+                img {
+                    width: 70.5px;
+                    height: 70.5px;
+                    color: #666666;
+                }
+
+                h3 {
+                    font-size: 13px;
+                    font-weight: 500;
+                    margin: 4.5px 0;
+                }
+            }
+
+            .sign {
+                font-size: 13px;
+                font-weight: 500;
+                color: #999;
+                padding-top: 13.5px;
+            }
+        }
+    }
+
+    .car_notice,
+    .car_l {
+
+        div {
+            >span {
+                color: #ffffff;
+                background-color: #6b9dff;
+                font-size: 11px;
+                font-weight: 500;
+                padding: 0 3px;
+                border-radius: 3px;
+                margin-right: 15.5px;
+            }
+
+            .warning {
+                background: #ffa05b;
+            }
+        }
+
+    }
+
+    .car_an {
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            p {
+                display: inline-block;
+            }
+        }
+    }
+
+    .switch {
+        color: #999999;
+        font-size: 13px;
+        font-weight: bold;
+        width: 60%;
+        margin: 0 auto;
+
+        ion-label {
+            text-align: center;
+            padding: 9.5px;
+            width: 120px;
+        }
+
+        .selected {
+            color: #e83030;
+            border-radius: 16px;
+            box-shadow: 0px 3px 8px 0 rgba(232, 48, 48, 0.2);
+            background-color: #ffffff;
+        }
+    }
+
+    .info {
+        border-bottom: 1px solid #e6e6e6;
+
+        ion-label {
+            color: #666666;
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .num {
+            color: #bdbdbd;
+            font-size: 11px;
+        }
+    }
+}

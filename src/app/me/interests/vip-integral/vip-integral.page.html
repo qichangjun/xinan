@@ -1,0 +1,148 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/tinterests"></ion-back-button>
+        </ion-buttons>
+        <ion-title>会员积分</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <div class="join-titl">
+        <div class="join">
+            <ion-card no-margin>
+                <ion-card-header>
+                    <ion-card-title>
+                        <p class="title">会员积分</p>
+                        <p class="name">680</p>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <!-- <p class="toggle">
+                        <span>
+                            <ion-toggle color="tertiary"></ion-toggle>
+                        </span>
+                    </p> -->
+                    <p class="toggle">积分自动充值
+                        <span>
+                            <ion-toggle color="tertiary" checked="true"></ion-toggle>
+                        </span>
+                    </p>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div class="rule-box">
+            <ion-list class="rule-list" no-margin lines="none" *ngFor="let c of mouths;let i = index"
+                [attr.mouths-index]="i">
+                <!-- (click)="rule1 = !rule1" (click)="openDiv(i)" -->
+                <ion-item class="rule-item" no-padding lines="none" (click)="openDiv(i)">
+                    <ion-label>
+                        <span>{{c.mouth}}</span>
+                    </ion-label>
+                    <ion-icon slot="end" name="{{c.isOpen ? 'ios-arrow-down' : 'ios-arrow-forward'}}"></ion-icon>
+                </ion-item>
+                <ion-list class="rule-detail in-list" *ngIf="c.isOpen" lines="none" no-padding no-margin>
+                    <div class="in-list-div">
+                        <ion-item no-margin lines="none" no-padding class="in-item" *ngFor="let list of lists">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="{{list.imgUrl}}" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>{{list.title}}</h2>
+                                <h3>{{list.time}}</h3>
+                            </ion-label>
+                            <span class="item-right" [ngClass]="{'item_negative':list.itemNeg}">{{list.val}}</span>
+                        </ion-item>
+                    </div>
+                </ion-list>
+            </ion-list>
+            <!-- <ion-list class="rule-list" no-margin lines="none">
+
+                <ion-item class="rule-item" no-padding (click)="rule2 = !rule2" lines="none">
+                    <ion-label>
+                        <span>2018年9月</span>
+                    </ion-label>
+                    <ion-icon slot="end" name="{{rule2 ? 'ios-arrow-down' : 'ios-arrow-forward'}}"></ion-icon>
+                </ion-item>
+                <ion-list class="rule-detail in-list" *ngIf="rule2" lines="none" no-padding no-margin>
+                    <div class="in-list-div">
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>购买家用戴恩吸尘器</h2>
+                                <h3>今天 04:37</h3>
+                            </ion-label>
+                            <span class="item-right">+36积分</span>
+                        </ion-item>
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>购买日用品</h2>
+                                <h3>昨天 04:37</h3>
+                            </ion-label>
+                            <span class="item-right">+36</span>
+                        </ion-item>
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>其他消费</h2>
+                                <h3>08-11 04:37</h3>
+                            </ion-label>
+                            <span class="item-right item-ad">-2036</span>
+                        </ion-item>
+                    </div>
+                </ion-list>
+            </ion-list>
+            <ion-list class="rule-list" no-margin lines="none">
+
+                <ion-item class="rule-item" no-padding (click)="rule3 = !rule3" lines="none">
+                    <ion-label>
+                        <span>2018年8月</span>
+                    </ion-label>
+                    <ion-icon slot="end" name="{{rule3 ? 'ios-arrow-down' : 'ios-arrow-forward'}}"></ion-icon>
+                </ion-item>
+                <ion-list class="rule-detail in-list" *ngIf="rule3" lines="none" no-padding no-margin>
+                    <div class="in-list-div">
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>购买家用戴恩吸尘器</h2>
+                                <h3>今天 04:37</h3>
+                            </ion-label>
+                            <span class="item-right">+36积分</span>
+                        </ion-item>
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>购买日用品</h2>
+                                <h3>昨天 04:37</h3>
+                            </ion-label>
+                            <span class="item-right">+36</span>
+                        </ion-item>
+                        <ion-item no-margin lines="none" no-padding class="in-item">
+                            <ion-avatar slot="start" class="avatar">
+                                <img src="../../../assets/imgs/avatar.png" />
+                            </ion-avatar>
+                            <ion-label>
+                                <h2>其他消费</h2>
+                                <h3>08-11 04:37</h3>
+                            </ion-label>
+                            <span class="item-right item-ad">-2036</span>
+                        </ion-item>
+                    </div>
+                </ion-list>
+            </ion-list> -->
+        </div>
+    </div>
+</ion-content>

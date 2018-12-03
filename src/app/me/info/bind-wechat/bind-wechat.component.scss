@@ -1,0 +1,36 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #fff;
+
+    .info {
+        text-align: center;
+
+        ion-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .name {
+            font-size: 15px;
+            padding-top: 12px;
+            color: #424242;
+        }
+    }
+
+    .time-btn {
+        background: var(--ion-color-white);
+        color: #999;
+        font-weight: normal;
+    }
+}

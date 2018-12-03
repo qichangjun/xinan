@@ -1,0 +1,92 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="relatives/select-service"></ion-back-button>
+        </ion-buttons>
+        <ion-title>填写资料</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="relatives-list">
+        <ion-list no-margin lines="none" *ngFor="let relative of relativeList">
+            <ion-item-divider class="header">
+                <ion-label>第{{relative.id}}位亲友</ion-label>
+                <ion-button slot="end" fill="clear" size="small" color="medium" *ngIf="relative.id !== 1" (click)="removeRelative(relative)">
+                    <ion-icon name="close"></ion-icon>
+                    删除
+                </ion-button>
+            </ion-item-divider>
+            <ion-item class="line">
+                <ion-label position="stacked"><span class="text-danger">*</span> 请输入姓名</ion-label>
+                <ion-input type="text" [(ngModel)]="relative.name"></ion-input>
+            </ion-item>
+            <ion-item class="line">
+                <ion-label position="stacked"><span class="text-danger">*</span> 请输入身份证号</ion-label>
+                <ion-input type="text" [(ngModel)]="relative.identityNumber"></ion-input>
+            </ion-item>
+            <div padding>
+                <small class="info">
+                    <ion-icon name="md-alert"></ion-icon> 身份信息确认后不可更改，请谨慎填写
+                </small>
+            </div>
+            <ion-item class="servicemoney-item">
+                <ion-label position="fixed">服务费<span class="text-danger">26</span>元/年</ion-label>
+                <div class="year-control" float-end justify-content-between slot="end">
+                    <ion-icon name="remove" (click)="yearChange(relative,-1)"></ion-icon>
+                    <ion-input class="year-input" no-padding type="number" value="1" min="1" max="100" step="1"
+                        text-center [(ngModel)]="relative.year"></ion-input>
+                    <ion-icon name="add" (click)="yearChange(relative,1)"></ion-icon>
+                </div>
+
+            </ion-item>
+            <ion-item *ngIf="service_type == 1" class="charge-item" (click)="relative.isShow = !relative.isShow">
+                <ion-label>选择充值金额</ion-label>
+                <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+            </ion-item>
+            <ion-grid padding-horizontal padding-bottom *ngIf="relative.isShow">
+                <ion-row>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">33</ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">66</ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">99</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">132</ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">165</ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button fill="outline" color="secondary" expand="block">自定义</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </ion-list>
+    </div>
+
+    <div padding text-center class="add-box">
+        <ion-button class="add-btn" fill="outline" (click)="addNewRelative()" *ngIf="relativeList.length < 2">
+            <ion-icon name="add"></ion-icon>
+        </ion-button>
+    </div>
+
+</ion-content>
+
+<ion-footer>
+    <ion-row>
+        <ion-col>
+            <ion-button class="excel" expand="block">Excel批量导入</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button color="secondary" expand="block" (click)="confirm()">确定添加</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

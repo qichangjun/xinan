@@ -1,0 +1,75 @@
+<ion-header color="white" no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/auth/sign-in"></ion-back-button>
+        </ion-buttons>
+        <ion-title>找回密码</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="auth-page">
+        <form #FormRef="ngForm" (ngSubmit)="toResetPass(FormRef.value, [phoneRef.errors, pass1Ref.errors, codeRef.errors])">
+            <ion-list>
+                <ion-item no-padding>
+                    <ion-label position="floating">请输入手机号码</ion-label>
+                    <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                        [(ngModel)]="data.phone" #phoneRef="ngModel"></ion-input>
+                </ion-item>
+
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="10" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">请输入新密码</ion-label>
+                            <ion-input type="{{eyeshow1?'text':'password'}}" color="dark" name="password1" required
+                                minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                [(ngModel)]="data.password1" #pass1Ref="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="2" class="eye">
+                        <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow1 = !eyeshow1"
+                            no-padding>
+                            <i class="iconfont {{eyeshow1?'icon-show':'icon-hide'}}"></i></ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="10" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">再次输入新密码</ion-label>
+                            <ion-input type="{{eyeshow2?'text':'password'}}" color="dark" name="password2" required
+                                minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                [(ngModel)]="data.password2" #pass2Ref="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="2" class="eye">
+                        <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow2 = !eyeshow2"
+                            no-padding>
+                            <i class="iconfont {{eyeshow2?'icon-show':'icon-hide'}}"></i></ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="7" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">请输入验证码</ion-label>
+                            <ion-input type="number" color="dark" name="code" required minlength="6" [(ngModel)]="data.code"
+                                #codeRef="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="5" class="get-code">
+                        <ion-button solt="end" fill="clear" color="{{phoneRef.valid && data.status ? 'warning' : 'medium'}}"
+                            class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>{{data.info}}</ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row padding-vertical margin-top>
+                    <ion-col size="12">
+                        <ion-button color="primary" [ngClass]="{'disable-btn': !(phoneRef.valid && pass1Ref.valid && pass2Ref.valid && pass1Ref.value === pass2Ref.value && codeRef.valid )}"
+                            expand="block" shape="round" type="submit">重置密码</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+        </form>
+    </div>
+</ion-content>

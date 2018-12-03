@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="#fff">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="md-arrow-back" default-href="wait_pay/１"></ion-back-button>
+    </ion-buttons>
+    <ion-title>确认支付</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+  <div class="content">
+    <ion-col no-padding>
+      <h1 class="name">订单1245679523568578</h1>
+      <P>
+        ￥3329.00
+      </P>
+    </ion-col>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-row align-items-center class="total">
+    <ion-col size="4">
+      <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

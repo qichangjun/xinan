@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(fond:fond)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>加入会员</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <div class="content">
+        <ion-col>
+            <h1 class="name">怎样成为心安救助平台会员？</h1>
+            <P>
+                1、服务费26元／年。
+                <span routerLink="/interests/member">去充值</span> <br />
+                2、通过积分商城购物获得积分，可抵扣相应现金。
+                <span (click)="class()">去购物</span> <br />
+                3、军人军属、基层警察及家属、义工、环卫工人、五保户、残疾人上传身份证及相关证件或证明材料申请，审核通过后即可免平台服务费。
+                <span (click)="upLoad()">上传证件/证明</span>
+            </P>
+        </ion-col>
+
+    </div>
+    <div>
+        <ion-list>
+            <ion-item no-padding>
+                <ion-label (click)="rescueConvention()">
+                    <h1 class="name">
+                        《心安救平台会员公约》
+                        <ion-icon name="arrow-forward" class="gray"></ion-icon>
+                    </h1>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+
+</ion-content>

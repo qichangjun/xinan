@@ -1,0 +1,19 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #fff;
+
+    ion-item {
+        background: #fff;
+    }
+
+}

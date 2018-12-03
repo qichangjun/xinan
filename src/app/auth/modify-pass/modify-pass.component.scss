@@ -1,0 +1,27 @@
+@import '../sign-in/sign-in.page.scss';
+
+.auth-page {
+    padding-top: 0rem;
+}
+
+.info {
+    text-align: center;
+
+    ion-avatar {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+    }
+
+    .name {
+        font-size: 15px;
+        padding-top: 12px;
+        color: #424242;
+    }
+}
+
+.item-interactive-disabled .sc-ion-label-ios-h,
+.item-interactive-disabled .sc-ion-label-md-h {
+    opacity: 1;
+    color: var(--ion-color-warning);
+}

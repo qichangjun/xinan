@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>确认订单</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <div class="addr">
+        <ion-row>
+            <ion-col size="1.5">
+                <div class="serve">
+                    <ion-icon name="pin" class="primary"></ion-icon>
+                </div>
+            </ion-col>
+            <ion-col size="10">
+                <ion-text class="name">林慧光
+                    <span>13999542266</span>
+                </ion-text>
+                <ion-text class="add">
+                    广东省珠海市香洲区唐家湾镇高新区大道新世纪大厦 其他楼层 1608楼
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="pro-list">
+        <ion-card *ngFor="let list of lists">
+            <pay-goods [data]="list"></pay-goods>
+        </ion-card>
+    </div>
+    <div class="lable">
+        <ion-row>
+            <ion-col>
+                <ion-text>
+                    可获积分<span>329</span>分
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row align-items-center class="total">
+        <ion-text>
+            合计：<span>￥168.00</span>
+        </ion-text>
+        <ion-col size="6">
+            <ion-button (click)="alertMes()" expand="block">支付</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

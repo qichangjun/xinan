@@ -1,0 +1,163 @@
+ion-header {
+    box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        border: none;
+
+        ion-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .end {
+            width: 30%;
+            font-size: 16px;
+            color: #6b9dff;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    ion-row {
+        background: #fff;
+        margin-bottom: 16px;
+        padding: 16px 16px 0;
+
+        h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #424242;
+        }
+
+        ion-list {
+            background: #fff;
+            width: 80%;
+
+            ion-col {
+                padding: 0;
+
+                ion-label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #bdbdbd;
+                }
+            }
+
+            ion-col:nth-child(2) {
+                ion-label {
+                    color: #424242;
+                }
+            }
+        }
+
+        ion-item {
+            width: 100%;
+
+            ion-label {
+                color: #666666;
+                font-size: 11px;
+                font-weight: 500;
+            }
+        }
+
+        p {
+            color: #bdbdbd;
+            line-height: 36px;
+
+            span {
+                font-size: 11px;
+                font-weight: 500;
+                line-height: 12px;
+                height: 12px;
+            }
+        }
+
+        ion-row {
+            width: 100%;
+        }
+    }
+
+    .car_price {
+        padding: 16px;
+        background: #fff;
+        margin-bottom: 16px;
+        border-radius: 0;
+
+        ion-row {
+            padding: 0;
+            margin: 0;
+
+            ion-col {
+                padding: 0 12px 12px 0;
+            }
+        }
+
+
+        .int_txt {
+            margin-bottom: 15.5px;
+        }
+
+        .integral {
+            font-size: 13px;
+            font-weight: bold;
+            color: #999999;
+
+            div {
+                display: inline-block;
+
+                ion-input {
+                    border: solid 1px #cccccc;
+                    height: 24px;
+                    position: relative;
+                    width: 60px;
+                    top: -1px;
+                    margin-right: 3px;
+                }
+            }
+
+            ion-col {
+                text-align: right;
+            }
+
+            span {
+                color: #6b9dff;
+            }
+
+        }
+    }
+
+    p {
+        margin: 14.5px 16px;
+        font-size: 11px;
+        font-weight: 500;
+        color: #999999;
+
+        a {
+            color: #6b9dff;
+        }
+    }
+
+    .term_serve {
+        p {
+            text-indent: 2em;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.71;
+            color: #666666;
+        }
+    }
+
+    i {
+        font-style: normal;
+        color: #e83030;
+    }
+}

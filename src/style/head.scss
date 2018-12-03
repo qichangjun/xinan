@@ -1,0 +1,61 @@
+ion-header {
+    ion-toolbar {
+        padding: 0;
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        height: 52px;
+
+        ion-buttons {
+            width: 45px;
+            height: 54px;
+            padding-left: 14px;
+        }
+
+        ion-title {
+            height: 52px;
+            text-align: left;
+            // padding: 0 13.5px;
+            padding-left: 54px;
+            font-weight: normal;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        // md 返回按钮
+        [slot=start].sc-ion-buttons-md-h {
+            padding-left: 0;
+        }
+
+        // md title
+        .title-md {
+            padding-left: 0;
+            text-align: left;
+        }
+
+    }
+}
+
+// ios header
+// .header-ios {
+//     ion-toolbar:first-child {
+//         height: 62px;
+
+//         ion-buttons {
+//             height: none;
+//         }
+
+//         ion-title {
+//             height: 62px;
+//         }
+//     }
+// }
+
+.tab_heard {
+    color: #fff;
+
+    ion-toolbar:first-child {
+        background: #e83030;
+    }
+}

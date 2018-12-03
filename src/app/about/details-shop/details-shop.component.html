@@ -1,0 +1,60 @@
+<ion-header no-border translucent>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" defaultHref="/tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>商品详情</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <img src="../../assets/imgs/img_shop_big.png" />
+    <!-- <ion-slides *ngIf="imgs" #slides pager="true" (ionSlideTouchStart)="ionSlideTouchStart()" [options]="options">
+        <ion-slide *ngFor="let img of imgs">
+            <img src="{{img}}" />
+        </ion-slide>
+    </ion-slides> -->
+    <ion-row>
+        <ion-text class="text_tit">女士个性标语肩带单肩包时尚便携真皮手提包</ion-text>
+        <ion-text>单肩包/斜挎包 街头/休闲 压花皮</ion-text>
+        <ion-text class="text_red">
+            <span>¥2,299.00</span>
+            <i>商城价: 3319.00</i>
+        </ion-text>
+    </ion-row>
+    <ion-row class="addRemove">
+        <ion-col size="8.5">
+            <span>数量</span>
+        </ion-col>
+        <ion-col size="3.5">
+            <ion-card class="calculate">
+                <ion-icon (click)="remove();" name="remove" [ngClass]="{'highlight': remHigh}"></ion-icon>
+                <ion-label>{{years}}</ion-label>
+                <ion-icon (click)="add();" name="add" [ngClass]="{'highlight': addHigh}"></ion-icon>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+    <ion-row class="addRemove details">
+        <ion-col>
+            <span>商品详情</span>
+        </ion-col>
+    </ion-row>
+    <img src="../../assets/imgs/img_shop_big.png" />
+</ion-content>
+
+<ion-footer>
+    <ion-row align-items-center class="total">
+        <!-- routerLink="/card" -->
+        <ion-col size="4" (click)="buyNow()">
+            <ion-badge color="primary">3</ion-badge>
+            <ion-icon name="md-cart"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+            <!-- (click)="shoppingCart()" -->
+            <ion-button (click)="buyNow()" fill="outline" class="white" expand="block">加入购物车</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="buyNow()" expand="block">立即购买</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

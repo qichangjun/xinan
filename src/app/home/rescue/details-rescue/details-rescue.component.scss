@@ -1,0 +1,115 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+}
+
+.statistics-grid {
+    min-height: 130px;
+    width: 100%;
+    background: var(--ion-color-primary);
+    color: #fff;
+    vertical-align: middle;
+    padding-top: 50px;
+
+    .statistics-col {
+        text-align: center;
+
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        p {
+            opacity: 0.6;
+        }
+    }
+}
+
+
+.process {
+    background: #fff;
+}
+
+.rule-list {
+    background: #fff;
+
+    .rule-item {
+        span {
+            color: #bdbdbd;
+            font-size: 14px;
+            padding-left: 16px;
+        }
+
+        b {
+            color: #424242;
+            opacity: 1;
+            font-size: 14px;
+            padding-left: 10px;
+        }
+
+        ion-icon {
+            font-size: 20px;
+        }
+
+        &::last {
+            border-bottom: 0;
+        }
+    }
+
+    .rule-detail {
+        p {
+            color: #999;
+            font-size: 12px;
+            line-height: 1.64;
+            text-align: justify;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+.advantage-grid {
+    background: var(--ion-color-white);
+
+    .advantage-col {
+
+        .ad-icon {
+            font-size: 26px;
+        }
+
+        ion-card-title {
+            font-size: 14px;
+            color: #666;
+        }
+
+        icon-card-subtitle {
+            font-size: 12px;
+            color: #999;
+        }
+
+        ion-card-header {
+            background: #fff;
+        }
+    }
+}
+
+.process {
+    p {
+        color: #666;
+        font-size: 14px;
+    }
+}
+
+ion-footer {
+    padding: 9px 16px;
+}

@@ -1,0 +1,41 @@
+.bill-list {
+    background: #fff;
+
+    ion-item {
+        border-bottom: 0.5px solid #e6e6e6;
+
+        ion-label {
+            font-size: 16px;
+
+            &:first-child {
+                color: #666;
+                padding-left: 12px;
+            }
+
+            &:nth-child(3) {
+                font-weight: bold;
+            }
+
+            &:nth-child(3).in {
+                color: var(--ion-color-success);
+            }
+
+            &:nth-child(3).out {
+                color: var(--ion-color-primary);
+            }
+
+            .title {
+                color: #666;
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .time {
+                color: #999;
+                font-size: 12px;
+            }
+        }
+
+    }
+
+}

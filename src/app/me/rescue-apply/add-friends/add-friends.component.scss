@@ -1,0 +1,167 @@
+ion-header {
+    color: #424242;
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        ion-title {
+            font-size: 20px;
+            color: #424242;
+            font-weight: 500;
+        }
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    .in-item {
+        background: #fff;
+        padding: 20px 16px;
+        border-bottom: 0.5px solid #e6e6e6;
+        margin-bottom: 16px;
+
+        ion-label {
+            h2 {
+                font-size: 16px;
+                font-weight: 500;
+                color: #666666;
+                margin-bottom: 6px;
+            }
+
+            h3 {
+                font-size: 11px;
+                font-weight: 500;
+                color: #999999;
+            }
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+
+        ion-icon {
+            font-size: 17px;
+            color: #ccc;
+        }
+    }
+
+    .info_card {
+        background: #fff;
+        margin-bottom: 16px;
+        padding: 16px 16px 24px;
+
+        ion-list {
+            background: #fff;
+            width: 80%;
+
+            ion-col {
+                padding: 0;
+
+                ion-label {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #bdbdbd;
+                }
+            }
+
+            ion-col:nth-child(2) {
+                ion-label {
+                    color: #424242;
+                }
+            }
+        }
+
+        ion-item {
+            width: 100%;
+
+            ion-label {
+                color: #666666;
+                font-size: 11px;
+                font-weight: 500;
+            }
+        }
+
+        span {
+            font-size: 11px;
+            color: #bdbdbd;
+        }
+
+        h5 {
+            font-size: 11px;
+            font-weight: 500;
+            color: #666666;
+        }
+
+        p {
+            font-size: 15px;
+            color: #424242;
+            padding: 10.5px 0;
+            height: 99px;
+            overflow: hidden;
+            line-height: 1.87;
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        ion-col {
+            font-size: 16px;
+            font-weight: bold;
+            display: flex;
+            color: #424242;
+            justify-content: space-between;
+
+            ion-text:nth-child(2) {
+                font-size: 14px;
+                color: #bdbdbd;
+            }
+        }
+
+        upload-pictures {
+            width: 100%;
+        }
+    }
+
+    .car_price {
+        width: 100%;
+        padding: 0;
+
+        h5 {
+            margin-bottom: 8px;
+        }
+
+        ion-button {
+            --border-radius: 16px;
+            border-radius: 17px;
+        }
+    }
+
+}
+
+ion-footer {
+    .white {
+        color: #666666;
+        --border-color: #fff;
+        --box-shadow: 0px 3px 12px 0 rgba(0, 0, 0, 0.1);
+        --background: #fff;
+        --background-focused: #fff;
+        --background-activated: #fff;
+    }
+
+    a {
+        color: #6b9dff;
+    }
+
+
+}

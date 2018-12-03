@@ -1,0 +1,196 @@
+ion-header {
+    color: #424242;
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        ion-title {
+            font-size: 20px;
+            color: #424242;
+            font-weight: 500;
+        }
+    }
+}
+
+ion-segment {
+    padding: 0 16px;
+    height: 52px;
+    background: #fff;
+
+    ion-segment-button {
+        color: #666;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    .in-list {
+        background: #fff;
+
+        .in-list-div {
+            box-sizing: border-box;
+            padding-left: 16px;
+
+        }
+
+        .in-list-div ion-item:last-child {
+            border-bottom: none;
+
+        }
+
+        ion-item {
+            background: #fff;
+            padding: 9px 11.5px 9px 0;
+            // margin: 10px 16px;
+            border-bottom: 0.5px solid #e6e6e6;
+
+            ion-label {
+                h2 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #666666;
+                    margin-bottom: 6px;
+                }
+
+                h3 {
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: #999999;
+                }
+            }
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+
+            ion-icon {
+                font-size: 24px;
+                color: #ccc;
+            }
+        }
+    }
+
+    .add {
+        padding: 20.5px 0;
+        display: flex;
+        justify-content: center;
+
+        div {
+            width: 106px;
+            height: 64px;
+            display: inline-block;
+            border-radius: 5px;
+            border: solid 0.5px #e6e6e6;
+            text-align: center;
+
+            ion-icon,
+            ion-text {
+                width: 100%;
+            }
+
+            ion-icon {
+                font-size: 26px;
+                color: #bdbdbd;
+                margin-top: 3px;
+            }
+
+            ion-text {
+                font-size: 14px;
+                font-weight: 500;
+                color: #666666;
+                line-height: 1.71;
+            }
+        }
+    }
+
+    .server {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        opacity: 0.6;
+        background-color: #000000;
+    }
+
+    .eject {
+        background: #fff;
+        border-radius: 4px;
+        width: 66.66%;
+        height: 50%;
+        padding: 20.5px 12.5px;
+        box-sizing: border-box;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 999;
+
+        .times {
+            // width: 14px;
+            line-height: 17px;
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        ion-card {
+            box-shadow: none;
+
+            .back {
+                width: 122.5px;
+                height: 127px;
+                margin: 0 auto;
+                background: url('../../../../assets/imgs/eject.png');
+                background-size: cover;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 500;
+                color: #666666;
+                line-height: 1.43;
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            ion-button {
+                --border-radius: 20px;
+                box-shadow: 0;
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: bold;
+                margin-top: 38.5px;
+            }
+        }
+    }
+
+    .apply_record {
+        background: #fff;
+        height: 100%;
+
+        xinan-card {
+            display: inline-block;
+            margin: 10px 0 0;
+        }
+    }
+}

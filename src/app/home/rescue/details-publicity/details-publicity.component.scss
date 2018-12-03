@@ -1,0 +1,188 @@
+ion-header {
+    background: url('../../../../assets/imgs/jiuzhu_detail.jpg') top left no-repeat;
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-back-button {
+        color: #fff;
+    }
+
+    ion-title {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .end {
+        font-size: 22px;
+        color: #fff;
+        font-weight: 500;
+        margin-right: 10px;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+}
+
+.pic {
+    min-height: 280px;
+    background: url('../../../../assets/imgs/jiuzhu_detail.jpg') top left no-repeat;
+    background-position-y: -52px;
+}
+
+.info-card {
+    margin: -50px 16px 16px 16px;
+    background: #fff;
+
+    ion-avatar img {
+        border-radius: 5px;
+    }
+
+    ion-card-title {
+        font-size: 18px;
+    }
+}
+
+.link {
+    color: var(--ion-color-secondary) !important;
+}
+
+.info-detail-card {
+    background: #fff;
+
+    ion-card-content {
+        h5 {
+            color: #424242;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        p {
+            color: #666;
+            font-size: 15px;
+            line-height: 2;
+            text-align: justify;
+        }
+    }
+
+}
+
+.timeline {
+    .timeline-line {
+        display: block;
+        width: 3px;
+        height: 90%;
+        background-color: var(--ion-color-secondary);
+        margin: -10px 15px 0;
+    }
+
+    .timeline-content {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .timeline-imglist {
+        img {
+            display: inline;
+            width: 56px;
+            height: 56px;
+            padding-right: 3px;
+        }
+    }
+}
+
+.resue-count {
+    ion-row {
+        border-top: 1px solid #e6e6e6;
+    }
+}
+
+.resue-donate {
+    background: #fff;
+}
+
+
+
+.serve {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    background-color: #000000;
+}
+
+.share {
+    width: 100%;
+    // padding: 16.5px 16.5px 0;
+    background-color: #f7f7f7;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+
+    ion-card {
+        box-shadow: none;
+        margin: 16.5px;
+    }
+
+    .title {
+        font-size: 16px;
+        font-weight: bold;
+        color: #424242;
+        margin: 0 0 11px;
+    }
+
+    .imgs {
+        width: 128.9px;
+        height: 128.9px;
+        margin: 0 auto 16.5px;
+
+        img {
+            width: 128.9px;
+            height: 128.9px;
+        }
+
+
+    }
+
+    ion-row {
+
+        .img-serve {
+            width: 60px;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+
+            img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        ion-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666666;
+            text-align: center;
+            margin: 8px 0 0;
+        }
+    }
+
+    .button {
+        line-height: 50px;
+        background-color: #ffffff;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

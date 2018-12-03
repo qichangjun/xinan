@@ -1,0 +1,6 @@
+<ion-card no-margin>
+    <div class="upLoad-img" (click)="presentActionSheet(); $event.stopPropagation();">
+        <img *ngIf="userInfo.avatar" [src]="userInfo.avatar" alt="">
+        <img *ngIf="!userInfo.avatar" src="../../../assets/imgs/img_avatar_default.png" />
+    </div>
+</ion-card>

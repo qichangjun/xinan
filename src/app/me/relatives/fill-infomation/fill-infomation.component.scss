@@ -1,0 +1,92 @@
+ion-content {
+    --background: #f7f7f7;
+}
+
+.relatives-list {
+
+    ion-list {
+        background: #fff;
+
+        .header {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .line {
+            --highlight-color-focused: transparent;
+        }
+
+        .line ion-input {
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        .info {
+            color: #999;
+            font-size: 12px;
+            padding: 12px 0;
+
+            .ion-icon {
+                vertical-align: middle;
+            }
+        }
+
+        .servicemoney-item {
+            ion-label {
+                font-size: 12px;
+                color: #999;
+            }
+
+            --highlight-color-focused: transparent;
+        }
+
+        .year-control {
+            float: right;
+            width: 92px;
+            height: 24px;
+            border-radius: 12px;
+            border: 1px solid #e6e6e6;
+            background: #fff;
+
+            .year-input {
+                display: inline-block;
+                width: 57px;
+                height: 24px;
+            }
+        }
+
+        .charge-item {
+            ion-icon {
+                font-size: 27px;
+                color: #ccc;
+            }
+        }
+    }
+}
+
+.add-box {
+
+    // margin-bottom: 65px;
+    .add-btn {
+        --width: 106px;
+        --height: 64px;
+        --border-radius: 5px;
+        --border-color: #e6e6e6;
+        --border-width: 0.5px;
+        --border-style: solid;
+        --background: #f7f7f7;
+        color: #bdbdbd;
+    }
+}
+
+ion-footer {
+    box-shadow: 0px -3px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.excel {
+    color: #666666;
+    --border-color: #fff;
+    --box-shadow: 0px 3px 12px 0 rgba(0, 0, 0, 0.1);
+    --background: #fff;
+    --background-focused: #fff;
+    --background-activated: #fff;
+}

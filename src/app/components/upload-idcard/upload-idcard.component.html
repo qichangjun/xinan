@@ -1,0 +1,41 @@
+<ion-row class="idcard-box">
+    <ion-col>
+        <ion-row>
+            <ion-col size="12" class="front">
+                <img *ngIf="!idcard.front" src="../../../assets/imgs/bg_idcard_1.png" alt="">
+                <div class="camera-box" *ngIf="!idcard.front">
+                    <div class="icon-wrap" (tap)="uploadIdcard($event, 'photos', 'front')" (press)="uploadIdcard($event, 'camera', 'front')">
+                        <ion-icon name="md-camera" color="secondary"></ion-icon>
+                    </div>
+                    <p class="des">上传身份证正面</p>
+                </div>
+                <img *ngIf="idcard.front" [src]="idcard.front" alt="图片加载失败">
+                <ion-icon *ngIf="idcard.front" class="close-btn" name="close-circle" color="primary" (click)="clear(1)"></ion-icon>
+            </ion-col>
+            <ion-col size="12" class="back">
+                <img *ngIf="!idcard.behind" src="../../../assets/imgs/bg_idcard_2.png" alt="">
+                <div class="camera-box" *ngIf="!idcard.behind">
+                    <div class="icon-wrap" (tap)="uploadIdcard($event, 'photos', 'behind')" (press)="uploadIdcard($event, 'camera', 'behind')">
+                        <ion-icon name="md-camera" color="secondary"></ion-icon>
+                    </div>
+                    <p class="des">上传身份证背面</p>
+                </div>
+                <img *ngIf="idcard.behind" [src]="idcard.behind" alt="图片加载失败">
+                <ion-icon *ngIf="idcard.behind" class="close-btn" name="close-circle" color="primary" (click)="clear(2)"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-col>
+    <ion-col class="handheld">
+        <img *ngIf="!idcard.handheld" src="../../../assets/imgs/bg_idcard_3.png" alt="">
+        <div class="camera-box" *ngIf="!idcard.handheld">
+            <div class="icon-wrap" (tap)="uploadIdcard($event, 'photos', 'handheld')" (press)="uploadIdcard($event, 'camera', 'handheld')">
+                <ion-icon name="md-camera" color="secondary"></ion-icon>
+            </div>
+            <p class="des">上传手持身份证</p>
+        </div>
+        <img *ngIf="idcard.handheld" [src]="idcard.handheld" alt="图片加载失败">
+        <ion-icon *ngIf="idcard.handheld" class="close-btn" name="close-circle" color="primary" (click)="clear(3)"></ion-icon>
+    </ion-col>
+</ion-row>
+
+<p class="pps" padding-horizontal padding-top>说明： 长按可切换拍照</p>

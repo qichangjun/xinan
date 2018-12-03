@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>支付</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="relative-list" margin-bottom>
+        <div class="relative-item" padding *ngFor="let relative of relatives">
+            <p class="item-p">
+                <span>姓名</span>
+                <b float-right>{{relative.name}}</b>
+            </p>
+            <p class="item-p">
+                <span>身份证号</span>
+                <b float-right>{{relative.identityNumber}}</b>
+            </p>
+        </div>
+    </div>
+
+    <div class="relative-list">
+        <div class="relative-item" padding>
+            <p class="item-p" *ngIf="params.service_type == 1">
+                <span>救助金</span>
+                <b float-right>33元 &times;{{relatives.length}}</b>
+            </p>
+            <p class="item-p">
+                <span>年服务费</span>
+                <b float-right>26元 &times;{{relatives.length}}</b>
+            </p>
+        </div>
+        <div class="relative-item" padding>
+            <p class="item-p">
+                <span>可用积分<span class="text-danger">160</span>分</span>
+            </p>
+            <p class="item-p integral">
+                <span>
+                    本次使用积分
+                    <ion-input class="integral-input" no-padding type="number" min="0" max="160" step="1"></ion-input>
+                    <a> 全部使用</a>
+                </span>
+                <b float-right>可抵扣<span class="text-danger">1.5</span>元</b>
+            </p>
+        </div>
+    </div>
+
+    <div class="ps" padding>
+        我承诺加入会员身体健康，无重大疾病史及相关症状就诊纪录，无慢性病史。且已知悉
+        <a class="link">《心安救助基金公约》</a>
+        <a class="link">《详细规则》</a>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row align-items-center>
+        <ion-col text-left class="total-money">
+            <span>合计 </span>
+            <h3 class="text-danger">59元</h3>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

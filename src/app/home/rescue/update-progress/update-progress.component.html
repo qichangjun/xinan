@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="details/donation"></ion-back-button>
+        </ion-buttons>
+        <ion-title>更新进展</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form>
+        <ion-list>
+            <ion-item no-padding class="input-item">
+                <ion-label position="stacked">进展说明 <br>
+                    <small>告诉大家事件的最新进展，让大家更了解情况</small></ion-label>
+                <ion-textarea rows="3" cols="20" [(ngModel)]="progress" name="progress"></ion-textarea>
+            </ion-item>
+        </ion-list>
+    </form>
+    <upload-pictures></upload-pictures>
+</ion-content>
+
+<ion-footer>
+    <ion-button color="secondary" shape="round" expand="block" (click)="up()">提交进展</ion-button>
+</ion-footer>

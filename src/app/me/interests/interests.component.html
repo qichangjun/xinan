@@ -1,0 +1,51 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>会员权益</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="pic">
+        <ion-row class="user">
+            <ion-col size="2.8">
+                <img src="{{img}}" />
+            </ion-col>
+            <ion-col size="9.2">
+                <ion-label no-margin>
+                    林慧光
+                    <span routerLink="/interests/integral_detail">心安号：24578764634</span>
+                </ion-label>
+                <ion-button routerLink="/interests/vip_integral" no-margin class="white-transparent btn-style">成为心安会员</ion-button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-row class="card-num">
+        <ion-card no-margin *ngFor="let card of cardMem">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col no-padding size="5">
+                        <ion-label no-margin>{{card.title}}</ion-label>
+                    </ion-col>
+                    <ion-col *ngIf="card.topup" no-padding size="7">
+                        <ion-button no-margin class="white-transparent btn-style" [routerLink]="['/info/bill-list', card.czmx]">充值明细</ion-button>
+                        <!-- routerLink="{{card.detailTopupUrl}}" -->
+                        <ion-button no-margin class="white-transparent btn-style" routerLink="{{card.goTopupUrl}}">去充值</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-list lines="none">
+                        <ion-item lines="none" no-padding *ngFor="let item of card.items">
+                            <ion-text no-margin>{{item.name}}</ion-text>
+                            <ion-text no-margin>
+                                <a [ngClass]="{'aline':item.url}">{{item.value}}</a>
+                            </ion-text>
+                        </ion-item>
+                    </ion-list>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </ion-row>
+</ion-content>

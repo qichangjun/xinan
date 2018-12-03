@@ -1,0 +1,142 @@
+ion-header {
+    .iconfont {
+        font-size: 22px;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+}
+
+.banner {
+    width: 100%;
+    height: 100px;
+    background: url("../../../assets/imgs/bg_relatives.png") left top no-repeat;
+    background-size: cover;
+
+    p {
+        padding: 31px 0;
+        text-align: center;
+        line-height: 1.71;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        font-weight: 500;
+    }
+}
+
+.relatives-list {
+    background: #fff;
+
+    ion-item:not(:last-child) {
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .relatives-header {
+        padding-top: 10px;
+
+        ion-label {
+            color: #999;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+
+    .relatives-item {
+        ion-label {
+            ion-avatar {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+            }
+
+            p {
+                display: inline-block;
+                padding-left: 10px;
+                vertical-align: top;
+
+                .name {
+                    font-size: 16px;
+                    color: #666;
+                }
+
+                .num {
+                    color: #999;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        ion-icon {
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        ion-checkbox {
+            zoom: 0.8;
+        }
+
+        .sc-ion-label-md-h,
+        .sc-ion-label-ios-h {
+            margin: 20px 8px 20px 0;
+        }
+    }
+
+    .relatives-item:not(.all-item) {
+        ion-checkbox {
+            margin-top: -66px;
+        }
+    }
+
+    .item-interactive-disabled .sc-ion-label-md-h,
+    .checkbox-disabled {
+        opacity: 1;
+    }
+}
+
+//添加亲友按钮
+.add {
+    padding: 20.5px 0;
+    display: flex;
+    justify-content: center;
+
+    div {
+        width: 106px;
+        height: 64px;
+        display: inline-block;
+        border-radius: 5px;
+        border: 0.5px solid #e6e6e6;
+        text-align: center;
+
+        ion-icon,
+        ion-text {
+            width: 100%;
+        }
+
+        ion-icon {
+            font-size: 26px;
+            color: #bdbdbd;
+            margin: 10px 0 -10px;
+        }
+
+        ion-text {
+            font-family: 'PingFang-SC';
+            font-size: 14px;
+            font-weight: 500;
+            color: #666666;
+        }
+    }
+}
+
+.ps {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.64;
+}
+
+.config-box {
+    background: #fff;
+}

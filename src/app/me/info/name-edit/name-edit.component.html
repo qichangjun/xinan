@@ -1,0 +1,20 @@
+<ion-header color="white">
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>昵称</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list no-margin>
+        <ion-item no-padding>
+            <ion-label position="floating">昵称</ion-label>
+            <ion-input type="text" required minlength="1" maxlength="500" #nameRef="ngModel" [(ngModel)]="nickname.value"></ion-input>
+        </ion-item>
+    </ion-list>
+    <div padding-vertical margin-top (click)="up()">
+        <ion-button color="secondary" expand="block" shape="round">确 认</ion-button>
+    </div>
+</ion-content>

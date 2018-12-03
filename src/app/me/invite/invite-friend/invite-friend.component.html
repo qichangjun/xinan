@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>邀请好友</ion-title>
+        <ion-buttons slot="end" class="end">
+            <ion-button (click)="alert()">确认</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="header">
+        <ion-card no-padding no-margin class="head-card">
+            <ion-text class="head-text1">
+                <i></i><span>林慧光</span> 邀请你和Ta一起加入心安救助平台
+            </ion-text>
+            <ion-text class="head-text2">邀请码26434</ion-text>
+        </ion-card>
+    </div>
+    <!-- S 验证码登录 -->
+    <div class="verification">
+        <form #codeFormRef="ngForm" (ngSubmit)="toSignInCode(codeFormRef.value, [phoneRef.errors, codeRef.errors])">
+            <ion-list class="list" lines="none">
+                <div class="item-spa-top">
+                    <ion-item no-padding lines="none">
+                        <ion-label position="floating">手机号码</ion-label>
+                        <ion-input type="tel" name="phone" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                            [(ngModel)]="phone" #phoneRef="ngModel"></ion-input>
+                    </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="6" no-padding>
+                            <ion-item no-padding lines="none">
+                                <ion-input no-padding placeholder="请输入验证码" type="number" name="code" required minlength="6"
+                                    [(ngModel)]="vertify_code.code" #codeRef="ngModel"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="6" class="get-code" no-padding>
+                            <ion-button solt="end" fill="clear" color="{{phoneRef.valid && vertify_code.status ? 'warning' : 'medium'}}"
+                                class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>{{vertify_code.info}}
+                            </ion-button>
+                            <div class="serve"></div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="space"></div>
+                <div class="item-spa-bottom">
+                    <ion-row>
+                        <ion-col no-padding>
+                            <ion-item no-padding class="nicheng">
+                                <ion-label>昵称</ion-label>
+                                <ion-input no-padding type="text" name="name" color="dark" required [(ngModel)]="name"
+                                    placeholder="点击输入你的昵称"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col no-padding>
+                            <ion-item no-padding class="in-select">
+                                <ion-label>地址</ion-label>
+                                <ion-select placeholder="选择省" [(ngModel)]="pro" (ionChange)="changeProvince()" name="pro"
+                                    interface="popover">
+                                    <ion-select-option *ngFor="let p of province;let i =index" [selected]="p.id" value="{{p.id}}">{{p.title}}</ion-select-option>
+                                </ion-select>
+                                <ion-select palceholder="选择市" [(ngModel)]="ci" name="ci" (ionChange)="changeCity()"
+                                    interface="popover">
+                                    <ion-select-option *ngFor="let c of city;let i =index" [selected]="c" value="{{c}}">{{c.title
+                                        || ci.title}}</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col no-padding (click)="alert()">
+                            <ion-item no-padding justify-content-between class="last-item">
+                                <ion-label>微信</ion-label>
+                                <ion-label text-right>去绑定</ion-label>
+                                <ion-icon no-margin name="ios-arrow-forward" slot="end"></ion-icon>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-list>
+        </form>
+    </div>
+    <ion-row class="buttom-ion">
+        <ion-col no-padding>
+            <ion-button shape="round" [ngClass]="{'disable-btn': !(phoneRef.valid && codeRef.valid)}" (click)="alert()"
+                expand="block">确认</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

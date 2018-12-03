@@ -1,0 +1,123 @@
+ion-toolbar {
+    display: flex;
+    border: none;
+
+    ion-button {
+        font-size: 15.5px;
+
+        ion-back-button {
+            --width: 15.5px;
+            --height: 15.5px;
+        }
+    }
+}
+
+ion-header {
+    color: #fff;
+    border: none;
+
+    ion-toolbar:first-child {
+        background: #3acfb8;
+        border: none;
+
+        ion-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+.header ion-toolbar:last-child {
+    --border-width: 0;
+}
+
+ion-content {
+    background: #fff;
+
+    .top {
+        padding: 31.5px 0 14px;
+        background: #3acfb8;
+
+        ion-col {
+            padding: 0;
+        }
+
+        .p11 {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ffffff;
+            margin: 15.5px 0 48.5px;
+            text-align: center;
+
+        }
+
+        ion-grid {
+            padding: 0.5px;
+            box-sizing: border-box;
+
+            ion-col {
+                padding-left: 16px;
+            }
+        }
+
+        .top-join {
+
+            .p11 {
+                text-align: left;
+            }
+
+            .p16 {
+                font-size: 16px;
+                color: #ffffff;
+                text-align: left;
+                line-height: 16px;
+                margin-top: 11.5px;
+            }
+        }
+
+        .top-join:first-child ion-col {
+            border-right: 1px solid rgba(255, 255, 255, 0.6);
+        }
+    }
+
+    .content {
+
+        ion-item {
+            --ion-item-border-color: #e6e6e6;
+            background: #fff;
+            padding: 0 16px;
+        }
+
+        h1 {
+            font-size: 16px;
+            color: #424242;
+            line-height: 26px;
+        }
+
+        span {
+            float: right;
+        }
+
+        p {
+            width: 100%;
+            font-size: 11px;
+            color: #999999;
+            line-height: 20px;
+        }
+
+        .add {
+            font-size: 20px;
+            color: #e83030;
+        }
+
+        .reduce {
+            font-size: 20px;
+            color: #4ac483;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home"href="/tabs/(home:home)">
+        <ion-icon name="heart"></ion-icon>
+        <ion-label>心安</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="about" href="/tabs/(about:about)">
+        <ion-icon name="cart"></ion-icon>
+        <ion-label>商城</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="fond" href="/tabs/(fond:fond)">
+        <ion-icon name="compass"></ion-icon>
+        <ion-label>发现</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="me" href="/tabs/(me:me)">
+        <ion-icon name="contact"></ion-icon>
+        <ion-label>我的</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  
+    <ion-tab tab="home">
+      <ion-router-outlet name="home"></ion-router-outlet>
+    </ion-tab>
+    <ion-tab tab="about">
+        <ion-router-outlet name="about"></ion-router-outlet>
+      </ion-tab>
+      <ion-tab tab="fond">
+        <ion-router-outlet name="fond"></ion-router-outlet>
+      </ion-tab>
+      <ion-tab tab="me">
+        <ion-router-outlet name="me"></ion-router-outlet>
+      </ion-tab>
+  </ion-tabs>

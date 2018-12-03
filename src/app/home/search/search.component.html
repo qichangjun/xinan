@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(home:home)"></ion-back-button>
+        </ion-buttons>
+        <ion-searchbar clearIcon="close-circle" placeholder="请输入关键字进行搜索"></ion-searchbar>
+        <!-- <ion-title>加入成功</ion-title> -->
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="search-his">
+        <ion-card no-margin>
+            <ion-label>
+                历史搜索
+            </ion-label>
+            <div class="flex-col">
+                <ion-col size="6" no-padding>
+                    <ion-text>
+                        林辉光
+                    </ion-text>
+                    <ion-icon name="close"></ion-icon>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                    <ion-text>
+                        珠海
+                    </ion-text>
+                    <ion-icon name="close"></ion-icon>
+                </ion-col>
+                <ion-col size="6" no-padding>
+                    <ion-text>
+                        林辉光
+                    </ion-text>
+                    <ion-icon name="close"></ion-icon>
+                </ion-col>
+            </div>
+        </ion-card>
+    </div>
+    <div class="com-search">
+        <ion-card no-margin>
+            <ion-label>
+                常用搜索
+            </ion-label>
+            <ion-list class="list-ion">
+                <ion-text>
+                    <span>1</span>
+                    已救助
+                </ion-text>
+                <ion-text>
+                    <span>２</span>
+                    已乐捐
+                </ion-text>
+                <ion-text>
+                    <span>３</span>
+                    审核中
+                </ion-text>
+                <ion-text>
+                    <span>４</span>
+                    其他信息
+                </ion-text>
+            </ion-list>
+        </ion-card>
+    </div>
+</ion-content>

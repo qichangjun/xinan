@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(home:home)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>充值成功</ion-title>
+        <ion-buttons slot="end" class="end">
+            完成
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-padding>
+    <div class="join-title">
+        <ion-grid>
+            <ion-row justify-content-center>
+                <!-- <ion-fab-button color="tertiary" class="j-icon1">
+                <ion-icon name="checkmark" md="md-checkmark"></ion-icon>
+            </ion-fab-button> -->
+                <ion-icon class="j-icon1" name="checkmark-circle"></ion-icon>
+            </ion-row>
+            <p class="j-p1">恭喜您支付成功！</p>
+            <p class="j-p2">支付方式：微信支付</p>
+
+
+        </ion-grid>
+        <ion-list lines="none">
+            <ion-item no-padding lines="none">
+                <ion-label>
+                    <h1 class="name">
+                        {{name}}} <span>33元</span>
+                    </h1>
+                    <p class="name">合计　<span>33元</span></p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

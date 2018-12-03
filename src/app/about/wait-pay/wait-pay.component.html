@@ -1,0 +1,82 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{data[0].title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="title">
+        <ion-col no-padding>
+            <P class="wait-name">{{data[0].name}} </P>
+            <h1 class="name">{{data[0].content}}</h1>
+            <P class="wait-name">{{data[0].lable}} </P>
+        </ion-col>
+    </div>
+    <div class="addr">
+        <ion-row>
+            <ion-col size="1.5">
+                <div class="serve">
+                    <ion-icon name="pin" class="primary"></ion-icon>
+                </div>
+            </ion-col>
+            <ion-col size="10">
+                <ion-text class="name">林慧光
+                    <span>13999542266</span>
+                </ion-text>
+                <ion-text class="add">
+                    广东省珠海市香洲区唐家湾镇高新区大道新世纪大厦 其他楼层 1608楼
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+    <div class="pro-list">
+        <ion-card *ngFor="let list of lists">
+            <pay-goods [data]="list"></pay-goods>
+        </ion-card>
+    </div>
+    <div class="order">
+        <ion-row class="ord-col">
+            <ion-col align-self-end no-padding class="pro-name">
+                <ion-text class="name">
+                    共2件
+                    <span>总额</span>
+                    <i>￥3329.00</i>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ord-col2">
+            <ion-col class="pro-name" no-padding>
+                <ion-text class="ord-dateil">
+                    订单号<span> 326489656456488325</span>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ord-col2">
+            <ion-col class="pro-name" no-padding>
+                <ion-text class="ord-dateil">
+                    下单时间<span> 2018.05.06 13:58</span>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ord-col2">
+            <ion-col class="pro-name" no-padding>
+                <ion-text class="ord-dateil">
+                    {{data[0].order}}<span> {{data[0].orderTime}}</span>
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row align-items-center class="total">
+        <ion-col size="4">
+            <ion-button (click)="alertMes()" expand="block">{{data[0].buttonB}}</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="cancelMes(data[0].buttonA)" fill="outline" class="white" expand="block">{{data[0].buttonA}}</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

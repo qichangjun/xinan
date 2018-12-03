@@ -1,0 +1,22 @@
+<ion-header color="white">
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>个人简介</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <p>个人简介文字，今天天气不错~</p>
+    <ion-list no-margin>
+        <ion-item no-padding>
+            <ion-textarea rows="3" cols="20" required minlength="1" maxlength="500" name="signature" #textRef="ngModel"
+                [(ngModel)]="signature.value"></ion-textarea>
+        </ion-item>
+    </ion-list>
+    <p text-right><small class="word-count">500字</small></p>
+    <div margin-vertical>
+        <ion-button color="primary" expand="block" shape="round" (click)="up()">确 认</ion-button>
+    </div>
+</ion-content>

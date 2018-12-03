@@ -1,0 +1,223 @@
+ion-header {
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-buttons {
+        width: 55px;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        .end {
+            font-size: 16px;
+            color: #6b9dff;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    .header {
+        background: #fff;
+        padding: 40px 16px 0;
+
+        .head-card {
+            box-shadow: none;
+
+
+            .head-text1 {
+                font-size: 11px;
+                font-weight: 500;
+                color: #666666;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 5px;
+
+
+
+                span {
+                    color: #6b9dff;
+                    margin-right: 5px;
+                }
+
+                i {
+                    width: 12px;
+                    height: 12px;
+                    background-color: #bdbdbd;
+                    border-radius: 50%;
+                    display: inline-block;
+                    margin-right: 2px;
+                }
+            }
+
+            .head-text2 {
+                font-size: 32px;
+                font-weight: bold;
+                display: block;
+                color: #424242;
+                text-align: center;
+
+            }
+        }
+    }
+
+    .list {
+        background: #fff;
+
+        ion-input {
+            font-size: 16px;
+        }
+
+        .item {
+            color: #bdbdbd;
+
+            .item-inner {
+                border-bottom: 1px solid #e6e6e6;
+            }
+        }
+
+        //修改placeholder颜色
+        ion-input input::-ms-input-placeholder,
+        ion-input input::-webkit-input-placeholder,
+        ion-input input::-moz-placeholder {
+            color: #bdbdbd;
+        }
+    }
+
+    //获取验证码按钮
+    .get-code {
+        text-align: right;
+        position: relative;
+    }
+
+    .get-code-btn {
+        padding: 0 24px;
+        font-size: 15px;
+        font-weight: normal;
+        --color: #ffa414;
+        margin-bottom: -7px !important;
+    }
+
+    //验证码登录提示
+    .info {
+        color: #999;
+    }
+
+    .verification {
+        background: #fff;
+
+        .serve {
+            width: 1px;
+            height: 18px;
+            background-color: #e6e6e6;
+            position: absolute;
+            right: 125px;
+            top: 16px;
+        }
+
+        .item-select {
+
+            ion-select {
+                width: 100%;
+            }
+        }
+    }
+
+    .item-spa-top {
+        padding: 0 16px 30px;
+
+        ion-label {
+            font-size: 11px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        >ion-item,
+        >ion-row {
+            border-bottom: 1px solid #e6e6e6;
+        }
+
+        ion-row {
+            height: 68.5px;
+        }
+    }
+
+    .item-spa-bottom {
+        padding: 0 16px 5px;
+        font-size: 16px;
+
+        ion-label {
+            color: #666666;
+            font-weight: 500;
+        }
+
+        ion-item {
+            padding: 7px 0;
+            border-bottom: 1px solid #e6e6e6;
+
+            ion-label {
+                margin-right: 13px;
+            }
+
+            ion-label:nth-child(2) {
+                font-size: 16px;
+                font-weight: 500;
+                color: #bdbdbd;
+                margin-right: 0;
+            }
+
+            ion-icon {
+                font-size: 24px;
+                color: #cccccc;
+            }
+
+        }
+
+    }
+
+    .nicheng {
+        width: 100%；
+    }
+
+    .space {
+
+        height: 16px;
+        background-color: #f7f7f7;
+    }
+
+    .last-item {
+        border-bottom: none !important;
+    }
+
+    .buttom-ion {
+        padding: 0 16px;
+    }
+}
+
+.in-select {
+
+    ion-select {
+        width: 115px !important;
+        appearance: none;
+    }
+
+
+
+    .select-icon {
+        width: 0;
+        height: 0;
+
+        .select-icon-inner {
+            border: none;
+        }
+    }
+
+}

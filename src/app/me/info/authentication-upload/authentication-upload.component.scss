@@ -1,0 +1,55 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+}
+
+.info,
+.idcard,
+.credentials {
+    background: #fff;
+
+    .list-header {
+        border: none;
+
+        ion-label {
+            color: #bdbdbd;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+    }
+}
+
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+    -webkit-appearance: none;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.info {
+    ion-item {
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+}
+
+.btn-box {
+    padding: 10px 16px;
+    background: #fff;
+    box-shadow: 0px -3px 12px 0 rgba(0, 0, 0, 0.1);
+}

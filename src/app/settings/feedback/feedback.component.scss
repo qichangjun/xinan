@@ -1,0 +1,24 @@
+ion-header {
+    ion-title {
+        padding-left: 45px !important;
+    }
+}
+
+ion-content,
+ion-list {
+    --background: #fff;
+    background: #fff;
+}
+
+.item-has-focus .label-stacked.sc-ion-label-md-h {
+    color: var(--ion-color-dark);
+}
+
+.input-item {
+    ion-label {
+        small {
+            color: #bdbdbd;
+            padding-top: 10px;
+        }
+    }
+}

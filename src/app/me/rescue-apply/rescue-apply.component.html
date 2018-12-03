@@ -1,0 +1,91 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>救助申请</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <img src="../../assets/imgs/img_jiuzhu@2x.png" />
+    </ion-row>
+    <div class="log-list">
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="redArc"></div>
+                <div class="solid"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    申请
+                </ion-text>
+                <ion-text class="add">
+                    点击下方，立即申请。根据指引填写相关信息
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="redArc"></div>
+                <div class="solid"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    案件初审
+                </ion-text>
+                <ion-text class="add">
+                    初步审核材料，确认是否达到救助条件
+                    达到救助条件，平台将委托第三方专业机构实地查勘审核，核实评估费用由申请人承担，在救助金中予以扣除
+                    未达到救助条件，平台将及时告知申请会员
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="0.8" class="log-arc">
+                <div class="redArc"></div>
+                <div class="solid"></div>
+            </ion-col>
+            <ion-col size="11.2" no-padding>
+                <ion-text class="name">
+                    实地查勘
+                </ion-text>
+                <ion-text class="add">
+                    第三方专业机构将对案件进行实地查勘审核，确保案件真实性
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="redArc"></div>
+                <div class="solid"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    案件公示
+                </ion-text>
+                <ion-text class="add">
+                    审核通过后，将通过心安救助平台公示7天
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="redArc"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    救助金给付
+                </ion-text>
+                <ion-text class="add">
+                    公示期满当日，心安救助基金在会员账户中划款，并在3个工作日内将救助金(扣除核实评估费后)一次性捐赠给申请会员
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-button routerLink="/rescue_apply/apply_now" expand="block">立即申请</ion-button>
+</ion-footer>

@@ -1,0 +1,46 @@
+ion-row {
+    width: 100%;
+
+    ion-col {
+        div {
+            padding: 0 5px;
+        }
+
+        img,
+        .add_img {
+            width: 107px;
+            height: 107px;
+        }
+
+        .add_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px dashed #e6e6e6;
+            background-color: #ffffff;
+
+            ion-icon {
+                font-size: 50px;
+                color: #bdbdbd;
+            }
+        }
+
+        .img_class {
+            position: relative;
+
+            span {
+                position: absolute;
+                right: 0;
+                top: 0px;
+                color: #fff;
+                opacity: 0.4;
+                width: 16px;
+                background-color: #000000;
+                height: 16px;
+                line-height: 15px;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<ion-header no-border translucent>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>数码３C</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="content">
+        <ion-card no-margin>
+            <ion-card-content no-padding>
+                <ion-products [products]="shopData"></ion-products>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

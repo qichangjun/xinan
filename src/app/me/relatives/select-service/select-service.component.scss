@@ -1,0 +1,55 @@
+ion-content {
+    --background: #fff;
+}
+
+.service-list {
+    .service-card {
+        background: #fff;
+        box-shadow: 0px 3px 12px 0 rgba(0, 0, 0, 0.1);
+
+        ion-col {
+            padding: 0;
+        }
+
+        ion-avatar {
+            width: 51px;
+            height: 51px;
+            margin: 0 auto;
+            padding: 7px;
+            border-radius: 5px;
+            color: #fff;
+            text-align: center;
+
+            ion-icon {
+                font-size: 35px;
+            }
+        }
+
+        ion-card-header {
+            padding: 15px 12px 5px;
+        }
+
+        ion-card-title {
+            color: #424242;
+            font-size: 18px;
+        }
+
+        ion-card-subtitle {
+            color: #999;
+            font-size: 12px;
+        }
+
+        ion-icon {
+            color: #ccc;
+            font-size: 27px;
+        }
+    }
+}
+
+.bg-red {
+    background: #ff5a6a;
+}
+
+.bg-yellow {
+    background: #ff9829;
+}

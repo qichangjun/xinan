@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="#fff" no-padding>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(fond:fond)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>常见问题</ion-title>
+        <!-- <ion-buttons slot="end">
+            <ion-icon slot="start" name="md-share"></ion-icon>
+        </ion-buttons> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="content-list"></div>
+    <ion-list lines="none">
+        <ion-item no-padding lines="none">
+            <ion-label>
+                <h1 class="name" (click)="allType();">
+                    加入充值的金额可以用多久？
+                    <ion-icon name="ios-arrow-forward" class="gray"></ion-icon>
+                </h1>
+            </ion-label>
+        </ion-item>
+        <ion-item no-padding lines="none">
+            <ion-label>
+                <h1 class="name" (click)="allType();">
+                    能否为亲友加入？
+                    <ion-icon name="ios-arrow-forward" class="gray"></ion-icon>
+                </h1>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

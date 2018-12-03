@@ -1,0 +1,44 @@
+<ion-header class="tab_heard">
+    <ion-toolbar color="primary">
+        <ion-text routerLink="/classify" slot="start">
+            <ion-icon name="md-menu"></ion-icon>
+        </ion-text>
+        <ion-title no-padding slot="start">商场</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="class()">
+                <ion-icon name="md-search"></ion-icon>
+            </ion-button>
+            <!-- routerLink="/card" -->
+            <ion-button (click)="class()">
+                <ion-icon name="md-cart"></ion-icon>
+            </ion-button>
+            <ion-button routerLink="/all_order">
+                <ion-icon name="md-person"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <ion-slides *ngIf="imgs" #slides pager="true" (ionSlideTouchStart)="ionSlideTouchStart()" [options]="options">
+            <ion-slide *ngFor="let img of imgs">
+                <img src="{{img}}" />
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <div class="cont" *ngFor="let shop of cShops">
+        <ion-row class="row_head">
+            <ion-col size="9">{{shop.title}}</ion-col>
+            <ion-col size="3" align-items-end>
+                <ion-button (click)="alertMes()" color="secondary" expand="block">查看更多</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-card no-margin>
+            <ion-card-content no-padding>
+                <ion-products [products]="shop.data"></ion-products>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

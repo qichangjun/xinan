@@ -1,0 +1,42 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>设置</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list class="settings-list" lines="none">
+        <ion-item (click)="JumpTo('/settings/aboutUs')" no-padding>
+            <ion-label>关于</ion-label>
+            <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item (click)="JumpTo('/auth/modify-pass')" no-padding>
+            <ion-label>修改登录密码</ion-label>
+            <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+    </ion-list>
+    <ion-list class="settings-list" lines="none">
+        <ion-item (click)="JumpTo('/settings/feedback')" no-padding>
+            <ion-label>意见反馈</ion-label>
+            <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item (click)="service()" no-padding>
+            <ion-label>客服</ion-label>
+            <ion-label text-right>{{telephone}}</ion-label>
+            <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+    </ion-list>
+    <ion-list class="settings-list" lines="none">
+        <ion-item (click)="logout()" no-padding lines="none" class="no-line">
+            <ion-label>退出登录</ion-label>
+            <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+    </ion-list>
+
+    <!-- <div text-center padding>
+        <ion-button color="primary" expand="block" (click)="logout()">退出登录</ion-button>
+    </div> -->
+</ion-content>

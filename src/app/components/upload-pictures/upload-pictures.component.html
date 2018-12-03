@@ -1,0 +1,20 @@
+<ion-row *ngIf="imgs">
+    <ion-col size="4" *ngFor="let img of imgs;let i = index">
+        <div class="img_class">
+            <img src="{{img}}">
+            <span (click)="close(i)"><i>&times;</i></span>
+        </div>
+    </ion-col>
+    <ion-col size="4" *ngIf="isAdd">
+        <div class="add_img" (click)="presentActionSheet()">
+            <ion-icon name="ios-add"></ion-icon>
+        </div>
+    </ion-col>
+</ion-row>
+<ion-row *ngIf="!imgs">
+    <ion-col size="4">
+        <div class="add_img" (click)="presentActionSheet()">
+            <ion-icon name="ios-add"></ion-icon>
+        </div>
+    </ion-col>
+</ion-row>

@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/invite/friend"></ion-back-button>
+        </ion-buttons>
+        <ion-title>邀请好友</ion-title>
+        <ion-buttons slot="end" class="end">
+            <ion-button routerLink="/invite/success"> 跳过</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="content">
+        <ion-card no-padding no-margin class="card-join">
+            <ion-card-header no-padding>
+                <ion-card-title class="con-title">立即加入平台会员</ion-card-title>
+            </ion-card-header>
+            <ion-card-content no-padding>
+                <p>会员福利：<br />
+                    1、最高可获得150万大病救助保障<br />
+                    2、发起乐捐筹款<br />
+                    3、积分商城购物享受公益价，购物积分可抵扣现金用于救助他人<br />
+                    加入条件：<span>0-58周岁（不含58周岁）</span><br />
+                    军人军属、基层警察及家属、义工、环卫工人、五保户、残疾人审核通过后免服务费 <i (click)="alertMes()">上传证件/ 证明，去申请</i>
+                </p>
+            </ion-card-content>
+        </ion-card>
+        <ion-row>
+            <ion-item no-padding>
+                <ion-label position="stacked">请输入姓名</ion-label>
+                <ion-input type="text" name="userName" required [(ngModel)]="userName" #passRef="ngModel"></ion-input>
+            </ion-item>
+            <ion-item no-padding>
+                <ion-label position="stacked">请输入身份证号</ion-label>
+                <ion-input type="number" name="number" required [(ngModel)]="number" #passRef="ngModel" pattern="^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$"></ion-input>
+            </ion-item>
+            <p>
+                <span>
+                    <ion-icon name="alert"></ion-icon>
+                </span>
+                <span>身份信息确认后不可更改，请谨慎填写</span>
+            </p>
+            <ion-row class="addRemove">
+                <ion-col size="8">
+                    <span>服务费</span>
+                    <span><i>{{serviceFee}}</i>元/年</span>
+                </ion-col>
+                <ion-col size="4">
+                    <ion-card class="calculate">
+                        <ion-icon (click)="remove();" name="remove" [ngClass]="{'highlight': remHigh}"></ion-icon>
+                        <ion-label>{{years}}年</ion-label>
+                        <ion-icon (click)="add();" name="add" [ngClass]="{'highlight': addHigh}"></ion-icon>
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-row>
+
+        <ion-card class="car_price" no-margin>
+            <ion-card-content no-padding>
+                <div>
+                    <h3 class="price-h3">立即加入大病救助专项基金</h3>
+                    <p class="price-p">加入条件：<span>0-58周岁（不含58周岁）</span>，身体健康，加入时无重大疾病，观察期为90天</p>
+                    <ion-row size="12" class="btnss">
+                        <ion-col size="4" *ngFor="let btn of btns">
+                            <ion-button (click)="butClick(btn)" [ngClass]="{'no_click': btn.noClick === true}" shape="round"
+                                expand="block" class="sub">{{btn.value}}</ion-button>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+            <p class="price-p1">
+                <span>
+                    <ion-icon name="alert"></ion-icon>
+                </span>
+                <span *ngIf="btns[0]">最低余额不少于{{btns[0].value}}</span>
+            </p>
+        </ion-card>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row class="terms">
+        <ion-col>
+            <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
+            <span>
+                阅读并同意
+                <span (click)="rescueConvention1()" class="span">《心安救助平台会员公约》</span>
+                <span (click)="rescueConvention2()" class="span">《心安大病救助专项基金公约》</span>
+            </span>
+        </ion-col>
+
+    </ion-row>
+    <ion-row align-items-center class="total">
+        <ion-col>
+            <span>合计</span>
+            <span class="price">{{total}}元</span>
+        </ion-col>
+
+        <ion-col>
+            <ion-button (click)="alertMes()" class="sub-5" expand="block">确认</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

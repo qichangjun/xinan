@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>我乐捐过的</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="header">
+        <ion-card no-padding no-margin class="head-card">
+            <ion-text class="head-text1">
+                因为有你，每一分钱都更有意义<br />
+                您已经和大家一起救助了680000.00元<br />
+                再小的善举，也是改变世界的力量<br />
+            </ion-text>
+        </ion-card>
+        <ion-row>
+            <ion-col size="4" text-center *ngFor="let c of donations">
+                <ion-label no-margin>{{c.title}}</ion-label>
+                <ion-text>{{c.label}}</ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <div class="content">
+        <div *ngFor="let data of datas">
+            <p class="word">
+                <span>{{data.date}}</span>
+                <em>金额：{{data.money}}元</em>
+            </p>
+            <div *ngIf="data.list">
+                <xinan-card [data]="data.list"></xinan-card>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,38 @@
+ion-header {
+    box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        border: none;
+
+        ion-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .end {
+            width: 30%;
+            font-size: 16px;
+            color: #6b9dff;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    .car_narrate {
+        p {
+            font-size: 11px;
+            font-weight: 500;
+            color: #999999;
+            line-height: 1.64;
+        }
+    }
+}

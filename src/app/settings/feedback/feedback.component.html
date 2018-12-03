@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="settings"></ion-back-button>
+        </ion-buttons>
+        <ion-title>意见反馈</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <form>
+        <ion-list>
+            <ion-item no-padding class="input-item">
+                <ion-label position="stacked">描述 <br>
+                    <small>在此输入您的意见建议，我们会做的更好</small></ion-label>
+                <ion-textarea rows="3" cols="20" [(ngModel)]="suggestion" name="suggestion"></ion-textarea>
+            </ion-item>
+            <upload-pictures></upload-pictures>
+        </ion-list>
+
+        <div>
+            <ion-button color="secondary" shape="round" expand="block" (click)="up()">提交</ion-button>
+        </div>
+    </form>
+
+</ion-content>

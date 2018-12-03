@@ -1,0 +1,110 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="interests"></ion-back-button>
+        </ion-buttons>
+        <ion-title>心安会员服务</ion-title>
+        <ion-buttons slot="end" class="end" *ngIf="isShow === true">
+            <ion-button (click)="alert()">为亲友充值</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="isShow === true">
+    <ion-row>
+        <ion-item no-padding>
+            <ion-label position="stacked">请输入姓名</ion-label>
+            <ion-input type="text" name="userName" required [(ngModel)]="userName" #passRef="ngModel"></ion-input>
+        </ion-item>
+        <ion-item no-padding>
+            <ion-label position="stacked">请输入身份证号</ion-label>
+            <ion-input type="number" name="number" required [(ngModel)]="number" #passRef="ngModel" pattern="^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$"></ion-input>
+        </ion-item>
+        <p>
+            <span>
+                <ion-icon name="alert"></ion-icon>
+            </span>
+            <span>请填写<i>18-58周岁（不含58周岁）</i>之间身份证号码。</span>
+        </p>
+    </ion-row>
+    <ion-card class="car_price" no-margin>
+        <ion-row class="addRemove">
+            <ion-col size="8.5">
+                <span>服务费</span>
+                <span><i>{{serviceFee}}</i>元/年</span>
+            </ion-col>
+            <ion-col size="3.5">
+                <ion-card class="calculate">
+                    <ion-icon (click)="remove();" name="remove" [ngClass]="{'highlight': remHigh}"></ion-icon>
+                    <ion-label>{{years}}年</ion-label>
+                    <ion-icon (click)="add();" name="add" [ngClass]="{'highlight': addHigh}"></ion-icon>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row class="integral int_txt">
+            可用积分<i>0</i>分
+        </ion-row>
+        <ion-row class="integral">
+            本次使用积分
+            <div>
+                <ion-input no-padding type="number" value="" min="1" max="100" step="1"></ion-input>
+            </div>
+            <span>全部积分</span>
+            <ion-col>可抵扣<i>1.5</i>元</ion-col>
+        </ion-row>
+    </ion-card>
+    <p>
+        军人军属、基层警察及家属、义工、环卫工人、五保户、残疾人审核通过后免服务费。
+        <a class="sky_blue">上传证件/ 证明，去申请</a>
+    </p>
+</ion-content>
+
+<ion-footer *ngIf="isShow === true">
+    <ion-row align-items-center class="total">
+        <ion-col size="5">
+            <span>合计</span>
+            <span class="price">{{total}}元</span>
+        </ion-col>
+        <ion-col size="7">
+            <ion-button (click)="submit()" expand="block" color="secondary">确认</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>
+
+<ion-content *ngIf="isShow === false">
+    <div class="term_serve">
+        <p>
+            成为心安会员可享受使用心安救助和乐捐权限，及会员其他福利。当会员账户服务费过期时，救助和乐捐权限将自动失效。
+        </p>
+        <p>
+            心安会员服务费26元/年。当您成为会员后还可为已添加的亲友充值，充值方式为现金、会员积分。心安会员服务最终解释权归心安救服务平台。
+        </p>
+    </div>
+</ion-content>
+
+<ion-footer *ngIf="isShow === false">
+    <ion-row class="terms">
+        <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
+        <span>
+            我已阅读并同意
+            <a routerLink="/terms">
+                《心安救助基金公约》
+            </a>
+            <a routerLink="/">
+                《详细规则》
+            </a>
+        </span>
+    </ion-row>
+    <ion-row align-items-center class="total">
+        <ion-col size="4">
+            <span>合计</span>
+            <span class="price">{{total}}元</span>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

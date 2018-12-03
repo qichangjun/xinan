@@ -1,0 +1,65 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(home:home)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{title}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides #slides (ionSlidesDidLoad)="startSlideAutoplay()" [options]="options">
+        <ion-slide>
+            <img src="../../assets/imgs/banner_shangcheng@2x.png" />
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/img_01@3x.png" />
+        </ion-slide>
+        <ion-slide>
+            <img src="../../assets/imgs/img_jifen@2x.png" />
+        </ion-slide>
+    </ion-slides>
+    <div *ngFor="let item of items" [ngClass]="{'no_h1': isShowLj}">
+        <!-- <h1 *ngIf="isShowLj === false">
+            <span class="line"></span>
+            <span class="round"><i></i></span>
+            <span>2018-02-30</span>
+        </h1> -->
+        <p class="word" *ngIf="isShowLj === false">
+            <span>2018-02-30</span>
+        </p>
+        <ion-card class="car_notice">
+            <ion-card-header no-padding>
+                <ion-row>
+                    <ion-col size="8">
+                        <ion-label class="car_tit">{{item.title}}</ion-label>
+                    </ion-col>
+                    <ion-col size="4">
+                        <ion-label class="notice">
+                            <span>{{label}}</span>
+                        </ion-label>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-label (click)="details()" class="lab_details" position="fixed">点击查看详情</ion-label>
+                </ion-row>
+            </ion-card-header>
+            <ion-card-content no-padding (click)="details()">
+                <ion-row class="car_cont" align-items-center>
+                    <ion-col size="3">
+                        <img src="{{item.image}}" />
+                    </ion-col>
+                    <ion-col size="9">
+                        <div>
+                            <h3>成员姓名：{{item.name}}</h3>
+                            <h3>救助金额：{{item.price}}</h3>
+                            <h3>救助日期：{{item.rescueDate}}</h3>
+                            <span class="warning">心安乐捐(意外)</span>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="sign">{{item.introduce}}</ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

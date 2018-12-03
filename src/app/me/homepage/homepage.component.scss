@@ -1,0 +1,77 @@
+ion-header {
+    border: none;
+    background: url('../../../assets/imgs/donationed.png') top right no-repeat;
+    background-size: cover;
+    background-position-y: 0px;
+
+    ion-back-button {
+        color: #fff;
+    }
+
+    // .end {
+    //     margin-right: 10px;
+    // }
+}
+
+ion-content {
+
+    .user {
+        min-height: 166px;
+        background: url('../../../assets/imgs/donationed.png') top left no-repeat;
+        background-position-y: -51px;
+        background-size: cover;
+        position: relative;
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -18px;
+            left: 38%;
+        }
+    }
+
+    ion-row {
+        margin-top: 20px;
+
+        span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #424242;
+
+            ion-icon {
+                color: #fc8989;
+            }
+        }
+
+
+        .position {
+            width: 66px;
+            height: 20px;
+            margin: 12px;
+            padding: 3px;
+            border-radius: 4px;
+            color: #999999;
+            background-color: #f7f7f7;
+
+            ion-icon {
+                font-size: 14px;
+            }
+
+            ion-text {
+                font-size: 11px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    p {
+        color: #999999;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        justify-content: center;
+    }
+
+}

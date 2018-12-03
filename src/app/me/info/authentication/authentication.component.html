@@ -1,0 +1,41 @@
+<ion-header color="white">
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>身份认证</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="content" padding>
+        <div class="info-card">
+            <div class="bg bg-3">
+                <div class="clear"></div>
+            </div>
+            <div class="bg bg-2">
+                <div class="clear"></div>
+            </div>
+            <div class="bg bg-1 info" padding justify-content-between>
+                <ion-avatar class="avatar">
+                    <img src="../../../../assets/imgs/img_person@2x.png" alt="">
+                </ion-avatar>
+                <img src="../../../../assets/imgs/yishiming.png" alt="" class="realnamed" float-right>
+                <div class="clear" padding-top margin-top></div>
+                <b class="name">林慧光</b>
+                <span class="age">1988.12.06</span>
+                <h5 class="num" padding-top>6 **** **** **** **** 0</h5>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <ion-list lines="none" class="upload">
+        <ion-item no-padding justify-content-between routerLink="/info/auth-upload">
+            <ion-label padding-start>上传证件</ion-label>
+            <ion-label text-right>未上传
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

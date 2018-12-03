@@ -1,0 +1,81 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="rescue_apply/apply_now"></ion-back-button>
+        </ion-buttons>
+        <ion-title>填写资料</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item no-margin lines="none" no-padding class="in-item">
+        <ion-avatar slot="start" class="avatar">
+            <img src="{{userInfo.imgUrl}}" />
+        </ion-avatar>
+        <ion-label no-margin>
+            <h2>{{userInfo.title}}</h2>
+            <h3>{{userInfo.time}}</h3>
+        </ion-label>
+    </ion-item>
+
+    <ion-row class="info_card">
+        <ion-item no-padding lines="none">
+            <ion-label position="stacked">
+                标题
+                <span>（突出受助者最独特的自身情况）</span>
+            </ion-label>
+            <ion-input type="text" name="title" required [(ngModel)]="title" #passRef="ngModel"></ion-input>
+        </ion-item>
+        <ion-item no-padding lines="none">
+            <ion-label position="stacked">
+                求助金额/元
+                <span>（请输入求助的金额）</span>
+            </ion-label>
+            <ion-input type="number" name="number" required [(ngModel)]="number" #passRef="ngModel" pattern=""></ion-input>
+        </ion-item>
+        <div class="car_price">
+            <h5>事件类型</h5>
+            <ion-row size="12">
+                <ion-col size="4" *ngFor="let btn of btns">
+                    <ion-button (click)="butClick(btn)" [ngClass]="{'no_click': btn.noClick === true}" shape="round"
+                        expand="block" class="sub">{{btn.value}}</ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+        <h5>
+            事件情况
+            <span>（详细描述事件情况，使得互助更加准确）</span>
+        </h5>
+        <p>
+            我叫林惠光今年28岁，我弟弟叫林惠良今年25岁，家住安徽省阜阳市太和县马集乡臧庄村委刘小庄54号，自2011年鼻子长期流血经检查血小班减少，皮肤黏膜出血6年，到现在已花光30万有余，现在需手术
+        </p>
+    </ion-row>
+    <ion-row class="info_card">
+        <ion-col size="12">
+            <ion-text>{{text}}凭证</ion-text>
+            <ion-text>1-12张图片</ion-text>
+        </ion-col>
+        <ion-col size="12">
+            <upload-pictures></upload-pictures>
+        </ion-col>
+    </ion-row>
+</ion-content>
+
+
+<ion-footer>
+    <ion-row class="terms">
+        <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
+        <span>
+            我已阅读并同意
+            <a>《心安救助专项基金共约》</a>
+        </span>
+    </ion-row>
+    <ion-row align-items-center class="total">
+        <ion-col size="6">
+            <ion-button (click)="alertMes()" class="white" expand="block">保存</ion-button>
+        </ion-col>
+        <ion-col size="6">
+            <ion-button (click)="alertMes()" class="sub" expand="block">提交乐捐申请</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

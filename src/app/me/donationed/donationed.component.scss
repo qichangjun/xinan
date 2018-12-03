@@ -1,0 +1,102 @@
+ion-header {
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-buttons {
+        width: 55px;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        .end {
+            font-size: 16px;
+            color: #6b9dff;
+            font-weight: 500;
+        }
+    }
+}
+
+ion-content {
+    .header {
+        background: url('../../../assets/imgs/donationed.png');
+        background-size: cover;
+
+        ion-card {
+            box-shadow: none;
+            padding: 56px 0 30px;
+
+            ion-text {
+                display: block;
+                text-align: center;
+                opacity: 0.9;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.71;
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        ion-row {
+
+            ion-col {
+                padding: 20px 0 12px;
+                // opacity: 0.3;
+                // background-color: #000000;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.3));
+
+                ion-label {
+                    opacity: 0.9;
+                    font-size: 11px;
+                    font-weight: 500;
+                    color: rgba(255, 255, 255, 0.6);
+                }
+
+                ion-text {
+                    font-size: 30px;
+                    font-weight: bold;
+                    color: #ffffff;
+                }
+            }
+        }
+
+
+    }
+
+    .content {
+
+        .word {
+            padding: 20px 16px 0 0;
+
+            span {
+                display: inline-block;
+                padding: 0 2.5px;
+                border-radius: 9px;
+                background: #f7f7f7;
+            }
+
+            em {
+                float: right;
+                font-style: normal;
+                font-size: 13px;
+                font-weight: 500;
+                color: #666666;
+            }
+        }
+
+        .word::before {
+            content: '一';
+            font-size: 16px;
+            color: #f2f2f2;
+
+        }
+
+        xinan-card {
+            display: inline-block;
+            margin: 10px 0 0;
+        }
+    }
+}

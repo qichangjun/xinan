@@ -1,0 +1,191 @@
+<ion-header no-border>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(home:home)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>心安救助专项基金</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="statistics-grid" color="primary">
+        <ion-row>
+            <ion-col class="statistics-col" routerLink="/80disease">
+                <h4>80种</h4>
+                <p>重大疾病</p>
+                <ion-icon name="ios-arrow-down"></ion-icon>
+            </ion-col>
+            <ion-col class="statistics-col" (click)="rescueMoneyDes()">
+                <h4>150万元</h4>
+                <p>最高救助金</p>
+                <ion-icon name="ios-arrow-down"></ion-icon>
+            </ion-col>
+            <ion-col class="statistics-col" (click)="joinInDes()">
+                <h4>59元</h4>
+                <p>加入说明</p>
+                <ion-icon name="ios-arrow-down"></ion-icon>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="rule-box">
+        <ion-list class="rule-list" no-margin>
+            <ion-item class="rule-item" no-padding>
+                <ion-label>
+                    <b>救助规则</b>
+                </ion-label>
+            </ion-item>
+            <ion-item class="rule-item" no-padding (click)="rule1 = !rule1">
+                <ion-label>
+                    <span>人群范围</span>
+                    <b>0-58周岁，身体健康</b>
+                </ion-label>
+                <ion-icon slot="end" name="{{rule1 ? 'ios-arrow-down' : 'ios-arrow-forward'}}"></ion-icon>
+            </ion-item>
+            <ion-item class="rule-detail" *ngIf="rule1">
+                <p>加入时身体健康，无重大疾病病史、慢性病史或既往症；
+                    *既往症：指在加入本救助基金之前罹患的已知或应该知道的重大疾病、慢性疾病等。通常有以下情况：
+                    （1）生效前，医生已有明确诊断，长期治疗未间断；
+                    （2）生效前，医生已有初步诊断，治疗后症状未完全消失，有间断用药情况；
+                    （3）生效前，未经医生诊断和治疗，但症状或体征明显且持续存在，以普通人医学常识应当知晓。</p>
+            </ion-item>
+            <ion-item class="rule-item" no-padding (click)="rule2 = !rule2">
+                <ion-label>
+                    <span>救助费用</span>
+                    <b>单个最高25元，每年约180元</b>
+                </ion-label>
+                <ion-icon slot="end" name="{{rule2 ? 'ios-arrow-down' : 'ios-arrow-forward'}}"></ion-icon>
+            </ion-item>
+            <ion-item class="rule-detail" *ngIf="rule2">
+                <p>发生救助事件，救助金由本救助基金全体会员共同捐助，针对单个救助事件，最高捐助25元。
+                    <br>
+                    <b>例如：</b>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>会员人数</ion-col>
+                            <ion-col>每人捐助金额</ion-col>
+                            <ion-col>救助金</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>1万人</ion-col>
+                            <ion-col>25元</ion-col>
+                            <ion-col>25万</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>6万人</ion-col>
+                            <ion-col>25元</ion-col>
+                            <ion-col>150万</ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>100万人</ion-col>
+                            <ion-col>1.5元</ion-col>
+                            <ion-col>150万</ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <br>
+                    说明：<br>
+                    1.会员数量越多，可获救助金越高，只有本救助基金会员人数大于6万人时，救助金申请人方能领取到最高150元元救助金。<br>
+                    2.会员人数越多，单次捐助金额越低。
+                </p>
+            </ion-item>
+            <ion-item class="rule-item" no-padding>
+                <ion-label>
+                    <span>服务年费</span>
+                    <b>26/人/年（逾期未缴失去救助资格）</b>
+                </ion-label>
+            </ion-item>
+            <ion-item class="rule-item" no-padding>
+                <ion-label>
+                    <span>余额要求</span>
+                    <b>账户余额&lt;33元，失去救助资格</b>
+                </ion-label>
+            </ion-item>
+            <ion-item class="rule-item" no-padding>
+                <ion-label>
+                    <span>获救金额</span>
+                    <b>5万-150万</b>
+                </ion-label>
+            </ion-item>
+            <ion-item class="rule-item" no-padding>
+                <ion-label>
+                    <span>&nbsp;&nbsp;&nbsp;观察期</span>
+                    <b>90天（防止带病进入，确保公平）</b>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <ion-grid class="advantage-grid" margin-vertical>
+        <ion-row>
+            <ion-col class="advantage-col">
+                <ion-row>
+                    <ion-col size="2" no-padding>
+                        <ion-icon name="happy" color="secondary" size="normal" class="ad-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" no-padding>
+                        <ion-card-header no-padding>
+                            <ion-card-title>平台可靠</ion-card-title>
+                            <ion-card-subtitle>xxx资本战略投资</ion-card-subtitle>
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col class="advantage-col">
+                <ion-row>
+                    <ion-col size="2" no-padding>
+                        <ion-icon name="lock" color="tertiary" size="normal" class="ad-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" no-padding>
+                        <ion-card-header no-padding>
+                            <ion-card-title>资金安全</ion-card-title>
+                            <ion-card-subtitle>资金托管，专款专用</ion-card-subtitle>
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="advantage-col">
+                <ion-row>
+                    <ion-col size="2" no-padding>
+                        <ion-icon name="medal" color="success" size="normal" class="ad-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" no-padding>
+                        <ion-card-header no-padding>
+                            <ion-card-title>事件真实</ion-card-title>
+                            <ion-card-subtitle>商保通等公估机构专业核实</ion-card-subtitle>
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+            <ion-col class="advantage-col">
+                <ion-row>
+                    <ion-col size="2" no-padding>
+                        <ion-icon name="eye" color="warning" size="normal" class="ad-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" no-padding>
+                        <ion-card-header no-padding>
+                            <ion-card-title>流程透明</ion-card-title>
+                            <ion-card-subtitle>救助全程公示，全民监管</ion-card-subtitle>
+                        </ion-card-header>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <div class="process" padding margin-bottom>
+        <h5>救助申请流程</h5>
+        <p padding-top>
+            申请 <ion-icon name="md-arrow-forward" color="secondary"></ion-icon>
+            提交材料 <ion-icon name="md-arrow-forward" color="secondary"></ion-icon>
+            审核 <ion-icon name="md-arrow-forward" color="secondary"></ion-icon>
+            公式 <ion-icon name="md-arrow-forward" color="secondary"></ion-icon>
+            给付
+        </p>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-button routerLink="/join_now" expand="block">立即加入</ion-button>
+</ion-footer>

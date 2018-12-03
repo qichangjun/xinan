@@ -1,0 +1,129 @@
+/** ion-toolbar **/
+ion-toolbar {
+    // min-height: 3.3rem;
+}
+
+/** ion-title **/
+ion-title {
+    text-align: center;
+}
+
+/** ion-back-button **/
+.back-button-native {
+    font-size: 1.2rem !important;
+}
+
+ion-back-button {
+    position: absolute;
+}
+
+.back-button-native[data-ion-back-button-md] {
+    margin-left: -1rem;
+}
+
+/** ion-content **/
+ion-content {
+    background-color: #f5f5f5;
+}
+
+/** toast **/
+ion-toast {
+    z-index: 20001;
+}
+
+.toast-container {
+    text-align: center;
+    background-color: #333;
+    border-radius: .2rem;
+}
+
+.toast-ios .toast-wrapper,
+.toast-md .toast-wrapper {
+    left: 1rem;
+    right: 1rem;
+    border-radius: 0.65rem;
+    width: 80%;
+}
+
+.toast-ios .toast-message,
+.toast-md .toast-message {
+    font-size: 1rem;
+    color: #fff;
+    padding: .6rem;
+}
+
+//登录注册提示toast
+.auth-error-toast.toast-ios,
+.auth-error-toast.toast-md {
+
+    .toast-message {
+        font-size: .9rem;
+        width: 50%;
+        text-align: center;
+        padding: 0 1rem 1rem;
+
+        &::before {
+            display: block;
+            content: "\26A0";
+            font-size: 2rem;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+/** infinite sroll **/
+ion-infinite-scroll-content {
+    min-height: 1px;
+}
+
+.infinite-loading {
+    margin-bottom: 0;
+}
+
+/** ion header **/
+.header-md back-icon {
+    position: absolute;
+}
+
+/** popover **/
+.help-popover .popover-content {
+    top: 30px;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
+    padding: 5px 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+
+    &::before {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid red;
+    }
+}
+
+/** 添加亲友 填写资料确认框 **/
+.add-relatives-confirm-alert {
+    text-align: left;
+
+    .confirm-list {
+        text-align: left;
+
+        .confirm-item {
+            background: #eee;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.alertCustomCss {
+    p {
+        text-align: left;
+    }
+}

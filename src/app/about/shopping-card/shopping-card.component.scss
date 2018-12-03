@@ -1,0 +1,213 @@
+ion-header {
+    box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        border: none;
+
+        ion-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .sky_blue {
+            width: 30%;
+
+            ion-title {
+                color: #6b9dff;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+
+    }
+}
+
+ion-content {
+
+    .row_list {
+        height: 44px;
+        line-height: 44px;
+        padding: 0 16px;
+
+        ion-badge {
+            background: #ff6521;
+            padding: 2px 5px;
+            font-size: 11px;
+            margin-right: 8.5px;
+        }
+
+        .tit {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666666;
+
+            i {
+                color: #e83030;
+            }
+        }
+
+        ion-icon {
+            font-size: 20px;
+            position: absolute;
+            right: 16px;
+            top: 11px;
+            color: #bdbdbd;
+        }
+    }
+
+    s {
+        color: #bdbdbd;
+        font-size: 11px;
+        font-weight: 500;
+    }
+}
+
+.shops {
+    background: #fff;
+    padding: 16px;
+
+    ion-card {
+        margin-bottom: 16px;
+
+        ion-row {
+            padding: 20px 16px;
+
+            ion-col {
+                padding: 0;
+
+                ion-img {
+                    width: 88px;
+                    height: 88px;
+                }
+
+                ion-text {
+                    display: block;
+                }
+            }
+
+            .pro-name {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .name {
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #666666;
+                }
+
+                .add {
+                    display: inline-flex;
+                    align-items: baseline;
+
+                    i {
+                        font-size: 14px;
+                        color: #e83030;
+                        font-weight: bold;
+                    }
+
+                    .calculate,
+                    i {
+                        width: 50%;
+                    }
+
+                    .calculate {
+                        margin: 0;
+                        position: relative;
+                        top: 5px;
+                    }
+                }
+            }
+        }
+    }
+
+    .failure {
+        img {
+            opacity: 0.6;
+        }
+
+        .pro-name {
+            opacity: 0.6;
+        }
+
+        .shade {
+            position: relative;
+            height: 88px;
+            opacity: 0.6;
+
+            div {
+                display: block;
+                background: red;
+                z-index: 2;
+                position: absolute;
+                width: 88px;
+                font-size: 11px;
+                font-weight: 500;
+                height: 24px;
+                text-align: center;
+                color: #fff;
+                opacity: 0.4;
+                background-color: #000000;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.shop_icon {
+
+    ion-icon {
+        font-size: 20px;
+        color: #e83030;
+    }
+
+    ion-text {
+        font-size: 14px;
+        font-weight: 500;
+        color: #666666;
+    }
+
+    .selected {
+        color: #fff;
+        font-size: 16px;
+        border-radius: 10px;
+        border: solid 1px #e6e6e6;
+    }
+}
+
+.total {
+    ion-icon {
+        position: relative;
+        top: 3px;
+        margin-right: 8px;
+    }
+
+    .tot_price {
+
+        ion-row {
+
+            ion-text {
+                font-size: 11px;
+                font-weight: 500;
+                color: #999999;
+            }
+        }
+
+        ion-row:nth-child(1) {
+            ion-text {
+                font-size: 14px;
+                color: #666666;
+            }
+
+            ion-text:nth-child(2) {
+                color: #e83030;
+                font-size: 16px;
+            }
+        }
+    }
+
+}

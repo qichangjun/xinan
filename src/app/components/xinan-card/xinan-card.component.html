@@ -1,0 +1,31 @@
+<ion-card class="in-card" *ngIf="data" no-margin no-padding>
+    <div class="in-list-div">
+        <ion-item lines="none" class="in-item" no-padding>
+            <ion-avatar slot="start" class="avatar">
+                <img src="{{data.imgUrl}}" />
+            </ion-avatar>
+            <ion-label>
+                <h2>{{data.title}}</h2>
+                <h3 *ngIf="data.name">{{data.name}}<span (click)="view(data.urlObj.type, data.urlObj.id)">[查看]</span></h3>
+                <h3 *ngIf="!data.name"><span (click)="view(data.urlObj.type)">[点击查看详情]</span></h3>
+            </ion-label>
+        </ion-item>
+        <ion-avatar slot="start" class="publicity">
+            <!-- state: 0:未提交  1:审核中 -->
+            <span class="img{{data.state}}"></span>
+        </ion-avatar>
+    </div>
+    <div class="text" (click)="view(data.urlObj.type, data.urlObj.id)">
+        <ion-row>
+            <ion-col size="6" *ngFor="let list of data.list">
+                <ion-icon name="{{list.icon}}"></ion-icon>
+                <span>{{list.name}}: {{list.value}}</span>
+            </ion-col>
+        </ion-row>
+        <p class="text-p">{{data.content}}</p>
+        <div class="label" *ngIf="data.jjxx">
+            <!-- jx.color:  yellow: 黄色  blue: 蓝色 -->
+            <span *ngFor="let jx of data.jjxx" class="color-{{jx?.color}}">{{jx?.title}}</span>
+        </div>
+    </div>
+</ion-card>

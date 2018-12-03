@@ -1,0 +1,133 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+.clearfix:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    .content {
+        background: #fff;
+        min-height: 250px;
+    }
+
+    .info-card {
+        position: relative;
+
+        .bg {
+            border-radius: 8px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .bg-3 {
+            top: 60px;
+            width: 279px;
+            height: 160px;
+            box-shadow: 0px 3px 12px 0 rgba(107, 157, 255, 0.1);
+            opacity: 0.3;
+        }
+
+        .bg-2 {
+            top: 40px;
+            width: 311px;
+            height: 160px;
+            box-shadow: 0px 3px 12px 0 rgba(107, 157, 255, 0.2);
+            opacity: 0.5;
+        }
+
+        .bg-1 {
+            top: 0;
+            width: 343px;
+            height: 180px;
+            box-shadow: 0px 3px 12px 0 rgba(107, 157, 255, 0.3);
+            background-image: linear-gradient(151deg, #6b9dff, #5b67ff);
+        }
+
+        .info {
+            .avatar {
+                display: inline-block;
+                width: 44px;
+                height: 44px;
+                padding: 2px;
+                background: #fff;
+                border-radius: 3px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 3px;
+                }
+            }
+
+            .realnamed {
+                display: inline-block;
+                width: 56px;
+                height: 56px;
+            }
+
+            .name,
+            .age,
+            .num {
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .name {
+                font-size: 18px;
+            }
+
+            .age {
+                font-size: 12px;
+                opacity: 0.4;
+            }
+
+            .num {
+                font-size: 14px;
+                letter-spacing: 2px;
+            }
+        }
+    }
+
+    .upload {
+        background: #fff;
+        border-top: 1px solid rgba(230, 230, 230, 0.5);
+
+        ion-item {
+            background: #fff;
+
+            ion-label {
+                font-size: 16px;
+
+                &:first-child {
+                    color: #666;
+                }
+
+                &:nth-child(2) {
+                    color: #bdbdbd;
+                }
+            }
+
+            ion-icon {
+                color: #ccc;
+                font-size: 18px;
+            }
+        }
+    }
+}

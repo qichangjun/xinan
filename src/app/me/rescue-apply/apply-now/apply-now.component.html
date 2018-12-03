@@ -1,0 +1,53 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/rescue_apply"></ion-back-button>
+        </ion-buttons>
+        <ion-title>选择申请救助人</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-segment (ionChange)="segmentChanged($event)" mode="md" value="sqjz" color="primary">
+        <ion-segment-button value="sqjz">申请救助</ion-segment-button>
+        <ion-segment-button value="sqjl">申请记录</ion-segment-button>
+    </ion-segment>
+
+    <ion-list *ngIf="type === 'sqjz'" class="in-list" lines="none" no-padding no-margin>
+        <div class="in-list-div">
+            <ion-item (click)="applicationCreate()" no-margin lines="none" no-padding class="in-item" *ngFor="let list of lists">
+                <ion-avatar slot="start" class="avatar">
+                    <img src="{{list.imgUrl}}" />
+                </ion-avatar>
+                <ion-label>
+                    <h2>{{list.title}}</h2>
+                    <h3>{{list.time}}</h3>
+                </ion-label>
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+            </ion-item>
+        </div>
+    </ion-list>
+    <ion-row *ngIf="type === 'sqjz'" class="add">
+        <div (click)="addFriends()">
+            <ion-icon name="add"></ion-icon>
+            <ion-text>添加亲友</ion-text>
+        </div>
+    </ion-row>
+
+    <div class="apply_record" *ngIf="type === 'sqjl'">
+        <div *ngFor="let c of listssq">
+            <xinan-card [data]="c"></xinan-card>
+        </div>
+    </div>
+
+    <div class="server" *ngIf="isshow === true"></div>
+    <div class="eject" *ngIf="isshow === true">
+        <div class="times" (click)="close()">&times;</div>
+        <ion-card no-margin>
+            <div class="back"></div>
+            <p>用户张霞还未加入心安救助平台会员，加入即可开通乐捐权限</p>
+            <ion-button expand="block">立即加入</ion-button>
+        </ion-card>
+    </div>
+
+</ion-content>

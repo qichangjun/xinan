@@ -1,0 +1,150 @@
+<ion-header no-border class="tab_heard">
+    <ion-toolbar color="primary">
+        <ion-title no-padding slot="start">心安</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="alert()">
+                <ion-icon name="md-search"></ion-icon>
+            </ion-button>
+            <ion-button (click)="alert()">
+                <ion-icon name="md-expand" (click)="alert()"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-segment (ionChange)="segmentChanged($event)" mode="md" value="rescue">
+        <ion-segment-button value="rescue">救助</ion-segment-button>
+        <ion-segment-button value="giving">乐捐</ion-segment-button>
+    </ion-segment>
+
+    <div class="slides">
+        <ion-slides *ngIf="imgs" #slides pager="true" (ionSlideTouchStart)="ionSlideTouchStart()" [options]="options">
+            <ion-slide *ngFor="let img of imgs">
+                <img src="{{img}}" />
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <div class="cont">
+        <ion-card class="car_s" no-margin>
+            <ion-row align-items-center>
+                <ion-col (click)="alert()">
+                    <ion-label class="num">已加入</ion-label>
+                    <ion-label>
+                        <span>34.76</span>
+                        万人
+                    </ion-label>
+                </ion-col>
+                <ion-col (click)="pool()">
+                    <ion-label class="num">资金池</ion-label>
+                    <ion-label>
+                        <span>658.76</span>
+                        万人
+                    </ion-label>
+                </ion-col>
+                <ion-col (click)="allType();">
+                    <ion-label class="num">{{carLable}}</ion-label>
+                    <ion-label>
+                        <span>256</span>
+                        人
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+        <div *ngIf="isShow === false">
+            <h1>
+                心安大病救助专项基金
+                <span class="h_s">
+                    <span class="h_s_num">23.65万人</span>
+                    <span>尊享中</span>
+                </span>
+            </h1>
+            <ion-card class="car_l car_an" [routerLink]="['/details_publicity']">
+                <ion-row align-items-center>
+                    <ion-col size="3.8">
+                        <img src="../../assets/imgs/shang_img2@2x.png" />
+                    </ion-col>
+                    <ion-col size="8.2">
+                        <h3>最高150万救助金</h3>
+                        <h3>0-58周岁(不含58周岁)</h3>
+                        <h3>全面覆盖癌症等80种大病</h3>
+                        <div>
+                            <span>深圳基金会</span>
+                            <p>
+                                <span class="ljgm" (click)="add();$event.stopPropagation();" tappable>
+                                    立即加入
+                                    <ion-icon name="md-arrow-round-forward"></ion-icon>
+                                </span>
+                            </p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-card>
+        </div>
+        <h1 *ngIf="isShow === false" class="jsgs">
+            救助公示
+            <span class="h_s">
+                <span>共50条</span>
+            </span>
+        </h1>
+        <div class="switch" *ngIf="isShow === true">
+            <ion-row>
+                <ion-col size="6" (click)="support()">
+                    <ion-label [ngClass]="{'selected': isPublic === false}" class="selected">需要帮扶(100)</ion-label>
+                </ion-col>
+                <ion-col size="6" (click)="public()">
+                    <ion-label [ngClass]="{'selected': isPublic === true}">乐捐公示(80)</ion-label>
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-card class="car_notice" *ngFor="let item of items">
+            <ion-card-header no-padding>
+                <ion-row>
+                    <ion-text class="car_tit">{{item.title}}</ion-text>
+                    <ion-text class="notice" (click)="donations();">
+                        <span>{{tag}}</span>
+                    </ion-text>
+                </ion-row>
+                <ion-row>
+                    <ion-label routerLink="/details_xa" [queryParams]="{type:isShow ? 'donation' : 'rescue'}" class="lab_details"
+                        position="fixed">点击查看详情</ion-label>
+                </ion-row>
+            </ion-card-header>
+            <ion-card-content no-padding routerLink="/details_xa" [queryParams]="{type:isShow ? 'donation' : 'rescue'}">
+                <ion-row class="car_cont" align-items-center>
+                    <ion-col size="3">
+                        <img src="{{item.image}}" />
+                    </ion-col>
+                    <ion-col size="9">
+                        <div *ngIf="isShow === false">
+                            <h3>成员姓名：{{item.name}}</h3>
+                            <h3>救助金额：{{item.price}}</h3>
+                        </div>
+                        <div *ngIf="isShow === false || isPublic === true">
+                            <h3>救助日期：{{item.rescueDate}}</h3>
+                        </div>
+                        <div *ngIf="isShow === true">
+                            <h3>机构领捐：{{item.price}}元</h3>
+                            <h3>参与人数：{{item.price}}人</h3>
+                        </div>
+                        <div *ngIf="isShow === true">
+                            <span *ngIf="isPublic === false">深圳基金会</span>
+                            <span class="warning">心安乐捐(意外)</span>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="info" *ngIf="isPublic === false">
+                    <!-- <ngb-progressbar height=".5rem" type="info" [value]="25"></ngb-progressbar> -->
+                    <ion-row align-items-center>
+                        <ion-col *ngFor="let dat of item.data">
+                            <ion-label class="num">{{dat.name}}</ion-label>
+                            <ion-label>{{dat.value}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="sign">{{item.introduce}}</ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

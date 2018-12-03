@@ -1,0 +1,93 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="details_xa"></ion-back-button>
+        </ion-buttons>
+        <ion-title>心安乐捐(意外)</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="info-detail-card">
+        <ion-card-content>
+            <h5>救助过程</h5>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <ion-row>
+                        <ion-col no-padding size="1" class="col_left">
+                            <ion-icon name="checkmark-circle" color="secondary" size="large"></ion-icon>
+                            <div class="timeline-line"></div>
+                        </ion-col>
+                        <ion-col no-padding size="11">
+                            <ion-row class="timeline-header" justify-content-between>
+                                <ion-col no-padding>
+                                    <h3>小爱</h3>
+                                    <small>2018.07.11 医院确认</small>
+                                </ion-col>
+                                <ion-col size="2" no-padding>
+                                    <ion-icon name="md-text" color="medium" size="normal"></ion-icon>
+                                    <span> 2</span>
+                                </ion-col>
+                            </ion-row>
+                            <div class="timeline-content">
+                                广州市高澜保险公估有限公司的调查人员通过走访四川大学华西医院，确认会员严术芳于2017年6月14日首次病理诊断患肺腺癌属实，且确诊时间已过等待期。
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <h2>评论区</h2>
+    <div class="text_comment">
+        <ion-textarea placeholder="我想说..." rows="3.5" cols="20" [(ngModel)]="comment" name="comment"></ion-textarea>
+        <ion-row justify-content-end>
+            <ion-button (click)="butClick()" expand="block">评论</ion-button>
+        </ion-row>
+    </div>
+
+    <ion-list class="in-list" lines="none" no-padding no-margin>
+        <div class="in-list-div">
+            <ion-item no-margin lines="none" no-padding class="in-item" *ngFor="let list of lists">
+                <ion-avatar slot="start" class="avatar">
+                    <img src="{{list.imgUrl}}" />
+                </ion-avatar>
+                <div class="timeline">
+                    <ion-row class="timeline-header" justify-content-between>
+                        <ion-col no-padding>
+                            <h3>{{list.name}}</h3>
+                            <small>
+                                {{list.time}}
+                                <ion-icon name="pin"></ion-icon>
+                                {{list.region}}
+                            </small>
+                        </ion-col>
+                        <ion-col size="2" no-padding>
+                            <ion-icon name="md-text"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                    <div class="timeline reply" *ngIf="list.children">
+                        <ion-row class="timeline-header" justify-content-between>
+                            <ion-col no-padding>
+                                <h3>{{list.children.name}}</h3>
+                                <small>
+                                    {{list.children.time}}
+                                    <ion-icon name="pin"></ion-icon>
+                                    {{list.children.region}}
+                                </small>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <div class="timeline-content">{{list.children.content}}</div>
+                        </ion-row>
+                    </div>
+                    <ion-row>
+                        <div class="timeline-content">{{list.content}}</div>
+                    </ion-row>
+                </div>
+            </ion-item>
+        </div>
+    </ion-list>
+
+    <span>更多评论(59条)</span>
+</ion-content>

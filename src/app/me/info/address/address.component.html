@@ -1,0 +1,77 @@
+<ion-header color="white">
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>收货地址</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="isShow === true">
+        <div class="card-list">
+            <ion-card no-margin margin-bottom class="address-card">
+                <ion-card-header no-padding justify-content-between class="address-card-header">
+                    <ion-row>
+                        <ion-col class="set-default">
+                            <ion-checkbox mode="ios" size="small" color="secondary" checked="checked"></ion-checkbox>
+                            当前默认地址
+                        </ion-col>
+                        <ion-col text-right>
+                            <ion-buttons class="handle-btns">
+                                <ion-button color="medium" fill="clear" size="small">删除</ion-button>
+                                <ion-button color="secondary" fill="clear" size="small">编辑</ion-button>
+                            </ion-buttons>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content no-padding padding-top class="address-card-content">
+                    <ion-row justify-content-between>
+                        <ion-col class="receiver" no-padding text-left>王先生</ion-col>
+                        <ion-col class="receiver-phone" no-padding text-right>13666554222</ion-col>
+                    </ion-row>
+                    <p class="address-detail">贵州省贵阳市高新区科技二路与明敏路十字园美大厦8楼02号</p>
+                </ion-card-content>
+            </ion-card>
+            <ion-card no-margin margin-bottom class="address-card">
+                <ion-card-header no-padding justify-content-between class="address-card-header">
+                    <ion-row>
+                        <ion-col class="set-default">
+                            <ion-checkbox mode="ios" size="small" color="secondary"></ion-checkbox>
+                            设为默认地址
+                        </ion-col>
+                        <ion-col text-right>
+                            <ion-buttons class="handle-btns">
+                                <ion-button color="medium" fill="clear" size="small">删除</ion-button>
+                                <ion-button color="secondary" fill="clear" size="small">编辑</ion-button>
+                            </ion-buttons>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-header>
+                <ion-card-content no-padding padding-top class="address-card-content">
+                    <ion-row justify-content-between>
+                        <ion-col class="receiver" no-padding text-left>王先生</ion-col>
+                        <ion-col class="receiver-phone" no-padding text-right>13666554222</ion-col>
+                    </ion-row>
+                    <p class="address-detail">贵州省贵阳市高新区科技二路与明敏路十字园美大厦8楼02号</p>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <div padding-vertical>
+            <ion-button color="secondary" expand="block" shape="round" class="add-btn" routerLink="/info/address-add">+
+                添加收获地址</ion-button>
+        </div>
+    </div>
+    <div *ngIf="isShow === false">
+        <div class="no-address">
+            <div class="serve">
+                <img src="../../../../assets/imgs/address.png" alt="">
+            </div>
+            <p>您还没有收货地址~</p>
+            <div padding-vertical>
+                <ion-button expand="block" shape="round" class="add-btn_ white" routerLink="/info/address-add">+
+                    添加收获地址</ion-button>
+            </div>
+        </div>
+    </div>
+</ion-content>

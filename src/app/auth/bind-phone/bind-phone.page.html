@@ -1,0 +1,51 @@
+<ion-header color="white">
+    <ion-toolbar color="#fff">
+        <ion-title>验证手机号</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="auth-page">
+        <div class="user-box" text-center>
+            <ion-avatar class="user-img">
+                <img [src]="user.img">
+            </ion-avatar>
+            <p class="user-name" padding-vertical>{{user.name}}</p>
+        </div>
+        <form #formRef="ngForm" (ngSubmit)="toBindPhone(formRef.value,[phoneRef.errors, codeRef.errors])">
+            <ion-list>
+                <ion-item no-padding>
+                    <ion-label position="floating">请输入手机号码</ion-label>
+                    <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                        [(ngModel)]="data.phone" #phoneRef="ngModel"></ion-input>
+                </ion-item>
+
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="7" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">请输入验证码</ion-label>
+                            <ion-input type="number" color="dark" name="code" required minlength="6" [(ngModel)]="data.code"
+                                #codeRef="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="5" class="get-code">
+                        <ion-button solt="end" fill="clear" color="{{phoneRef.valid && data.status ? 'warning' : 'medium'}}"
+                            class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>{{data.info}}</ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row padding-vertical margin-top>
+                    <ion-col size="12">
+                        <ion-button color="primary" [ngClass]="{'disable-btn': !(phoneRef.valid && codeRef.valid)}"
+                            expand="block" shape="round" type="submit">登录</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+        </form>
+
+
+        <footer>
+            <p class="treaty" padding-vertical>登录即代表同意<a routerLink="/treaty">《“心安救助”平台会员公约》</a></p>
+        </footer>
+    </div>
+</ion-content>

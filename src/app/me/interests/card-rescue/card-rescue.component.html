@@ -1,0 +1,78 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>救助充值</ion-title>
+        <ion-buttons slot="end" class="end">
+            <ion-button (click)="alert()">为亲友充值</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="car_narrate car_price" no-margin>
+        <ion-card-content no-padding>
+            <div>
+                <h3>心安大病救助金</h3>
+                <p>及时充值余额，以保证正常使用心安救助权限，当账户余额少于33元时，权限将自动失效。</p>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="car_price" no-margin>
+        <ion-card-content no-padding>
+            <div>
+                <h3>乐捐金额</h3>
+                <ion-row size="12">
+                    <ion-col size="4" *ngFor="let btn of btns">
+                        <ion-button (click)="butClick(btn)" [ngClass]="{'no_click': btn.noClick === true}" shape="round"
+                            expand="block" class="sub">{{btn.value}}</ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-item no-padding>
+                    <ion-label>自定义乐捐金额/元</ion-label>
+                    <ion-input type="number" name="price" required [(ngModel)]="price" #passRef="ngModel"></ion-input>
+                </ion-item>
+            </div>
+            <ion-row class="integral int_txt">
+                可用积分<i>0</i>分
+            </ion-row>
+            <ion-row class="integral">
+                本次使用积分
+                <div>
+                    <ion-input disabled="disabled" type="text" value=""></ion-input>
+                </div>
+                <span>全部积分</span>
+                <ion-col>可抵扣<i>1.5</i>元</ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+    <ion-row class="terms">
+        <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
+        <span>
+            我已阅读并同意
+            <a routerLink="/terms">
+                《心安救助基金公约》
+            </a>
+            <a routerLink="/">
+                《详细规则》
+            </a>
+        </span>
+    </ion-row>
+    <ion-row align-items-center class="total">
+        <ion-col size="4">
+            <span>合计</span>
+            <span class="price">{{total}}元</span>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

@@ -1,0 +1,185 @@
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+    }
+}
+
+ion-content {
+    background-color: #fff;
+
+    .join-titl {
+        .join {
+            padding: 44px 0 0;
+            background: url('../../../../assets/imgs/integral.png');
+            background-size: cover;
+            margin-bottom: 24px;
+        }
+
+        ion-card {
+
+            box-shadow: none;
+
+            ion-card-header {
+                padding: 0;
+                text-align: center;
+
+                .title {
+                    font-size: 11px;
+                    color: rgba(255, 255, 255, 0.6);
+
+                }
+
+                .name {
+                    font-size: 36px;
+                    color: #ffffff;
+                    font-weight: 900;
+                }
+            }
+
+            ion-card-content {
+                padding: 4px 16px;
+
+                .toggle {
+                    font-size: 14px;
+                    color: #fefefe;
+                    overflow: hidden;
+                    border-bottom: 0.5px solid rgba(230, 230, 230, 0.2);
+                    line-height: 48px;
+
+                    ion-toggle {
+                        vertical-align: middle;
+                        zoom: 0.8;
+                        width: 48px;
+
+                        .toggle-inner {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    span {
+                        float: right;
+                    }
+                }
+            }
+
+            ion-card-content :last-child {
+                border-bottom: none;
+            }
+
+        }
+
+        .rule-list {
+            background: #f7f7f7;
+
+            .rule-item {
+
+                background-color: #f7f7f7;
+
+                span {
+                    color: #999999;
+                    font-size: 16px;
+                    padding-left: 16px;
+                }
+
+                b {
+                    color: #424242;
+                    opacity: 1;
+                    font-size: 14px;
+                    padding-left: 10px;
+                }
+
+                ion-icon {
+                    font-size: 20px;
+                    --color: #bdbdbd;
+                    opacity: 0.3;
+                }
+
+                &::last {
+                    border-bottom: 0;
+                }
+            }
+
+            .in-list {
+
+                .in-list-div {
+                    box-sizing: border-box;
+                    padding: 0 16px;
+                    background: #fff;
+                }
+
+                .in-list-div ion-item:last-child {
+                    border-bottom: none;
+
+                }
+
+                ion-item {
+                    padding: 10px 0;
+                    background: #fff;
+                    // padding: 10px 16px;
+                    // margin: 10px 16px;
+                    border-bottom: 0.5px solid #e6e6e6;
+
+                }
+
+                .avatar {
+
+                    img {
+                        border-radius: 0;
+                    }
+                }
+
+                h2 {
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: #424242;
+                    margin-bottom: 10px;
+                }
+
+                h3 {
+                    font-size: 11px;
+                    color: #999999;
+                    font-weight: 500;
+                }
+
+                .item-right {
+                    float: right;
+                    color: #e83030;
+                    font-size: 20px;
+                    font-weight: 222;
+
+                    i {
+                        font-weight: 100;
+                    }
+                }
+
+                .item_negative {
+                    color: #4ac483;
+                }
+
+            }
+
+            .in-item {
+                padding: 0;
+            }
+
+            .rule-detail {
+                p {
+                    color: #999;
+                    font-size: 12px;
+                    line-height: 1.64;
+                    text-align: justify;
+                    padding-bottom: 10px;
+                }
+            }
+        }
+
+
+    }
+
+}

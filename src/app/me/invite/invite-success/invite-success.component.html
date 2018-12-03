@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/invite/friend"></ion-back-button>
+        </ion-buttons>
+        <ion-title>邀请好友成功（5人）</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <ion-list class=" in-list" lines="none" no-padding no-margin>
+        <div class="in-list-div">
+            <ion-item no-margin lines="none" no-padding class="in-item" *ngFor="let list of lists">
+                <ion-avatar slot="start" class="avatar">
+                    <img src="{{list.imgUrl}}" />
+                </ion-avatar>
+                <ion-label>
+                    <h2>{{list.title}}</h2>
+                    <h3>{{list.time}}</h3>
+                </ion-label>
+                <ion-icon name="ios-arrow-forward"></ion-icon>
+            </ion-item>
+        </div>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,55 @@
+<ion-header no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="join_now"></ion-back-button>
+        </ion-buttons>
+        <ion-title>加入心安救助</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+        <p>第一章 前言</p>
+        <p>
+            2015年的政府工作报告中，李克强总理提到了“加强重特大疾病医疗救助，全面实施临时救助制度，让遇到急难特困的群众求助有门、受助及时。”可见医疗救助在保障公民的生存权、健康公平权领域起着不可替代的作用。
+            团结一切可以团结的力量，帮助一帮有需要的人，为国内广大人民群众大病医疗提供保障，提升医疗机构服务水平，促进全面创新慈善事业的发展，提升国民安全感，是现阶段的历史使命。
+        </p>
+        <br />
+        <p>
+            本项目就是根据该社会背景设立的，我们希望可以缓解当前医疗救助事业存在的诸多问题，使病患获得医疗上的经济援助，获得救治机会，重拾生活信心。
+        </p>
+        <br />
+        <p> 第二章 释义</p>
+        <p> “心安大病救助行动”是珠海市横琴心安投资控股有限公司与符合本项目要求的会员共同发起的重大疾病救助项目（以下简称“本项目”）。
+            《心安大病救助行动公约》（以下简称“本公约”）为需参与本项目的全体会员（以下简称“您”）共同遵守的规则。
+            您在确认加入本项目前请仔细阅读本公约，在您确认参与后即默认您已充分理解本公约的全部内容，并同意认真遵守本公约的权利义务。
+            会员：是平台会员与行动会员的统称。
+        </p>
+        <br />
+        <p> 平台会员：是指具有完全民事权利能力和民事行为能力，在心安完成注册流程的个人和团体。</p>
+        <br />
+        <p> 行动会员：是指符合本项目参与条件并确认参与本项目的平台会员。</p>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row class="terms">
+        <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
+        <span>
+            我已阅读并同意
+            <a>《心安救助基金共约》</a>
+        </span>
+    </ion-row>
+    <ion-row align-items-center class="total">
+        <ion-col size="4">
+            <span>合计</span>
+            <span class="price">59元</span>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button class="sub" expand="block" (click)="alertMes()">支付宝支付</ion-button>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button class="sub_" expand="block" (click)="alertMes()">微信支付</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

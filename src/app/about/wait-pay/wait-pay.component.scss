@@ -1,0 +1,153 @@
+ion-header {
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+    }
+}
+
+ion-content {
+    background-color: #fff;
+
+    .title {
+        padding: 40px 17px;
+        background: url('../../../assets/imgs/wait-pay-bg.png');
+        background-size: cover;
+        height: 128px;
+
+        .wait-name {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-top: 10px;
+
+        }
+    }
+
+    .addr {
+        padding: 15px 0 15px 12px;
+        background-color: #f7f7f7;
+
+        .serve {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #e6e6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            ion-icon {
+                font-size: 22px;
+            }
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #424242;
+            display: block;
+
+            span {
+                font-size: 14px;
+                color: #666666;
+            }
+        }
+
+        .add {
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.64;
+            color: #999999;
+        }
+    }
+
+    .pro-list {
+        padding-bottom: 20px;
+
+        ion-card {
+            margin: 16px 16px 0;
+        }
+    }
+
+    .order {
+        padding-bottom: 24px;
+
+        .ord-col {
+            margin-left: 16px;
+            border-top: 0.5px solid #e6e6e6;
+            border-bottom: 0.5px solid #e6e6e6;
+            padding: 19.5px 15.5px 19.5px 0;
+
+            ion-text {
+                display: flex;
+                justify-content: flex-end;
+                box-sizing: border-box;
+            }
+
+            .name {
+                font-size: 14px;
+                font-weight: 500;
+                color: #666666;
+                line-height: 1.43;
+
+                span,
+                i {
+                    font-weight: 500;
+                }
+
+                span {
+                    padding-left: 5px;
+                }
+
+                i {
+                    color: #e83030;
+                }
+            }
+        }
+
+        .ord-dateil {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999999;
+            line-height: 1.43;
+
+            span {
+                color: #666666;
+                float: right;
+            }
+        }
+
+        .ord-col2 {
+            padding: 12px 16px 0;
+        }
+    }
+}
+
+ion-footer {
+
+    ion-row {
+        display: flex;
+        flex-direction: row-reverse;
+
+
+        ion-col {
+            width: 100px;
+            margin-left: 12px;
+        }
+    }
+}
+
+.primary {
+    color: #e83030;
+}

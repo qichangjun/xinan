@@ -1,0 +1,80 @@
+<ion-header no-border translucent>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>物流详情</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content no-padding>
+    <div class="pro-list">
+        <ion-card *ngFor="let list of lists" no-margin>
+            <pay-goods [data]="list"></pay-goods>
+        </ion-card>
+    </div>
+    <div class="serve"></div>
+    <div class="addr">
+        <ion-col no-padding>
+            <h1>中通快递</h1>
+            <p>物流单号：5484656589562</p>
+        </ion-col>
+    </div>
+    <div class="log-list">
+        <ion-row>
+            <ion-col size="0.8" class="log-arc">
+                <div class="redArc"></div>
+                <div class="dashed"></div>
+            </ion-col>
+            <ion-col size="11.2" no-padding>
+                <ion-text class="name">
+                    2018.06.30 19:54
+                </ion-text>
+                <ion-text class="add">
+                    包裹已到达广州省珠海市香洲区高新区大道，下一站准备发往新世纪大厦
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="grayArc"></div>
+                <div class="dashed"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    2018.06.30 19:54
+                </ion-text>
+                <ion-text class="add">
+                    包裹已到达广州省珠海市香洲区高新区大道，下一站准备发往新世纪大厦
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="grayArc"></div>
+                <div class="dashed"></div>
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    2018.06.30 19:54
+                </ion-text>
+                <ion-text class="add">
+                    包裹已到达广州省珠海市
+                </ion-text>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="1" class="log-arc">
+                <div class="grayArc"></div>
+                <!-- <div class="dashed"></div> -->
+            </ion-col>
+            <ion-col size="11" no-padding>
+                <ion-text class="name">
+                    2018.06.30 19:54
+                </ion-text>
+                <ion-text class="add">
+                    已发货
+                </ion-text>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

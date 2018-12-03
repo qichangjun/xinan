@@ -1,0 +1,182 @@
+ion-header {
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-buttons {
+        width: 55px;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        .end {
+            font-size: 16px;
+            color: #999;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+    }
+}
+
+ion-content {
+    .content {
+
+
+        .card-join {
+            box-shadow: none;
+            padding: 35.5px 16px 25px;
+            background: #fff;
+
+            .con-title {
+                font-size: 16px;
+                font-weight: bold;
+                color: #424242;
+                margin-bottom: 20px;
+
+            }
+
+            ion-card-content {
+                p {
+                    font-size: 11px;
+                    font-weight: 500;
+                    line-height: 22px;
+                    color: #666666;
+
+                    span {
+                        color: #e83030;
+                    }
+
+                    i {
+                        color: #6b9dff;
+                    }
+                }
+
+            }
+        }
+
+        ion-row {
+            background: #fff;
+            margin-bottom: 16px;
+            padding: 0 16px;
+
+            h1 {
+                font-size: 18px;
+                font-weight: bold;
+                color: #424242;
+            }
+
+            ion-list {
+                background: #fff;
+                width: 80%;
+
+                ion-col {
+                    padding: 0;
+
+                    ion-label {
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: #bdbdbd;
+                    }
+                }
+
+                ion-col:nth-child(2) {
+                    ion-label {
+                        color: #424242;
+                    }
+                }
+            }
+
+            ion-item {
+                width: 100%;
+
+                ion-label {
+                    color: #666666;
+                    font-size: 11px;
+                    font-weight: 500;
+                }
+            }
+
+            p {
+                color: #bdbdbd;
+                line-height: 36px;
+
+                span {
+                    font-size: 11px;
+                    font-weight: 500;
+                    line-height: 12px;
+                    height: 12px;
+                }
+            }
+
+
+            ion-row {
+                width: 100%;
+            }
+
+            .addRemove {
+                padding: 16px 0 0;
+            }
+        }
+
+        .car_price {
+            padding: 30px 16px;
+
+            ion-row {
+                padding: 0;
+
+                ion-col {
+                    padding: 0 12px 12px 0;
+                }
+            }
+
+            .price-h3 {
+                font-size: 16px;
+                font-weight: bold;
+                color: #424242;
+            }
+
+            .price-p {
+                font-size: 11px;
+                font-weight: 500;
+                color: #666666;
+
+                margin-bottom: 31.5px;
+
+                span {
+                    color: #e83030;
+                }
+            }
+
+            .price-p1 {
+                font-size: 11px;
+                font-weight: 500;
+                color: #999999;
+            }
+        }
+
+        i {
+            font-style: normal;
+            color: #e83030;
+        }
+    }
+
+}
+
+ion-footer {
+    .terms {
+        display: flex;
+
+        .span {
+            color: #6b9dff;
+        }
+    }
+}
+
+.alertCustomCss {
+    p {
+        font-size: 40px;
+    }
+}

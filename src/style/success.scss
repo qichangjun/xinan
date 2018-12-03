@@ -1,0 +1,119 @@
+.join-title {
+    padding: 44px 0 32px;
+    background-color: #fff;
+
+    .j-icon1 {
+        font-size: 40px;
+        color: #3acfb8;
+    }
+
+    .but {
+        width: 80%;
+        margin: 0 auto;
+
+        ion-col {
+
+            ion-button {
+                --border-radius: 25px;
+                --height: 32px;
+            }
+        }
+    }
+
+    .j-p1 {
+        font-size: 16px;
+        color: #424242;
+        margin: 20px 0 35.5px;
+        text-align: center;
+    }
+}
+
+.join-content {
+    position: relative;
+    padding-bottom: 35px;
+
+    .circle-serve1 {
+        width: 24px;
+        height: 24px;
+        background-color: #f7f7f7;
+        border-radius: 50%;
+        position: absolute;
+        left: 5px;
+        top: 106px;
+        z-index: 1;
+    }
+
+    .circle-serve2 {
+        width: 24px;
+        height: 24px;
+        background-color: #f7f7f7;
+        border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        top: 106px;
+        z-index: 1;
+    }
+
+    ion-card {
+        background-color: #fff;
+
+        .border-serve {
+            padding-bottom: 23.5px;
+            border-bottom: 2px dashed #f7f7f7;
+
+            .j-name {
+                font-size: 18px;
+                color: #424242;
+                font-weight: bold;
+                margin-bottom: 11.5px;
+            }
+
+            .j-card {
+                font-size: 14px;
+                color: #666;
+            }
+        }
+
+        ion-list {
+            background-color: #fff;
+
+            dl {
+                dd {
+                    font-size: 16px;
+                    color: #424242;
+                    line-height: 60px;
+                    font-weight: bold;
+                    margin-top: 24px;
+                }
+
+                dt {
+                    font-size: 14px;
+                    color: #424242;
+                    line-height: 32px;
+
+                    span {
+                        color: #bdbdbd;
+                        display: inline-block;
+                        min-width: 100px;
+                        max-width: 120px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.shared {
+    width: 343px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    box-shadow: 0px 3px 8px 0 rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    font-size: 18px;
+    color: #666;
+    margin: 0 auto;
+
+}

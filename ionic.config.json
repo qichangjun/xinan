@@ -1,0 +1,7 @@
+{
+  "name": "heart-safety-ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

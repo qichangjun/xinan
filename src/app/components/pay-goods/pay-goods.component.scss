@@ -1,0 +1,39 @@
+ion-row {
+    padding: 20px 16px;
+
+    ion-col {
+        ion-img {
+            width: 88px;
+            height: 88px;
+        }
+
+        ion-text {
+            display: block;
+        }
+    }
+
+    .pro-name {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #666666;
+        }
+
+        .add {
+            font-size: 14px;
+            font-weight: bold;
+            color: #e83030;
+
+            span {
+                float: right;
+                font-size: 14px;
+                color: #666666;
+                font-weight: 500;
+            }
+        }
+    }
+}

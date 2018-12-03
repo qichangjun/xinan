@@ -1,0 +1,73 @@
+<ion-header no-border translucent>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>购物车(18)</ion-title>
+        <ion-buttons slot="end" class="sky_blue">
+            <ion-title>编辑</ion-title>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="row_list">
+        <ion-text>
+            <ion-badge>vip</ion-badge>
+        </ion-text>
+        <ion-text class="tit">
+            成为会员立省<i>6.84</i>元，点此成为会员
+        </ion-text>
+        <ion-text>
+            <ion-icon name="arrow-forward"></ion-icon>
+        </ion-text>
+    </ion-row>
+    <div class="shops">
+        <ion-card no-margin *ngFor="let shop of shopCardData" [ngClass]="{'failure': shop.isFailure}">
+            <ion-row>
+                <ion-col align-self-center size="1" class="shop_icon" (click)="selected(shop)">
+                    <ion-icon [ngClass]="{'selected': shop.isSelected}" name="checkmark-circle"></ion-icon>
+                </ion-col>
+                <ion-col size="4" class="shade">
+                    <ion-img src="{{shop.imageurl}}"></ion-img>
+                    <div *ngIf="shop.isFailure">已失效</div>
+                </ion-col>
+                <ion-col size="7" class="pro-name">
+                    <ion-text class="name">{{shop.title}}</ion-text>
+                    <ion-text *ngIf="shop.originalPrice">
+                        <s>{{shop.originalPrice}}</s>
+                    </ion-text>
+                    <ion-text class="add">
+                        <i>{{shop.discountPrice}}</i>
+                        <ion-card class="calculate">
+                            <ion-icon (click)="remove();" name="remove" [ngClass]="{'highlight': remHigh}"></ion-icon>
+                            <ion-label>{{years}}</ion-label>
+                            <ion-icon (click)="add();" name="add" [ngClass]="{'highlight': addHigh}"></ion-icon>
+                        </ion-card>
+                    </ion-text>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-row align-items-center class="total">
+        <ion-col align-self-center size="3" class="shop_icon">
+            <ion-icon [ngClass]="{'selected': isAllSelected}" name="checkmark-circle"></ion-icon>
+            <ion-text>全选</ion-text>
+        </ion-col>
+        <ion-col size="5" class="tot_price">
+            <ion-row justify-content-end>
+                <ion-text>合计：</ion-text>
+                <ion-text>￥168.00</ion-text>
+            </ion-row>
+            <ion-row justify-content-end>
+                <ion-text>原价 ￥168.00</ion-text>
+            </ion-row>
+        </ion-col>
+        <ion-col size="4">
+            <ion-button (click)="settlement()" expand="block">去结算(2)</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-footer>

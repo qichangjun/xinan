@@ -1,0 +1,40 @@
+@import '../../../auth/sign-in/sign-in.page.scss';
+
+ion-header {
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-title {
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+
+ion-content {
+    --background: #fff;
+
+    ion-item {
+        background: #fff;
+    }
+
+    .auth-page {
+        padding: 40px 16px 0;
+    }
+
+    .text {
+        color: #666;
+        font-size: 12px;
+        padding-bottom: 20px;
+    }
+
+    .phonehiding {
+        color: #424242;
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .warm-info {
+        color: #666;
+    }
+}

@@ -1,0 +1,57 @@
+<ion-header no-border color="white">
+    <ion-toolbar color="#fff">
+        <!-- <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons> -->
+        <ion-title>设置密码</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="auth-page">
+        <form #FormRef="ngForm" (ngSubmit)="toSetPass(FormRef.value, [pass1Ref.errors])">
+            <ion-list>
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="10" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">请输入新密码</ion-label>
+                            <ion-input type="{{eyeshow1?'text':'password'}}" color="dark" name="password1" required
+                                minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                [(ngModel)]="data.password1" #pass1Ref="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="2" class="eye">
+                        <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow1 = !eyeshow1"
+                            no-padding>
+                            <i class="iconfont {{eyeshow1?'icon-show':'icon-hide'}}"></i></ion-button>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row align-items-end justify-content-start>
+                    <ion-col size="10" no-padding>
+                        <ion-item no-padding>
+                            <ion-label position="floating">再次输入新密码</ion-label>
+                            <ion-input type="{{eyeshow2?'text':'password'}}" color="dark" name="password2" required
+                                minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                [(ngModel)]="data.password2" #pass2Ref="ngModel" [appInputFocus]="true"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col size="2" class="eye">
+                        <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow2 = !eyeshow2"
+                            no-padding>
+                            <i class="iconfont {{eyeshow2?'icon-show':'icon-hide'}}"></i></ion-button>
+                    </ion-col>
+                </ion-row>
+                <div class="info clear" padding-top>
+                    新用户使用手机号验证码注册成功后需要设置密码。
+                </div>
+                <ion-row padding-vertical margin-top>
+                    <ion-col size="12">
+                        <ion-button color="primary" [ngClass]="{'disable-btn': !(pass1Ref.valid && pass2Ref.valid && pass1Ref.value === pass2Ref.value)}"
+                            expand="block" shape="round" type="submit">确 定</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-list>
+        </form>
+    </div>
+</ion-content>

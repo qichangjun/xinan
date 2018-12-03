@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="relatives"></ion-back-button>
+        </ion-buttons>
+        <ion-title>选择服务</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="service-list" margin padding-top>
+        <ion-card class="service-card" no-margin margin-bottom (click)="selectService(1)">
+            <ion-card-header>
+                <ion-row justify-content-between>
+                    <ion-col size="2">
+                        <ion-avatar class="bg-red">
+                            <ion-icon name="heart" color="white"></ion-icon>
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col size="8">
+                        <ion-card-title>心安全民大病救助基金</ion-card-title>
+                        <ion-card-subtitle>
+                            <span>最高150万救助金 0-58周岁</span>
+                            <span>全面覆盖癌症等80种大病</span>
+                        </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col size="1" text-right>
+                        <ion-icon name="ios-arrow-forward" padding-top></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+        </ion-card>
+
+        <ion-card class="service-card" no-margin margin-bottom (click)="selectService(2)">
+            <ion-card-header>
+                <ion-row justify-content-between>
+                    <ion-col size="2">
+                        <ion-avatar class="bg-yellow">
+                            <ion-icon name="md-medal" color="white"></ion-icon>
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col size="8">
+                        <ion-card-title>心安救平台服务年费</ion-card-title>
+                        <ion-card-subtitle padding-top>
+                            <span>加入心安会员</span>
+                        </ion-card-subtitle>
+                    </ion-col>
+                    <ion-col size="1" text-right>
+                        <ion-icon name="ios-arrow-forward" padding-top></ion-icon>
+                    </ion-col>
+                </ion-row>
+            </ion-card-header>
+        </ion-card>
+    </div>
+
+</ion-content>

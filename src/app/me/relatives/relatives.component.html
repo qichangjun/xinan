@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
+        </ion-buttons>
+        <ion-title>添加亲友</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="banner">
+        <p>您可以为亲友加入救助基金<br>
+            为亲友充值,获得会员资格</p>
+    </div>
+
+    <ion-list class="relatives-list" lines="none">
+        <ion-item class="relatives-header">
+            <ion-label>您已添加{{relativeList.length}}位亲友</ion-label>
+            <ion-buttons slot="end">
+                <ion-button *ngIf="view_or_config && relativeList.length > 0" color="secondary" shape="round" fill="outline"
+                    size="small" (click)="view_or_config = !view_or_config">充值</ion-button>
+                <ion-button *ngIf="!view_or_config" color="secondary" shape="round" fill="outline" size="small" (click)="view_or_config = !view_or_config">取消</ion-button>
+            </ion-buttons>
+        </ion-item>
+        <ion-item class="relatives-item" *ngFor="let relative of relativeList">
+            <ion-checkbox *ngIf="!view_or_config" mode="ios" color="secondary" solt="start" [(ngModel)]="relative.isChecked"
+                (ionChange)="checkOne($event, relative)"></ion-checkbox>
+            <ion-label justify-content-start>
+                <ion-avatar>
+                    <img [src]="relative.avatar" alt="">
+                </ion-avatar>
+                <p>
+                    <span class="name">{{relative.name}}</span><br>
+                    <span class="num">身份证号：{{relative.identityNumber}}</span><br>
+                    <span class="num">会员有效期：{{relative.deadline}}</span><br>
+                    <span class="num">救助余额：{{relative.overage}}元</span>
+                </p>
+            </ion-label>
+            <ion-icon *ngIf="view_or_config" name="ios-arrow-forward" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item class="relatives-item all-item" *ngIf="!view_or_config" (click)="checkAllOrNot()">
+            <ion-label>全选</ion-label>
+            <ion-checkbox mode="ios" color="secondary" slot="start" [(ngModel)]="ischeckAll" disabled></ion-checkbox>
+        </ion-item>
+        <div padding class="config-box" *ngIf="!view_or_config">
+            <ion-button color="secondary" shape="round" expand="block" (click)="sureToCharge()">确认</ion-button>
+        </div>
+
+    </ion-list>
+
+    <div text-center *ngIf="view_or_config" class="add">
+        <div (click)="addRelative()">
+            <ion-icon name="ios-add"></ion-icon>
+            <ion-text>添加亲友</ion-text>
+        </div>
+    </div>
+
+    <div class="ps" padding-horizontal *ngIf="relativeList.length === 0">
+        说明：您可以使用亲友的姓名、身份证号，充值平台管理年费、为其加入救助基金。亲友与您一样，获得会员资格。<br>
+        您也可以批量为亲友充值平台管理年费、加入救助基金，并由您的账户统一管理并充值。
+    </div>
+</ion-content>

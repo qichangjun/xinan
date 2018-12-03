@@ -1,0 +1,150 @@
+<ion-header color="white" no-border>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="/settings"></ion-back-button>
+        </ion-buttons>
+        <ion-title>修改登录密码</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="info" padding-top>
+        <ion-avatar>
+            <img src="../../../assets/imgs/img_avatar_default.png" alt="">
+        </ion-avatar>
+        <h6 class="name">心安用户</h6>
+    </div>
+
+    <!-- S 手机验证码修改登录密码 -->
+    <div *ngIf="type">
+        <div class="auth-page">
+            <form #FormRef="ngForm" (ngSubmit)="toResetPass(FormRef.value, [phoneRef.errors, pass1Ref.errors, codeRef.errors])">
+                <ion-list>
+                    <ion-item no-padding>
+                        <ion-label position="floating">账号已绑定的手机号码<span class="text-danger">（不可修改）</span></ion-label>
+                        <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
+                            [(ngModel)]="data_code.phone" disabled #phoneRef="ngModel"></ion-input>
+                    </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入新密码</ion-label>
+                                <ion-input type="{{eyeshow1?'text':'password'}}" color="dark" name="password1" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data_code.password1" #pass1Ref="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow1 = !eyeshow1"
+                                no-padding>
+                                <i class="iconfont {{eyeshow1?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">再次输入新密码</ion-label>
+                                <ion-input type="{{eyeshow2?'text':'password'}}" color="dark" name="password2" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data_code.password2" #pass2Ref="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow2 = !eyeshow2"
+                                no-padding>
+                                <i class="iconfont {{eyeshow2?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="7" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入验证码</ion-label>
+                                <ion-input type="number" color="dark" name="code" required minlength="6" [(ngModel)]="data_code.code"
+                                    #codeRef="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="5" class="get-code">
+                            <ion-button solt="end" fill="clear" color="{{!phoneRef.valid && data_code.status ? 'warning' : 'medium'}}"
+                                class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>{{data_code.info}}</ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row padding-vertical>
+                        <ion-col size="12">
+                            <ion-button color="primary" [ngClass]="{'disable-btn': !(!phoneRef.valid && pass1Ref.valid && pass2Ref.valid && pass1Ref.value === pass2Ref.value && codeRef.valid )}"
+                                expand="block" shape="round" type="submit">重置密码</ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="clear" text-center>
+                        <a (click)="type = !type; clear();">无法使用手机？用密码修改</a>
+                    </div>
+                </ion-list>
+            </form>
+        </div>
+    </div>
+    <!-- E 手机验证码修改登录密码 -->
+
+
+    <!-- S 原密码修改登录密码 -->
+    <div *ngIf="!type">
+        <div class="auth-page">
+            <form #passFormRef="ngForm" (ngSubmit)="toResetPass2(passFormRef.value, [oldPassRef.errors, pass1Ref.errors])">
+                <ion-list>
+                    <ion-item no-padding>
+                        <ion-label position="floating">请输入原密码</ion-label>
+                        <ion-input type="text" name="oldpass" color="dark" required [(ngModel)]="data_pass.oldpass"
+                            #oldPassRef="ngModel"></ion-input>
+                    </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入新密码</ion-label>
+                                <ion-input type="{{eyeshow3?'text':'password'}}" color="dark" name="password1" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data_pass.password1" #pass1Ref="ngModel"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow3 = !eyeshow3"
+                                no-padding>
+                                <i class="iconfont {{eyeshow3?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">再次输入新密码</ion-label>
+                                <ion-input type="{{eyeshow4?'text':'password'}}" color="dark" name="password2" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data_pass.password2" #pass2Ref="ngModel"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow4 = !eyeshow4"
+                                no-padding>
+                                <i class="iconfont {{eyeshow4?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row padding-vertical>
+                        <ion-col size="12">
+                            <ion-button color="primary" [ngClass]="{'disable-btn': !(oldPassRef.valid && pass1Ref.valid && pass2Ref.valid && pass1Ref.value === pass2Ref.value)}"
+                                expand="block" shape="round" type="submit">重置密码</ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                    <div class="clear" text-center>
+                        <a (click)="type = !type; clear();">忘记原密码？用绑定手机号修改密码</a>
+                    </div>
+                </ion-list>
+            </form>
+        </div>
+    </div>
+    <!-- E 原密码修改登录密码 -->
+</ion-content>

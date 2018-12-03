@@ -1,0 +1,191 @@
+ion-header {
+    color: #424242;
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        background: #fff;
+        box-shadow: 0px 2.5px 12px 0 rgba(153, 153, 153, 0.2);
+
+        ion-title {
+            font-size: 20px;
+            color: #424242;
+            font-weight: 500;
+        }
+    }
+}
+
+ion-content {
+    background: #fff;
+
+    .info-detail-card {
+        background: #fff;
+        margin: 16px;
+
+        ion-card-content {
+            h5 {
+                color: #424242;
+                font-size: 16px;
+                font-weight: bold;
+                margin: 5px 0 13px 0;
+            }
+
+            p {
+                color: #666;
+                font-size: 15px;
+                line-height: 2;
+                text-align: justify;
+            }
+        }
+
+    }
+
+    .timeline {
+        width: 100%;
+
+        .col_left {
+            ion-icon {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .timeline-line {
+            display: block;
+            width: 1px;
+            height: 90%;
+            background-color: var(--ion-color-secondary);
+            margin: -7px 7px;
+        }
+
+        .timeline-content {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .timeline-imglist {
+            img {
+                display: inline;
+                width: 56px;
+                height: 56px;
+                padding-right: 3px;
+            }
+        }
+
+        .timeline-header {
+            h3 {
+                font-size: 14px;
+                font-weight: 500;
+                color: #424242;
+            }
+
+            ion-col {
+                color: #666;
+
+                small {
+                    font-size: 11px;
+                    color: #999999;
+
+                    ion-icon {
+                        margin-left: 8px;
+                    }
+                }
+            }
+
+            ion-col:nth-child(2) {
+                color: #999999;
+                margin-top: 20px;
+                line-height: 14px;
+                display: flex;
+                justify-content: flex-end;
+
+                span {
+                    font-size: 14px;
+                    margin-left: 4px;
+                }
+            }
+        }
+
+    }
+
+    .reply {
+        border-radius: 4px;
+        background-color: #f7f7f7;
+        padding: 12px;
+    }
+
+    h2 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #424242;
+        padding: 11.5px 16.5px;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .text_comment {
+        padding: 20px 16px;
+
+        ion-textarea {
+            border-radius: 4px;
+            background-color: #f7f7f7;
+            padding: 12px;
+        }
+
+        ion-button {
+            margin-top: 8px;
+            width: 52px;
+            --height: 24px;
+            border: 1px solid #6b9dff;
+            border-radius: 15px;
+            --border-radius: 15px;
+            color: #6b9dff;
+            --margin-top: 0;
+            --margin-bottom: 0;
+            --background: #fff;
+            --background-focused: #fff;
+            --background-activated: #fff;
+        }
+
+    }
+
+    .in-list {
+        background: #fff;
+
+        .in-list-div {
+            box-sizing: border-box;
+            padding-left: 16px;
+
+        }
+
+        ion-item {
+            background: #fff;
+            padding: 9px 11.5px 9px 0;
+            border-bottom: 0.5px solid #e6e6e6;
+
+            .avatar {
+                width: 40px;
+                height: 40px;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+
+        ion-item:nth-child(1) {
+            border-top: 0.5px solid #e6e6e6;
+        }
+    }
+
+    >span {
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+        font-size: 12px;
+        color: #999999;
+    }
+}

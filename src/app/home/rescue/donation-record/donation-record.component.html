@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar color="#fff">
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="md-arrow-back" default-href="details/donation"></ion-back-button>
+        </ion-buttons>
+        <ion-title>乐捐记录</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list class="bill-list" lines="none">
+        <ion-item justify-content-between (click)="goDetail()">
+            <ion-avatar>
+                <img src="../../../../assets/imgs/avatar.png" alt="">
+            </ion-avatar>
+            <ion-label padding-start>
+                <span class="title">林勇 </span>
+                <ion-icon name="ios-male" color="tertiary"></ion-icon>
+                <br>
+                <span class="time">今天 04:37</span>
+            </ion-label>
+            <ion-label text-right class="in">+36</ion-label>
+        </ion-item>
+        <ion-item justify-content-between (click)="goDetail()">
+            <ion-avatar>
+                <img src="../../../../assets/imgs/avatar.png" alt="">
+            </ion-avatar>
+            <ion-label padding-start>
+                <span class="title">李霞 </span>
+                <ion-icon name="ios-female" color="primary"></ion-icon>
+                <br>
+                <span class="time">昨天 04:37</span>
+            </ion-label>
+            <ion-label text-right class="out">-200</ion-label>
+        </ion-item>
+
+    </ion-list>
+</ion-content>

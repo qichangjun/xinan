@@ -1,0 +1,110 @@
+ion-header {
+    border: none;
+
+    ion-toolbar {
+        display: flex;
+    }
+
+    ion-toolbar:first-child {
+        border: none;
+
+        ion-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+ion-content {
+    --background: #f7f7f7;
+
+    ion-slide {
+        height: 375px;
+
+        img {
+            width: 375px;
+            height: 375px;
+        }
+    }
+
+    ion-row {
+        background: #fff;
+        padding: 11px 14px 15px 16.5px;
+        border-bottom: 1px solid #fefefe;
+        margin-bottom: 16px;
+
+        ion-text {
+            width: 100%;
+            font-size: 11px;
+            font-weight: 500;
+            color: #999999;
+            margin: 5px 0;
+        }
+
+        .text_tit {
+            font-size: 16px;
+            font-weight: bold;
+            color: #424242;
+        }
+
+        .text_red {
+
+            span {
+                color: #e83030;
+                font-size: 18px;
+                font-weight: 900;
+                margin-right: 5.5px;
+            }
+
+            i {
+                font-size: 11px;
+                font-weight: 500;
+                color: #bdbdbd;
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    .addRemove {
+        ion-col {
+            padding: 0;
+
+            span {
+                font-size: 14px;
+                font-weight: 500;
+                height: 100%;
+                color: #666666;
+            }
+        }
+
+        ion-col:nth-child(1) {
+            display: flex;
+            align-self: center;
+        }
+
+    }
+
+    .details {
+        font-size: 16px;
+        margin-bottom: 0;
+    }
+}
+
+ion-footer {
+    .total {
+        ion-icon {
+            font-size: 20px;
+            color: #666666;
+        }
+
+        ion-badge {
+            position: absolute;
+            z-index: 1;
+            width: 13px;
+            height: 13px;
+            padding: 0px;
+            top: 0;
+            left: 18px;
+        }
+    }
+}
