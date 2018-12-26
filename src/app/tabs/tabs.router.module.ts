@@ -31,6 +31,11 @@ const routes: Routes = [
                 path: 'me',
                 outlet: 'me',
                 component: MePage
+            },
+            {
+                path:'',
+                redirectTo: '/tabs/(home:home)',
+                pathMatch:'full'
             }
         ]
     },

@@ -9,21 +9,20 @@ export class httpHanldeService {
     constructor(public toastCtrl: ToastController){}
 
     public extractDataSuccess(res) {
-        let body = res.json();    
-        this.showToast(body.message)   
-        if (body.code == 200) {
-            return body.data || {};
+        let body = res.json();       
+        if (body.data) {
+            return body.data;
         } else { 
-            return Promise.reject(body.message);
+            return Promise.reject(body);
         }
     }
 
     public extractData(res) {
         let body = res.json();
-        if (body.code == 200) {
-            return body.data || {};
+        if (body.data) {
+            return body.data;
         } else { 
-            return Promise.reject(body.message);
+            return Promise.reject(body);
         }
     }
 
@@ -33,7 +32,7 @@ export class httpHanldeService {
 
     public handleError(error: any): Promise<any> {  
         console.error(error)   
-        return Promise.reject(error.message || error);
+        return Promise.reject(error.msg || error);
     }
 
     async showToast(msg: string, pos: any = 'bottom') {

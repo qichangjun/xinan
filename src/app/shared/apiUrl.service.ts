@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class apiUrlService{
-    baseUrl = 'http://120.79.0.57:3000/';
-    signIn = 'login';
-    getCode = 'verifycode';
-    resetPass = 'uptPswd';
+    baseUrl = 'http://120.78.200.228/';
+    signIn = 'api/public/register';
+    getCode = 'api/public/sendsms';
+    resetPass = 'api/public/resetpassword';
+    signInWithPassword = 'api/public/login';
 }

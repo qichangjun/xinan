@@ -24,7 +24,7 @@ export class RetrievePassPage implements OnInit {
     };
     eyeshow1: boolean;
     eyeshow2: boolean;
-    reqId : '';
+    uuid : '';
 
     timer = null; // 获取验证码定时器
 
@@ -112,35 +112,14 @@ export class RetrievePassPage implements OnInit {
     async toResetPass(formValue, errors) {
         // 检查用户输入是否有误
         this.checkAll(errors);
-        let password = formValue.password1
-        password = hex_md5(password)
         if (this.data.ok) {
             try{
-                await this.signService.resetPass(formValue.phone,password,formValue.code,this.reqId)
+                await this.signService.resetPass(formValue.phone,formValue.password1,formValue.code,this.uuid)
+                this.showToast('密码重置成功')
                 this.back();
             }catch(err){
                 this.showErrorToast(err);
             }
-            
-            // this.apollo.mutate({
-            //     mutation: resetPassword,
-            //     variables: {
-            //         mobile: formValue.phone,
-            //         validationCode: formValue.code,
-            //         password: formValue.password1
-            //     }
-            // }).subscribe((val) => {
-            //     console.log(val);
-            //     if (val && val.data && val.data.resetPassword) {
-            //         const send = val.data.resetPassword;
-            //         if (send.code === 200) {
-            //             this.back();
-            //             this.showToast(send.message);
-            //         } else {
-            //             this.showErrorToast(send.message);
-            //         }
-            //     }
-            // });
         }
     }
 
@@ -150,7 +129,7 @@ export class RetrievePassPage implements OnInit {
         if (btnStatus && this.timer === null) {
             try{
                 let res = await this.signService.getCode(this.data.phone)
-                this.reqId = res.RequestId
+                this.uuid = res
                 this.data.status = false;
                 this.timer = setInterval(() => {
                     if (this.data.status === false && this.data.time > 0) {
@@ -164,33 +143,6 @@ export class RetrievePassPage implements OnInit {
                 this.showErrorToast(err);
                 return 
             }     
-
-            // this.apollo.mutate({
-            //     mutation: sendValidationCode,
-            //     variables: {
-            //         mobile: this.data.phone
-            //     }
-            // }).subscribe((res: any) => {
-            //     console.log(res);
-            //     if (res.data.sendValidationCode) {
-            //         const send = res.data.sendValidationCode;
-            //         if (send.code === 200) {
-            //             this.data.status = false;
-            //             this.timer = setInterval(() => {
-            //                 if (this.data.status === false && this.data.time > 0) {
-            //                     this.data.info = '短信验证码(' + this.data.time-- + 's)';
-            //                 } else {
-            //                     this.stop_timer(0);
-            //                 }
-
-            //             }, 1000);
-            //             this.showToast('验证码已经发送，注意查看');
-            //         } else {
-            //             this.showErrorToast(send.message);
-            //         }
-            //     }
-            // });
-
         } else if (!valid) {
             this.showErrorToast('手机号码为空或格式错误');
             if (this.timer !== null) { this.stop_timer(1); }

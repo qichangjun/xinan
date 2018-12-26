@@ -8,7 +8,7 @@ import { SignService } from './sign-in.service'
 declare var wilddog: any;
 // 引入微信服务
 declare var Wechat: any;
-declare var hex_md5 : any;
+declare var hex_md5: any;
 @Component({
     selector: 'app-sign-in',
     templateUrl: './sign-in.page.html',
@@ -16,16 +16,29 @@ declare var hex_md5 : any;
 })
 export class SignInPage implements OnInit {
 
-    method = 1; // 登陆方式 0:密码登录 1:验证码登录 2:微信登录
+    method = 0; // 登陆方式 0:密码登录 1:验证码登录 2:微信登录
 
+    eyeshow1: boolean;
+    eyeshow2: boolean;
     phone = '';
-    reqId = '';
+    uuid = '';
+
+    data = {
+        ok: false,
+        phone: '',
+        password1: '',
+        password2: '',
+        code: '',
+        status: true,	// 获取验证码按钮的启用禁用状态
+        time: 59,
+        info: '短信验证码'
+    };
 
     vertify_pass = {
         ok: false,
         phone: '',
         password: '',
-        repassword : ''
+        repassword: ''
     };
 
     vertify_code = {
@@ -42,7 +55,7 @@ export class SignInPage implements OnInit {
     loading;
 
     constructor(
-        private signService : SignService,
+        private signService: SignService,
         private toastCtrl: ToastController,
         private apollo: Apollo,
         private loadingCtrl: LoadingController,
@@ -125,7 +138,10 @@ export class SignInPage implements OnInit {
         } else if (!this.check('minlength', errors[1])) {
             this.showErrorToast('验证码为六位验证码');
             this.vertify_code.ok = false;
-        } else {
+        } else if (this.data.password1 !== this.data.password2) {
+            this.showErrorToast('两次密码输入不一致');
+            this.vertify_code.ok = false;
+        }else {
             this.vertify_code.ok = true;
         }
     }
@@ -151,19 +167,19 @@ export class SignInPage implements OnInit {
     }
 
     //点击密码注册
-    createInPass(formValue, errors){
+    createInPass(formValue, errors) {
         this.checkPass(errors);
         if (this.vertify_pass.ok) {
-            wilddog.auth().createUserWithPhoneAndPassword(formValue.phone, formValue.password).then((user)=>{
+            wilddog.auth().createUserWithPhoneAndPassword(formValue.phone, formValue.password).then((user) => {
                 // 获取用户
                 console.log(user);
-                if(user && user.uid){
-                    localStorage.setItem('token',user.__authManager.Wa.idToken);
-                    localStorage.setItem('userInfo',JSON.stringify(user));
+                if (user && user.uid) {
+                    localStorage.setItem('token', user.__authManager.Wa.idToken);
+                    localStorage.setItem('userInfo', JSON.stringify(user));
                     this.back();
                     this.showToast('登陆成功');
                 }
-           }).catch( (error) =>{
+            }).catch((error) => {
                 // 错误处理
                 console.log(error);
                 this.showErrorToast(error.message)
@@ -173,49 +189,28 @@ export class SignInPage implements OnInit {
 
     // 点击密码登录按钮
     async toSignInPass(formValue, errors) {
-        console.log(formValue);
         // 检查用户输入是否有误
         this.checkPass(errors);
         if (this.vertify_pass.ok) {
-            let password = formValue.password
-            password = hex_md5(password)
-            try{
-                let res = await this.signService.signInWithPassword(formValue.phone,password)
-                if(res){
-                    let token = res.token || '123accessToken'
+            try {
+                let res = await this.signService.signInWithPassword(formValue.phone, formValue.password)
+                if (res) {
+                    this.showToast('登陆成功')
+                    let token = res.token
                     localStorage.setItem('token', token);
-                    localStorage.setItem('userInfo',JSON.stringify({
-                        mobile : formValue.phone,
-                        username : formValue.phone,
-                        identityNumber : res.identityNumber,
-                        nickname : '心安天使',
-                        address : res.address,
-                        weChatBindField : res.weChatBindField
+                    localStorage.setItem('userInfo', JSON.stringify({
+                        mobile: res.user.phone,
+                        username: res.user.username,
+                        identityNumber: res.user.identify_number,
+                        nickname: res.user.nickname || '心安天使',
+                        address: res.user.address,
+                        weChatBindField: res.user.weChatBindField
                     }));
                     this.back();
                 }
-            }catch(err){
+            } catch (err) {
                 this.showErrorToast(err)
             }
-            // this.apollo.watchQuery<any>({
-            //     query: login,
-            //     variables: {
-            //         username: formValue.phone,
-            //         password: formValue.password
-            //     }
-            // }).valueChanges.subscribe((val) => {
-            //     console.log(val);
-            //     if (val && val.data && val.data.login) {
-            //         const send = val.data.login;
-            //         if (send.code === 200 && send.data && send.data.token) {
-            //             localStorage.setItem('token', send.data.token.accessToken);
-            //             this.back();
-            //             this.showToast(send.message);
-            //         } else {
-            //             this.showErrorToast(send.message);
-            //         }
-            //     }
-            // });
         }
     }
 
@@ -224,63 +219,25 @@ export class SignInPage implements OnInit {
         // 检查用户输入是否有误
         this.checkCode(errors);
         if (this.vertify_code.ok) {
-            try{
-                let res = await this.signService.signIn(formValue.phone,formValue.code,this.reqId)
-                if(res){
-                    if (res.initalPswd){
-                        const toast = await this.toastCtrl.create({
-                            message: '注册成功，初始化密码为:' + res.initalPswd + ',请尽快设置新的密码',
-                            duration: 6000,
-                            position: 'middle',
-                            cssClass: 'auth-toast',
-                            translucent: true
-                        });
-                        toast.present();
-                    }
+            try {
+                let res = await this.signService.signIn(formValue.phone, formValue.code, this.uuid,formValue.password1)
+                if (res) {
                     let token = res.token || '123accessToken'
                     localStorage.setItem('token', token);
-                    localStorage.setItem('userInfo',JSON.stringify({
-                        mobile : formValue.phone,
-                        username : formValue.phone,
-                        identityNumber : res.identityNumber,
-                        nickname : '心安天使',
-                        address : res.address,
-                        weChatBindField : res.weChatBindField
+                    localStorage.setItem('userInfo', JSON.stringify({
+                        mobile: formValue.phone,
+                        username: formValue.phone,
+                        identityNumber: res.identityNumber,
+                        nickname: '心安天使',
+                        address: res.address,
+                        weChatBindField: res.weChatBindField
                     }));
                     this.back();
                 }
-            }catch(err){
+            } catch (err) {
                 this.showErrorToast(err)
             }
-            
-            
-            // this.apollo.watchQuery<any>({
-            //     query: verificationCodeLogin,
-            //     variables: {
-            //         mobile: formValue.phone,
-            //         validationCode: formValue.code
-            //     }
-            // }).valueChanges.subscribe((val) => {
-            //     console.log(val);
-            //     if (val && val.data && val.data.verificationCodeLogin) {
-            //         const send = val.data.verificationCodeLogin;
-            //         if (send.code === 200 && send.data && send.data.token) {
-            //             localStorage.setItem('token', send.data.token.accessToken);
-            //             if (send.data.newUser) {
-            //                 // this.router.navigate(['/sign-up']);
-            //                 // this.clear();
-            //                 // this.showToast('注册成功，请设置密码');
-            //                 this.back();  // 2018.10.19 暂时不让用户去设置密码
-            //                 this.showToast(send.message);
-            //             } else {
-            //                 this.back();
-            //                 this.showToast(send.message);
-            //             }
-            //         } else {
-            //             this.showErrorToast(send.message);
-            //         }
-            //     }
-            // });
+
         }
     }
 
@@ -288,9 +245,9 @@ export class SignInPage implements OnInit {
     async getCode(valid) {
         const btnStatus = valid && this.vertify_code.status;
         if (btnStatus && this.timer === null) {
-            try{
-                let res = await this.signService.getCode(this.phone)
-                this.reqId = res.RequestId
+            try {
+                let res = await this.signService.getCode(this.data.phone)
+                this.uuid = res
                 this.vertify_code.status = false;
                 this.timer = setInterval(() => {
                     if (this.vertify_code.status === false && this.vertify_code.time > 0) {
@@ -298,38 +255,13 @@ export class SignInPage implements OnInit {
                     } else {
                         this.stop_timer(0);
                     }
-
                 }, 1000);
                 this.showToast('验证码已经发送，注意查看')
-            }catch(err){
+            } catch (err) {
                 this.showErrorToast(err);
-                return 
-            }     
-            // this.apollo.mutate({
-            //     mutation: sendValidationCode,
-            //     variables: {
-            //         mobile: this.phone
-            //     }
-            // }).subscribe((res: any) => {
-            //     console.log(res);
-            //     if (res.data.sendValidationCode) {
-            //         const send = res.data.sendValidationCode;
-            //         if (send.code === 200) {
-            //             this.vertify_code.status = false;
-            //             this.timer = setInterval(() => {
-            //                 if (this.vertify_code.status === false && this.vertify_code.time > 0) {
-            //                     this.vertify_code.info = '短信验证码(' + this.vertify_code.time-- + 's)';
-            //                 } else {
-            //                     this.stop_timer(0);
-            //                 }
+                return
+            }
 
-            //             }, 1000);
-            //             this.showToast('验证码已经发送，注意查看');
-            //         } else {
-            //             this.showErrorToast(send.message);
-            //         }
-            //     }
-            // });
 
         } else if (!valid) {
             this.showErrorToast('手机号码为空或格式错误');
@@ -409,12 +341,12 @@ export class SignInPage implements OnInit {
     // 重置数据
     clear() {
         this.method = 1;
-        this.phone = '';
+        this.data.phone = '';
         this.vertify_pass = {
             ok: false,
             phone: '',
             password: '',
-            repassword : ''
+            repassword: ''
         };
         this.vertify_code = {
             ok: false,
@@ -437,5 +369,5 @@ export class SignInPage implements OnInit {
         this.router.navigate(['/']);
     }
 
-    
+
 }

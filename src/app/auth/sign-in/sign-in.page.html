@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
         </ion-buttons>
-        <ion-title>登录</ion-title>
+        <ion-title>登录/注册</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -19,7 +19,7 @@
                     <ion-item no-padding>
                         <ion-label position="floating">请输入手机号码</ion-label>
                         <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
-                            [(ngModel)]="phone" #phoneRef="ngModel"></ion-input>
+                            [(ngModel)]="data.phone" #phoneRef="ngModel"></ion-input>
                     </ion-item>
 
                     <ion-row align-items-end justify-content-start>
@@ -58,13 +58,45 @@
 
         <!-- S 验证码登录 -->
         <div *ngIf="method == 1">
-            <form #codeFormRef="ngForm" (ngSubmit)="toSignInCode(codeFormRef.value, [phoneRef.errors, codeRef.errors])">
+            <form #codeFormRef="ngForm" (ngSubmit)="toSignInCode(codeFormRef.value, [phoneRef.errors, codeRef.errors,pass1Ref.errors,pass2Ref.errors])">
                 <ion-list>
                     <ion-item no-padding>
                         <ion-label position="floating">请输入手机号码</ion-label>
                         <ion-input type="tel" name="phone" color="dark" required minlength="11" maxlength="11" pattern="^[1][3,4,5,7,8,9][0-9]{9}$"
-                            [(ngModel)]="phone" #phoneRef="ngModel"></ion-input>
+                            [(ngModel)]="data.phone" #phoneRef="ngModel"></ion-input>
                     </ion-item>
+
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">请输入密码</ion-label>
+                                <ion-input type="{{eyeshow1?'text':'password'}}" color="dark" name="password1" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data.password1" #pass1Ref="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow1 = !eyeshow1"
+                                no-padding>
+                                <i class="iconfont {{eyeshow1?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
+    
+                    <ion-row align-items-end justify-content-start>
+                        <ion-col size="10" no-padding>
+                            <ion-item no-padding>
+                                <ion-label position="floating">再次输入密码</ion-label>
+                                <ion-input type="{{eyeshow2?'text':'password'}}" color="dark" name="password2" required
+                                    minlength="6" maxlength="12" pattern="[A-Za-z]|[0-9]|[A-Za-z].*[0-9]|[0-9].*[A-Za-z]"
+                                    [(ngModel)]="data.password2" #pass2Ref="ngModel" [appInputFocus]="true"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col size="2" class="eye">
+                            <ion-button solt="end" fill="clear" color="medium" class="eye-open-close" (click)="eyeshow2 = !eyeshow2"
+                                no-padding>
+                                <i class="iconfont {{eyeshow2?'icon-show':'icon-hide'}}"></i></ion-button>
+                        </ion-col>
+                    </ion-row>
 
                     <ion-row align-items-end justify-content-start>
                         <ion-col size="7" no-padding class="get-code-item">
@@ -74,6 +106,7 @@
                                     #codeRef="ngModel" [appInputFocus]="true"></ion-input>
                             </ion-item>
                         </ion-col>
+
                         <ion-col size="5" class="get-code">
                             <ion-button solt="end" fill="clear" color="{{phoneRef.valid && vertify_code.status ? 'warning' : 'medium'}}"
                                 class="get-code-btn" (click)="getCode(phoneRef.valid)" no-padding>
@@ -81,14 +114,14 @@
                         </ion-col>
                     </ion-row>
 
-                    <div class="info clear" padding-top>
+                    <!-- <div class="info clear" padding-top>
                         如果您所填手机号未注册过APP，系统默认以该手机号注册。
-                    </div>
+                    </div> -->
 
                     <ion-row padding-vertical>
                         <ion-col size="6">
                             <ion-button color="primary" [ngClass]="{'disable-btn': !(phoneRef.valid && codeRef.valid)}"
-                                expand="block" shape="round" type="submit">登录</ion-button>
+                                expand="block" shape="round" type="submit">注册</ion-button>
                         </ion-col>
                         <ion-col size="6">
                             <ion-button color="medium" fill="clear" expand="block" routerLink="/tabs">随便逛逛</ion-button>
@@ -112,8 +145,8 @@
                 <!-- <a *ngIf="method != 3" (click)="method = 3" padding-end>微信登录</a> -->
                 <!-- <a *ngIf="method == 3" (click)="method = 0" padding-end>密码登录</a>
                 <span> | </span> -->
-                <a *ngIf="method != 1" (click)="method = 1" padding-start>验证码登录</a>
-                <a *ngIf="method != 0" (click)="method = 0" padding-start>密码登录</a>
+                <a *ngIf="method != 1" (click)="method = 1" padding-start>还没有账号？注册一个</a>
+                <a *ngIf="method != 0" (click)="method = 0" padding-start>已有账号,直接登陆</a>
                 <!-- <a *ngIf="method != 4" (click)="method = 4" padding-start>手机，密码注册</a> -->
             </div>
             <!-- E 其他登录方式 -->
