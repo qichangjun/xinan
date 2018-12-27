@@ -8,7 +8,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class CardMemberComponent implements OnInit {
 
-    total: Number = 59;
+    total: Number = 26;
     serviceFee: any = 26;
     years: any = 1;
     userName: String;

@@ -56,7 +56,7 @@
             </ion-col>
         </ion-row>
     </ion-row>
-    <ion-card class="car_price" no-margin>
+    <!-- <ion-card class="car_price" no-margin>
         <ion-card-content no-padding>
             <div>
                 <h3>救助金额</h3>
@@ -79,7 +79,7 @@
                 <ion-col>可抵扣<i>1.5</i>元</ion-col>
             </ion-row>
         </ion-card-content>
-    </ion-card>
+    </ion-card> -->
 </ion-content>
 
 <ion-footer>
@@ -87,8 +87,10 @@
         <ion-icon (click)="agreed()" [ngClass]="{'is_agreed': isAgreed}" name="checkmark-circle"></ion-icon>
         <span>
             我已阅读并同意
-            <a routerLink="/terms">
-                《心安救助基金共约》
+            <!-- routerLink="/terms" -->
+    
+            <a (click)="gotoTerms()">
+                《心安救助基金公约》
             </a>
         </span>
     </ion-row>
@@ -98,10 +100,10 @@
             <span class="price">{{total}}元</span>
         </ion-col>
         <ion-col size="4">
-            <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
+            <ion-button (click)="aliPay()" [disabled]="!userName || !number" class="sub" expand="block">支付宝支付</ion-button>
         </ion-col>
-        <ion-col size="4">
+        <!-- <ion-col size="4">
             <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
-        </ion-col>
+        </ion-col> -->
     </ion-row>
 </ion-footer>

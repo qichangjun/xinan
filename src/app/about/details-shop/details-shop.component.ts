@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Slides, AlertController, NavController } from '@ionic/angular';
+import { Slides, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
     selector: 'app-details-shop',
@@ -20,10 +20,7 @@ export class DetailsShopComponent implements OnInit {
 
     constructor(
         private router: Router,
-        public alertController: AlertController,
-        private navCtrl: NavController,
-
-
+        public alertController: AlertController
     ) { }
 
     ngOnInit() {

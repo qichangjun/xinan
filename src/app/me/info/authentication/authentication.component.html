@@ -30,11 +30,27 @@
         </div>
         <div class="clear"></div>
     </div>
-
+<!-- 
     <ion-list lines="none" class="upload">
         <ion-item no-padding justify-content-between routerLink="/info/auth-upload">
             <ion-label padding-start>上传证件</ion-label>
             <ion-label text-right>未上传
+            </ion-label>
+        </ion-item>
+    </ion-list> -->
+
+    <ion-list lines="none" class="upload" *ngIf="!certifying">
+        <ion-item no-padding justify-content-between [routerLink]="['/details_publicity']">
+            <ion-label padding-start>未认证</ion-label>
+            <ion-label text-right>去认证
+            </ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list lines="none" class="upload" *ngIf="certifying">
+        <ion-item no-padding justify-content-between >
+            <ion-label padding-start>已认证</ion-label>
+            <ion-label text-right>
             </ion-label>
         </ion-item>
     </ion-list>

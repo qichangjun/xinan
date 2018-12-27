@@ -59,9 +59,14 @@ export class SignService {
         }
         return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.signInWithPassword, post_data, {})
             .toPromise()
-            .then(res =>
-                this._httpHanldeService.extractDataSuccess(res)
-            )
+            .then(res =>{
+                let body = res.json()
+                if(body.code == 0){
+                    return this._httpHanldeService.handleError(body.data)
+                }else{
+                    return this._httpHanldeService.extractDataSuccess(res)
+                }
+            })
             .catch(error =>
                 this._httpHanldeService.handleError(error)
             );

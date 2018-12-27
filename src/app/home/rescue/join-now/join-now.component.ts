@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController,NavController,NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { JoinNowService } from './join-now.service';
+import { Alipay } from '@ionic-native/alipay/ngx';
+import { ToastController } from '@ionic/angular';
+declare let cordova;
 @Component({
     selector: 'join-now',
     templateUrl: './join-now.component.html',
@@ -8,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class JoinNowComponent implements OnInit {
 
-    total: Number = 92;
+    total: Number = 26;
     isAgreed: Number = 1;
     years: any = 1;
     remHigh: Number = 0;
@@ -45,16 +49,35 @@ export class JoinNowComponent implements OnInit {
     number;
 
     constructor(
+        public _joinNowService : JoinNowService,
         public alertController: AlertController,
+        private alipay: Alipay,
         private router: Router,
+        public toastCtrl: ToastController,
+        private navCtrl: NavController
     ) { }
 
     ngOnInit() {
+        if(!window.localStorage.getItem('token')){
+            this.navCtrl.navigateForward(['/auth/sign-in']);
+            this.showToast('请先登陆')
+            return 
+        }
         this.initTotal();
     }
 
+    async showToast(msg: string, pos: any = 'bottom') {
+        const toast = await this.toastCtrl.create({
+            message: msg,
+            duration: 3000,
+            position: pos,
+            cssClass: 'auth-toast',
+            translucent: true
+        });
+        toast.present();
+    }
+
     butClick(btn) {
-        console.log(btn);
         this.btns.forEach((bt: any) => {
             bt.noClick = true;
             if (bt.value === btn.value && btn.value !== '自定义') {
@@ -107,29 +130,7 @@ export class JoinNowComponent implements OnInit {
 
     alertMes() {
         this.presentAlert('此功能正在拼命开发中，请等待。');
-        // if (this.isAgreed) {
-
-        //     const header = '提示！';
-        //     const message = '您的申请已经提交，现阶段仅向定向通道开放，请耐心等待。';
-        //     const buttons = [
-        //         {
-        //             text: '取消',
-        //             role: 'cancel',
-        //             cssClass: 'secondary',
-        //             handler: (blah) => {
-        //                 console.log('Confirm Cancel: blah');
-        //             }
-        //         }, {
-        //             text: '下一步',
-        //             handler: () => {
-        //                 this.router.navigate(['/success-pay']);
-        //             }
-        //         }
-        //     ];
-        //     this.alertMessage(header, message, buttons);
-        // } else {
-        //     this.presentAlert('请阅读并同意《心安救助基金共约》');
-        // }
+    
     }
 
     initTotal() {
@@ -160,7 +161,7 @@ export class JoinNowComponent implements OnInit {
             }
         ];
 
-        this.total = 66 + this.serviceFee;
+        this.total = 0 + this.serviceFee;
     }
 
     async presentAlert(message) {
@@ -180,6 +181,33 @@ export class JoinNowComponent implements OnInit {
         });
 
         await alert.present();
+    }
+
+    async gotoTerms(){
+        this.userName = this.userName || ''
+        this.number = this.number || ''
+        let res = await this.navCtrl.navigateForward('/terms?userName=' + this.userName + '&number=' + this.number)
+    }
+
+    async aliPay(){
+        try{
+            let res = await this._joinNowService.join(this.userName,this.number)
+            let orderId = res.id
+            let orderInfo = await this._joinNowService.aliPayOrder(orderId)
+            cordova.plugins.ali.pay(orderInfo.res,function success(result){    
+                if (result.resultStatus == 9000){
+                    //验证用户认证状态
+                    this.router.navigate(['/tabs/(me:me)']);
+                }else{
+                    alert(result.memo)
+                }
+            },function error(error){
+                alert(error)
+            });
+        }catch(err){
+            this.router.navigate(['/auth/sign-in']);
+            this.showToast('请先登陆')
+        }
     }
 
 }

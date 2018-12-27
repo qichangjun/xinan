@@ -7,5 +7,7 @@ export class apiUrlService{
     signIn = 'api/public/register';
     getCode = 'api/public/sendsms';
     resetPass = 'api/public/resetpassword';
+    joinAnXin = 'api/order/add';
+    aliPayOrder= 'api/order/pay'
     signInWithPassword = 'api/public/login';
 }

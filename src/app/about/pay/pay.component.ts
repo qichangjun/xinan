@@ -40,7 +40,7 @@ export class PayComponent implements OnInit {
         ];
         this.alertMessage(header, message, buttons);
         // } else {
-        //     this.presentAlert('请阅读并同意《心安救助基金共约》');
+        //     this.presentAlert('请阅读并同意《心安救助基金公约》');
         // }
         // }
     }

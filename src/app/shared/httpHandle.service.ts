@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
 import { ToastController } from '@ionic/angular';
 import { HTTPResponse } from '@ionic-native/http';
+import { Router, ActivatedRoute, DefaultUrlSerializer } from '@angular/router';
 @Injectable({
     providedIn: 'root'
 })
 export class httpHanldeService {
-    constructor(public toastCtrl: ToastController){}
+    constructor(
+        private router: Router,
+        public toastCtrl: ToastController){}
 
     public extractDataSuccess(res) {
         let body = res.json();       
@@ -31,8 +34,12 @@ export class httpHanldeService {
     }
 
     public handleError(error: any): Promise<any> {  
-        console.error(error)   
-        return Promise.reject(error.msg || error);
+        // this.router.navigate(['/auth/sign-in']);
+        // this.showToast('请先登陆')
+        if (error.statusText == "Unauthorized" || error.statusText == 'Invalid token'){
+            this.showToast('请先登陆')
+        }
+        return Promise.reject(error.msg || error.statusText || error);
     }
 
     async showToast(msg: string, pos: any = 'bottom') {

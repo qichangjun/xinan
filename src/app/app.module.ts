@@ -6,7 +6,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { Alipay } from '@ionic-native/alipay/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
@@ -23,6 +23,8 @@ import { GraphQLModule } from './shared/graphql.module';
 import { IonicGestureConfig } from './shared/ionic-gesture-config.service';
 import { HttpModule } from '@angular/http';
 import { HTTP } from '@ionic-native/http/ngx';
+
+
 // import { MultiPickerModule } from 'ion-multi-picker';
 // import { Wechat } from '@ionic-native/wechat/ngx';
 @NgModule({
@@ -47,6 +49,7 @@ import { HTTP } from '@ionic-native/http/ngx';
         CallNumber,
         FileTransfer,
         Base64,
+        Alipay,
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         // Wechat
         HTTP,
