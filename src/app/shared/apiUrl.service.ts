@@ -10,4 +10,6 @@ export class apiUrlService{
     joinAnXin = 'api/order/add';
     aliPayOrder= 'api/order/pay'
     signInWithPassword = 'api/public/login';
+    checkUserInfo = 'api/user/index';
+    finishOrder = 'api/order/finish'
 }
