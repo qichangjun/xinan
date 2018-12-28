@@ -191,14 +191,10 @@ export class JoinNowComponent implements OnInit {
 
     async aliPay(){
         try{
-            
-            let res = await this._joinNowService.join(this.userName,this.number)
-            let orderId = res.id
-            let orderInfo = await this._joinNowService.aliPayOrder(orderId)
+            let orderInfo = await this._joinNowService.join(this.userName,this.number)
             cordova.plugins.ali.pay(orderInfo.res,async function success(result){    
                 if (result.resultStatus == 9000){
                     this.showToast('交易成功，若认证状态未改变请稍等后重新登陆')
-                    let finish = await this._joinNowService.finishOrder(orderId)
                     //验证用户认证状态
                     let userInfo = await this._joinNowService.checkUserInfo()
                     localStorage.setItem('userInfo', JSON.stringify({

@@ -61,9 +61,7 @@ export class JoinNowService {
     async join(certification_username: string,certification_number:string) {
         let parameter = new URLSearchParams()
         let post_data = {
-            cart : [{"id":458,"name":"年费","num":1}],
-            remark : '加入安心',
-            payment_id : 3,
+            payment_id : 4,
             certification:{
                 certification_username : certification_username,
                 certification_number : certification_number
