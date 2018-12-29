@@ -222,19 +222,6 @@ export class SignInPage implements OnInit {
         if (this.vertify_code.ok) {
             try {
                 let res = await this.signService.signIn(formValue.phone, formValue.code, this.uuid,formValue.password1)
-                if (res) {
-                    let token = res.token || '123accessToken'
-                    localStorage.setItem('token', token);
-                    localStorage.setItem('userInfo', JSON.stringify({
-                        mobile: formValue.phone,
-                        username: formValue.phone,
-                        identityNumber: res.identityNumber,
-                        nickname: '心安天使',
-                        address: res.address,
-                        weChatBindField: res.weChatBindField
-                    }));
-                    this.back();
-                }
             } catch (err) {
                 this.showErrorToast(err)
             }

@@ -11,5 +11,13 @@ export class apiUrlService{
     aliPayOrder= 'api/order/pay'
     signInWithPassword = 'api/public/login';
     checkUserInfo = 'api/user/index';
-    finishOrder = 'api/order/finish'
+    finishOrder = 'api/order/finish';
+    getShopMenu = 'api/menu/index'
+    getShopDetail = 'api/product/detail'
+    addToShopcar = 'api/cart/add';
+    getShoCardData = 'api/cart/index'
+    getAddressList = 'api/user/contactlist'
+    addAddress = 'api/user/addcontact'
+    setAsDefault = 'api/user/setcontact'
+    deleteAddress = 'api/user/delcontact'
 }

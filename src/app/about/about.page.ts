@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Slides, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { AboutService } from './about.service';
 import { ShopData, CardShops } from '../common/interface';
 @Component({
     selector: 'app-about',
@@ -16,17 +16,22 @@ export class AboutPage implements OnInit {
         '../../assets/imgs/img_01@3x.png',
         '../../assets/imgs/img_jifen@2x.png'
     ];
-    cShops;
+    cShops : Array<any> = [];
 
     constructor(
         private router: Router,
         public alertController: AlertController,
-
+        public _aboutService : AboutService
     ) {
-        this.cShops = Array.from({ length: 2 }, (_, k) => createCardShop(k + 1));
     }
 
     ngOnInit() {
+        this.getShoppingMenu()
+    }
+
+    async getShoppingMenu(){
+        let res = await this._aboutService.getShopMenu()
+        this.cShops = res 
     }
 
     alertMes() {

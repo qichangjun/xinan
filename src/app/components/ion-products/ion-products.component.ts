@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { apiUrlService} from '../../shared/apiUrl.service'
 @Component({
     selector: 'ion-products',
     templateUrl: './ion-products.component.html',
@@ -14,6 +14,7 @@ export class IonProductsComponent {
     constructor(
         public navCtrl: NavController,
         private router: Router,
+        public _apiUrlService : apiUrlService
     ) {
     }
 

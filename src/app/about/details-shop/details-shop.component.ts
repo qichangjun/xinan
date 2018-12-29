@@ -1,13 +1,35 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Slides, AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
+import { AboutService } from '../about.service'
+import { apiUrlService} from '../../shared/apiUrl.service'
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
     selector: 'app-details-shop',
     templateUrl: './details-shop.component.html',
     styleUrls: ['./details-shop.component.scss']
 })
 export class DetailsShopComponent implements OnInit {
-
+    id : string = ''
+    buttons = [
+        {
+            text: '取消',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+                console.log('Confirm Cancel: blah');
+            }
+        }, {
+            text: '返回商城',
+            // role: '',
+            handler: () => {
+                this.router.navigate(['tabs']);
+                // this.navCtrl.navigateForward('tabs');
+            }
+        }
+    ]
+    product_skuItem : any = undefined
+    detailInfo : any = undefined
     @ViewChild('slides') slides: Slides;
     imgs = [
         '../../assets/imgs/img_shop_big.png',
@@ -20,10 +42,30 @@ export class DetailsShopComponent implements OnInit {
 
     constructor(
         private router: Router,
-        public alertController: AlertController
-    ) { }
+        public alertController: AlertController,
+        public activeRoute: ActivatedRoute,
+        public _aboutService : AboutService,
+        public _apiUrlService : apiUrlService,
+        private sanitizer: DomSanitizer
+    ) {
+        this.activeRoute.params.subscribe(
+            (params) => {
+               this.id = params.id  
+               this.getShopDetail()
+            });
+     }
 
     ngOnInit() {
+    }
+
+    async getShopDetail(){
+        let res = await this._aboutService.getShopDetail(this.id)
+        
+        this.detailInfo = res 
+        this.detailInfo.forEach(info => {
+            info.detail = this.sanitizer.bypassSecurityTrustHtml(info.detail);
+        });
+        this.product_skuItem = this.detailInfo.product_sku[0]
     }
 
     ionSlideTouchStart() {
@@ -96,10 +138,7 @@ export class DetailsShopComponent implements OnInit {
         ];
         this.alertMessage(header, message, buttons);
     }
-    // this.presentAlert(
-    //     '提示',
-    //     `商城尚未开放购买权限，请耐心等待`
-    // );
+    
     async alertMessage(header, message, buttons) {
         const alert = await this.alertController.create({
             header,
@@ -108,6 +147,16 @@ export class DetailsShopComponent implements OnInit {
         });
 
         await alert.present();
+    }
+
+    async addToShopcar(){
+        try{
+            let res = await this._aboutService.addToShopcar(this.id)
+            this.presentAlert(res.info,res.msg)
+        }catch(err){
+            this.alertMessage('提示', '出错了', this.buttons);
+        }
+        
     }
 }
 

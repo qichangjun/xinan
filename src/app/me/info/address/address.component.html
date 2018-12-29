@@ -10,16 +10,17 @@
 <ion-content padding>
     <div *ngIf="isShow === true">
         <div class="card-list">
-            <ion-card no-margin margin-bottom class="address-card">
+            <ion-card *ngFor="let address of addressList" no-margin margin-bottom class="address-card">
                 <ion-card-header no-padding justify-content-between class="address-card-header">
                     <ion-row>
                         <ion-col class="set-default">
-                            <ion-checkbox mode="ios" size="small" color="secondary" checked="checked"></ion-checkbox>
-                            当前默认地址
+                            <ion-checkbox mode="ios" size="small" color="secondary" [checked]="address.default"></ion-checkbox>
+                            {{address.default ? '当前默认地址' : ''}}
                         </ion-col>
                         <ion-col text-right>
                             <ion-buttons class="handle-btns">
-                                <ion-button color="medium" fill="clear" size="small">删除</ion-button>
+                                <ion-button color="medium" (click)="deleteAddress(address.id)" fill="clear" size="small">删除</ion-button>
+                                
                                 <ion-button color="secondary" fill="clear" size="small">编辑</ion-button>
                             </ion-buttons>
                         </ion-col>
@@ -27,35 +28,14 @@
                 </ion-card-header>
                 <ion-card-content no-padding padding-top class="address-card-content">
                     <ion-row justify-content-between>
-                        <ion-col class="receiver" no-padding text-left>王先生</ion-col>
-                        <ion-col class="receiver-phone" no-padding text-right>13666554222</ion-col>
+                        <ion-col class="receiver" no-padding text-left>{{address.name}}</ion-col>
+                        <ion-col class="receiver-phone" no-padding text-right>{{address.phone}}</ion-col>
                     </ion-row>
-                    <p class="address-detail">贵州省贵阳市高新区科技二路与明敏路十字园美大厦8楼02号</p>
+                    <p class="address-detail">{{address.province + address.city + address.district + address.address}}</p>
+                    <ion-button color="secondary" (click)="setAsDefault(address.id)" *ngIf="!address.default" fill="clear" size="small">设为默认地址</ion-button>
                 </ion-card-content>
             </ion-card>
-            <ion-card no-margin margin-bottom class="address-card">
-                <ion-card-header no-padding justify-content-between class="address-card-header">
-                    <ion-row>
-                        <ion-col class="set-default">
-                            <ion-checkbox mode="ios" size="small" color="secondary"></ion-checkbox>
-                            设为默认地址
-                        </ion-col>
-                        <ion-col text-right>
-                            <ion-buttons class="handle-btns">
-                                <ion-button color="medium" fill="clear" size="small">删除</ion-button>
-                                <ion-button color="secondary" fill="clear" size="small">编辑</ion-button>
-                            </ion-buttons>
-                        </ion-col>
-                    </ion-row>
-                </ion-card-header>
-                <ion-card-content no-padding padding-top class="address-card-content">
-                    <ion-row justify-content-between>
-                        <ion-col class="receiver" no-padding text-left>王先生</ion-col>
-                        <ion-col class="receiver-phone" no-padding text-right>13666554222</ion-col>
-                    </ion-row>
-                    <p class="address-detail">贵州省贵阳市高新区科技二路与明敏路十字园美大厦8楼02号</p>
-                </ion-card-content>
-            </ion-card>
+           
         </div>
         <div padding-vertical>
             <ion-button color="secondary" expand="block" shape="round" class="add-btn" routerLink="/info/address-add">+

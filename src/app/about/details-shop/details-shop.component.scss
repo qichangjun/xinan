@@ -108,3 +108,31 @@ ion-footer {
         }
     }
 }
+
+ul{
+    list-style : none;
+    .tb-selected{
+        border: 1px solid #FF0036;
+        margin: -1px;
+    }
+    li {
+        float: left;
+        position: relative;
+        margin: 0 4px 4px 0;
+        line-height: 20px;
+        vertical-align: middle;
+        padding: 1px;
+        a {
+            display: inline-block;
+            white-space: nowrap;
+            text-decoration: none;
+            padding: 3px 6px;
+            min-width: 10px;
+            _width: 10px;
+            text-align: center;
+            border: 1px solid #DCDCDC;
+            background: #FFF;
+        }
+    }
+}
+

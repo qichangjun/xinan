@@ -2,14 +2,14 @@
     <ion-row>
         <ion-col size="6" *ngFor="let data of products" (click)="goDetails(data.id)">
             <ion-row align-items-center justify-content-center>
-                <img src="{{data.imageurl}}" />
+                <img [src]="_apiUrlService.baseUrl + 'public/uploads/' + data.file.savepath + data.file.savename" />
             </ion-row>
             <ion-row class="car_tit">
-                <p>{{data.title}}</p>
+                <p>{{data.name}}</p>
             </ion-row>
-            <ion-row class="car_prc">
-                <p>{{data.price}}</p>
-            </ion-row>
+            <!-- <ion-row class="car_prc">
+                <p>{{data.rank}}</p>
+            </ion-row> -->
         </ion-col>
     </ion-row>
 </div>

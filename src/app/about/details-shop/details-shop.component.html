@@ -7,20 +7,27 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <img src="../../assets/imgs/img_shop_big.png" />
+<ion-content *ngIf="detailInfo">
+    <img [src]="_apiUrlService.baseUrl + 'public/uploads/' + detailInfo.file.savepath + detailInfo.file.savename" />
     <!-- <ion-slides *ngIf="imgs" #slides pager="true" (ionSlideTouchStart)="ionSlideTouchStart()" [options]="options">
         <ion-slide *ngFor="let img of imgs">
             <img src="{{img}}" />
         </ion-slide>
     </ion-slides> -->
     <ion-row>
-        <ion-text class="text_tit">女士个性标语肩带单肩包时尚便携真皮手提包</ion-text>
-        <ion-text>单肩包/斜挎包 街头/休闲 压花皮</ion-text>
+        <ion-text class="text_tit">{{detailInfo.name}}</ion-text>
+        <ion-text [innerHTML]="detailInfo.detail"></ion-text>
         <ion-text class="text_red">
-            <span>¥2,299.00</span>
-            <i>商城价: 3319.00</i>
+            <span>¥{{detailInfo.price}} / {{detailInfo.unit}}</span>
+            <i>商城价:{{detailInfo.old_price}}</i>
         </ion-text>
+        <ion-text>
+            <ul class="J_TSaleProp tb-clearfix">
+                <li *ngFor="let product_sku of detailInfo.product_sku" [ngClass]="{'tb-selected': product_skuItem == product_sku}" (click)="product_skuItem = product_sku">
+                    <a class="product_sku_item">{{product_sku.name}}</a>
+                </li>
+            </ul>
+        </ion-text>   
     </ion-row>
     <ion-row class="addRemove">
         <ion-col size="8.5">
@@ -34,24 +41,20 @@
             </ion-card>
         </ion-col>
     </ion-row>
-    <ion-row class="addRemove details">
-        <ion-col>
-            <span>商品详情</span>
-        </ion-col>
-    </ion-row>
-    <img src="../../assets/imgs/img_shop_big.png" />
+   
+   
 </ion-content>
 
 <ion-footer>
     <ion-row align-items-center class="total">
         <!-- routerLink="/card" -->
-        <ion-col size="4" (click)="buyNow()">
+        <ion-col size="4" routerLink="/card">
             <ion-badge color="primary">3</ion-badge>
             <ion-icon name="md-cart"></ion-icon>
         </ion-col>
         <ion-col size="4">
             <!-- (click)="shoppingCart()" -->
-            <ion-button (click)="buyNow()" fill="outline" class="white" expand="block">加入购物车</ion-button>
+            <ion-button (click)="addToShopcar()" fill="outline" class="white" expand="block">加入购物车</ion-button>
         </ion-col>
         <ion-col size="4">
             <ion-button (click)="buyNow()" expand="block">立即购买</ion-button>

@@ -14,15 +14,16 @@
                 <ion-virtual-scroll [items]="categories" approxItemHeight="100%">
                     <ion-item lines="none" *virtualItem="let item;let i=index" class="menuItem" [ngClass]="{'active': i==0}"
                         (click)="itemClick(item, $event)">
-                        <span>{{item.FavoritesTitle}}</span>
+                        <span>{{item.name}}</span>
                     </ion-item>
                 </ion-virtual-scroll>
             </ion-col>
-            <ion-col size="9" class="items">
-                <ion-virtual-scroll [items]="products" approxItemHeight="100%">
+            <ion-col size="9" class="items" style="    overflow: auto;">
                     <ion-products [products]="products"></ion-products>
-                </ion-virtual-scroll>
-                <ion-row>
+                <!-- <ion-virtual-scroll [items]="products" approxItemHeight="100%">
+                   
+                </ion-virtual-scroll> -->
+                <!-- <ion-row>
                     <ion-col class="nodata" text-center *ngIf="!hasmore">
                         没有商品啦 ♪(^∇^*)
                     </ion-col>
@@ -30,7 +31,7 @@
                         <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
                         </ion-infinite-scroll-content>
                     </ion-infinite-scroll>
-                </ion-row>
+                </ion-row> -->
             </ion-col>
         </ion-row>
     </ion-grid>

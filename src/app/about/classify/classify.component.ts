@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { InfiniteScroll } from '@ionic/angular';
-
+import { AboutService} from '../about.service';
 import { ShopData } from '../../common/interface';
 @Component({
     selector: 'app-classify',
@@ -22,6 +22,7 @@ export class ClassifyComponent implements OnInit {
     };
 
     constructor(
+        private _aboutService : AboutService
     ) { }
 
     ngOnInit() {
@@ -29,45 +30,25 @@ export class ClassifyComponent implements OnInit {
         this.doInfinite();
     }
 
+
     loadData(event) {
         setTimeout(() => {
-            const arr = Array.from({ length: 6 }, (_, k) => createShopData(k + 1));
-            event.target.complete();
-            if (arr.length === 6) {
-                event.target.disabled = true;
-            }
-            this.products = this.products.concat(arr);
+            // const arr = Array.from({ length: 6 }, (_, k) => createShopData(k + 1));
+            // event.target.complete();
+            // if (arr.length === 6) {
+            //     event.target.disabled = true;
+            // }
+            // this.products = this.products.concat(arr);
             // this.hasmore = false;
         }, 500);
     }
 
     // 获取左侧菜单
-    getCategories() {
-        this.categories = [
-            {
-                FavoritesId: 0,
-                FavoritesTitle: '特惠专区',
-            },
-            {
-                FavoritesId: 1,
-                FavoritesTitle: '休闲零食'
-            },
-            {
-                FavoritesId: 2,
-                FavoritesTitle: '方便速食'
-            },
-            {
-                FavoritesId: 3,
-                FavoritesTitle: '水果甜点'
-            },
-            {
-                FavoritesId: 4,
-                FavoritesTitle: '饮料饮品'
-            },
-        ];
+    async getCategories() {
+        this.categories = await this._aboutService.getShopMenu()
         // 默认获取第一个分类的商品列表
-        this.params.favoritesId = this.categories[0].FavoritesId;
-        this.getProducts();
+        this.params.favoritesId = this.categories[0].id;
+        this.products = this.categories[0].sub
         // this.appService.httpGet(AppGlobal.API.getCategories, { appTag: 'dress' }, rs => {
         //     console.debug(rs);
         //     this.categories = rs.data;
@@ -100,11 +81,11 @@ export class ClassifyComponent implements OnInit {
         this.params.favoritesId = c.FavoritesId;
         this.params.pageNo = 1;
 
-        this.getProducts();
+        this.products =c.sub
     }
 
     getProducts() {
-        this.products = Array.from({ length: 6 }, (_, k) => createShopData(k + 1));
+        this.products
         this.params.pageNo += 1;
         // this.appService.httpGet(AppGlobal.API.getProducts, this.params, rs => {
         //   this.products = rs.data;

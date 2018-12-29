@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AboutService} from '../about.service';
 import { ShopCardData } from '../../common/interface';
 
 @Component({
@@ -17,11 +17,18 @@ export class ShoppingCardComponent implements OnInit {
     shopCardData;
 
     constructor(
+        private _aboutService : AboutService,
         private router: Router,
     ) { }
 
     ngOnInit() {
+        this.getShoCardData()
         this.shopCardData = Array.from({ length: 4 }, (_, k) => createNewShop(k + 1));
+    }
+
+    async getShoCardData(){
+        let res = await this._aboutService.getShoCardData()
+        console.log(res)
     }
 
     remove() {
