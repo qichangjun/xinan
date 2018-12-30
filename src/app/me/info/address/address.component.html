@@ -21,7 +21,7 @@
                             <ion-buttons class="handle-btns">
                                 <ion-button color="medium" (click)="deleteAddress(address.id)" fill="clear" size="small">删除</ion-button>
                                 
-                                <ion-button color="secondary" fill="clear" size="small">编辑</ion-button>
+                                <ion-button color="secondary" routerLink="/info/address-add/{{address.id}}" fill="clear" size="small">编辑</ion-button>
                             </ion-buttons>
                         </ion-col>
                     </ion-row>

@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'authentication', component: AuthenticationComponent }, // 身份认证
     { path: 'auth-upload', component: AuthenticationUploadComponent }, // 身份认证上传
     { path: 'address', component: AddressComponent }, // 收获地址
-    { path: 'address-add', component: AddressAddComponent }, // 添加收货地址
+    { path: 'address-add/:id', component: AddressAddComponent }, // 添加收货地址
     { path: 'phone-change/:oldphone', component: PhoneChangeComponent }, // 更改绑定手机（手机号已绑定）
     { path: 'bill-list/:type', component: BillListComponent }, // 账单明细
     { path: 'bill-detail/:type/:id', component: BillDetailComponent }, // 账单详情

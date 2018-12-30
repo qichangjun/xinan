@@ -62,10 +62,11 @@ export class DetailsShopComponent implements OnInit {
         let res = await this._aboutService.getShopDetail(this.id)
         
         this.detailInfo = res 
-        this.detailInfo.forEach(info => {
-            info.detail = this.sanitizer.bypassSecurityTrustHtml(info.detail);
-        });
-        this.product_skuItem = this.detailInfo.product_sku[0]
+        if (this.detailInfo){
+            this.detailInfo.detail = this.sanitizer.bypassSecurityTrustHtml((this.detailInfo.detail));
+            this.product_skuItem = this.detailInfo.product_sku[0]
+        }
+
     }
 
     ionSlideTouchStart() {

@@ -97,4 +97,28 @@ export class AboutService {
             );
     }
 
+    getAllOrder(status,page){
+        let parameter = new URLSearchParams()
+        parameter.set('status',status)
+        parameter.set('page',page)
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.getAllOrder, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
 }

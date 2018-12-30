@@ -5,8 +5,8 @@
   },
   "proxies": [
     {
-      "path": "/api",
-      "proxyUrl": "http://120.78.200.228/api"
+      "path": "/public",
+      "proxyUrl": "http://120.78.200.228/public"
     }
   ],
   "type": "angular"

@@ -38,7 +38,7 @@ export class MeService {
             );
     }
 
-    addAddress(info) {
+    addAddress(info,id) {
         let parameter = new URLSearchParams()
         const myHeaders: Headers = new Headers();
         let post_data = {
@@ -47,7 +47,8 @@ export class MeService {
             district:info.district,
             name : info.name,
             phone : info.phone,
-            address:info.address
+            address:info.address,
+            id : id
         }
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
         return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.addAddress,
