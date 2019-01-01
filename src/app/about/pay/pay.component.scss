@@ -35,7 +35,8 @@ ion-content {
 }
 
 ion-footer {
-
+    bottom: 0px;
+    position: absolute;
 
     ion-row {
         display: flex;

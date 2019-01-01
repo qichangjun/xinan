@@ -204,7 +204,8 @@ export class JoinNowComponent implements OnInit {
                         nickname: userInfo.user.nickname || '心安天使',
                         address: userInfo.user.address,
                         weChatBindField: userInfo.user.weChatBindField,
-                        certifying : userInfo.user.authenticate_status
+                        certifying : userInfo.user.authenticate_status,
+                        contact_id : userInfo.user.contact_id
                     }));
                     this.router.navigate(['/tabs/(me:me)']);
                 }else{

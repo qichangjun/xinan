@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'wait_pay/:id', component: WaitPayComponent }, // 1等待支付　２订单详情
     { path: 'confirm_order', component: ConfirmOrderComponent },　 // 确认订单
     { path: 'logistics_detail', component: LogisticsDetailComponent },　 // 物流详情
-    { path: 'pay', component: PayComponent },　 //  确认支付
+    // { path: 'pay', component: PayComponent },　 //  确认支付
 ];
 
 @NgModule({

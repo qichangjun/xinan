@@ -10,6 +10,7 @@ import { httpHanldeService } from '../../../shared/httpHandle.service'
 export class AddressComponent implements OnInit {
   isShow = true; // 是否有收货地址
   addressList : Array<any> = [];
+  contact_id : any = undefined
   constructor(
     private _httpHanldeService : httpHanldeService,
     public alertController: AlertController,
@@ -17,6 +18,8 @@ export class AddressComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.contact_id = JSON.parse(window.localStorage.getItem('userInfo')).contact_id
+    console.log(this.contact_id)
     this.getAddressList()
   }
 

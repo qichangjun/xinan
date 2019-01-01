@@ -14,8 +14,8 @@
                 <ion-card-header no-padding justify-content-between class="address-card-header">
                     <ion-row>
                         <ion-col class="set-default">
-                            <ion-checkbox mode="ios" size="small" color="secondary" [checked]="address.default"></ion-checkbox>
-                            {{address.default ? '当前默认地址' : ''}}
+                            <ion-checkbox mode="ios" size="small" color="secondary" [checked]="address.id == contact_id"></ion-checkbox>
+                            {{address.id == contact_id ? '当前默认地址' : ''}}
                         </ion-col>
                         <ion-col text-right>
                             <ion-buttons class="handle-btns">

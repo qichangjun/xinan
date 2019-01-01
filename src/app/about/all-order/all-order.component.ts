@@ -58,6 +58,10 @@ export class AllOrderComponent implements OnInit {
         await alert.present();
     }
 
+    pay(){
+        
+    }
+
     loadData(event) {
         setTimeout(() => {
             event.target.complete();

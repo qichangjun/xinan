@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar color="#fff">
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="md-arrow-back" default-href="wait_pay/１"></ion-back-button>
+      
+      <ion-back-button style="display: block !important;" text="" icon="md-arrow-back" (click)="_ModalController.dismiss({
+        complete : false 
+    })" ></ion-back-button>
     </ion-buttons>
     <ion-title>确认支付</ion-title>
 
@@ -16,15 +19,15 @@
       </P>
     </ion-col>
   </div>
+  <ion-footer>
+    <ion-row align-items-center class="total">
+      <ion-col size="4">
+        <ion-button (click)="aliPay()" class="sub" expand="block">支付宝支付</ion-button>
+      </ion-col>
+      <!-- <ion-col size="4">
+        <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
+      </ion-col> -->
+    </ion-row>
+  </ion-footer>
 </ion-content>
 
-<ion-footer>
-  <ion-row align-items-center class="total">
-    <ion-col size="4">
-      <ion-button (click)="alertMes()" class="sub" expand="block">支付宝支付</ion-button>
-    </ion-col>
-    <ion-col size="4">
-      <ion-button (click)="alertMes()" class="sub_" expand="block">微信支付</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-footer>

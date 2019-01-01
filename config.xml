@@ -3,7 +3,7 @@
     <name>心安救助</name>
     <description>心安救助</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content original-src="index.html" src="http://192.168.1.4:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -100,7 +100,6 @@
     <plugin name="cordova-plugin-gubnoi-alipay" spec="0.0.4">
         <variable name="APP_ID" value="2018102761911005" />
     </plugin>
-    <allow-navigation href="http://192.168.1.4:8100" sessionid="eaf53d95" />
     <engine name="android" spec="7.0.0" />
     <engine name="ios" spec="4.5.5" />
 </widget>

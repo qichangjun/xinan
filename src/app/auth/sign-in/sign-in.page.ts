@@ -205,7 +205,8 @@ export class SignInPage implements OnInit {
                         nickname: res.user.nickname || '心安天使',
                         address: res.user.address,
                         weChatBindField: res.user.weChatBindField,
-                        certifying : res.user.authenticate_status
+                        certifying : res.user.authenticate_status,
+                        contact_id : res.user.contact_id
                     }));
                     this.back();
                 }

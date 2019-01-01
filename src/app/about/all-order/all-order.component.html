@@ -17,11 +17,12 @@
         <ng-container *ngIf="type === 'payment'"  >
             <div  class="payment" *ngFor="let orderList of orderLists">
                 <ion-card >
-                    <pay-goods [data]="list"></pay-goods>
-                    <pay-goods [data]="list"></pay-goods>
+                    <ng-container *ngFor="let detail of orderList.detail">
+                            <pay-goods [data]="detail"></pay-goods>
+                    </ng-container>
                     <ion-text>
-                        <span>共2件 总额</span>
-                        <span>￥3329.00</span>
+                        <span>总额</span>
+                        <span>￥{{orderList.totalprice}}</span>
                     </ion-text>
                     <ion-row class="row_order">
                         <ion-col size="5.5">
@@ -29,10 +30,10 @@
                             <ion-text>02小时31分钟26秒</ion-text>
                         </ion-col>
                         <ion-col size="3.5">
-                            <ion-button (click)="cancel()" fill="outline" class="white" expand="block">取消订单</ion-button>
+                            <ion-button (click)="cancel(orderList.id)" fill="outline" class="white" expand="block">取消订单</ion-button>
                         </ion-col>
                         <ion-col size="3">
-                            <ion-button routerLink="/wait_pay/1" expand="block">支付</ion-button>
+                            <ion-button  (click)="pay(orderList.orderid)" expand="block">支付</ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-card>
@@ -43,11 +44,12 @@
         <ng-container *ngIf="type === 'harvest'">
             <div   class="harvest"  *ngFor="let orderList of orderLists" >
                 <ion-card>
-                    <pay-goods [data]="list"></pay-goods>
-                    <pay-goods [data]="list"></pay-goods>
+                        <ng-container *ngFor="let detail of orderList.detail">
+                                <pay-goods [data]="detail"></pay-goods>
+                        </ng-container>
                     <ion-text>
-                        <span>共2件 总额</span>
-                        <span>￥3329.00</span>
+                        <span>总额</span>
+                        <span>￥{{orderList.totalprice}}</span>
                     </ion-text>
                     <ion-row class="row_order">
                         <ion-col size="4">
@@ -69,11 +71,12 @@
         <ng-container *ngIf="type === 'all'" >
             <div  class="all" *ngFor="let orderList of orderLists" >
                 <ion-card>
-                    <pay-goods [data]="list"></pay-goods>
-                    <pay-goods [data]="list"></pay-goods>
+                        <ng-container *ngFor="let detail of orderList.detail">
+                                <pay-goods [data]="detail"></pay-goods>
+                        </ng-container>
                     <ion-text>
-                        <span>共2件 总额</span>
-                        <span>￥3329.00</span>
+                        <span> 总额</span>
+                        <span>￥{{orderList.totalprice}}</span>
                     </ion-text>
                     <ion-row class="row_order">
                         <ion-col size="6">
@@ -81,54 +84,15 @@
                             <ion-text>02小时31分钟26秒</ion-text>
                         </ion-col>
                         <ion-col size="3">
-                            <ion-button (click)="cancel()" fill="outline" class="white" expand="block">取消订单</ion-button>
+                            <ion-button (click)="cancel(orderList.id)" fill="outline" class="white" expand="block">取消订单</ion-button>
                         </ion-col>
                         <ion-col size="3">
                             <ion-button routerLink="/wait_pay/1" expand="block">支付</ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-card>
-        
-                <ion-card>
-                    <pay-goods [data]="list"></pay-goods>
-                    <pay-goods [data]="list"></pay-goods>
-                    <ion-text>
-                        <span>共2件 总额</span>
-                        <span>￥3329.00</span>
-                    </ion-text>
-                    <ion-row class="row_order">
-                        <ion-col size="4">
-                            <ion-button routerLink="/wait_pay/2" fill="outline" class="white" expand="block">订单详情</ion-button>
-                        </ion-col>
-                        <ion-col size="4">
-                            <ion-button routerLink="/logistics_detail" fill="outline" class="white" expand="block">查看物流</ion-button>
-                        </ion-col>
-                        <ion-col size="4">
-                            <ion-button routerLink="/wait_pay/2" expand="block">确认收货</ion-button>
-                        </ion-col>
-                    </ion-row>
-                </ion-card>
             </div>
         </ng-container>
-        <ion-card>
-            <pay-goods [data]="list"></pay-goods>
-            <pay-goods [data]="list"></pay-goods>
-            <ion-text>
-                <span>共2件 总额</span>
-                <span>￥3329.00</span>
-            </ion-text>
-            <ion-row class="row_order">
-                <ion-col size="4">
-                    <ion-button routerLink="/wait_pay/2" fill="outline" class="white" expand="block">订单详情</ion-button>
-                </ion-col>
-                <ion-col size="4">
-                    <ion-button routerLink="/logistics_detail" fill="outline" class="white" expand="block">查看物流</ion-button>
-                </ion-col>
-                <ion-col size="4">
-                    <ion-button routerLink="/wait_pay/2" expand="block">确认收货</ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-card>
         <ion-row>
             <ion-col class="nodata" *ngIf="orderLists.length == 0" text-center>
                 没有订单啦 ♪(^∇^*)

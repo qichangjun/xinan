@@ -38,5 +38,8 @@ import { ClassifyComponent } from './classify/classify.component';
         MoreListComponent,
         ClassifyComponent
     ],
+    entryComponents: [
+        PayComponent
+    ]
 })
 export class AboutPageModule { }

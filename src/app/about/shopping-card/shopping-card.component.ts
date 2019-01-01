@@ -2,67 +2,58 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AboutService} from '../about.service';
 import { ShopCardData } from '../../common/interface';
-
+import { apiUrlService } from '../../shared/apiUrl.service'
 @Component({
     selector: 'app-shopping-card',
     templateUrl: './shopping-card.component.html',
     styleUrls: ['./shopping-card.component.scss']
 })
 export class ShoppingCardComponent implements OnInit {
-
-    years: any = 1;
-    remHigh: Number = 0;
-    addHigh: Number = 1;
-    isAllSelected: Number = 1;
-    shopCardData;
+    shopCardData : any = [];
 
     constructor(
+        public _apiUrlService : apiUrlService,
         private _aboutService : AboutService,
         private router: Router,
     ) { }
 
     ngOnInit() {
         this.getShoCardData()
-        this.shopCardData = Array.from({ length: 4 }, (_, k) => createNewShop(k + 1));
     }
 
     async getShoCardData(){
         let res = await this._aboutService.getShoCardData()
-        console.log(res)
+        this.shopCardData = res.cartList
+        this.shopCardData.map(c=>c.isSelected = true)
     }
 
-    remove() {
-        if (this.years > 1) {
-            this.remHigh = 1;
-            this.addHigh = 1;
-            // tslint:disable-next-line:radix
-            this.years = parseInt(this.years) - 1;
-        } else {
-            this.remHigh = 0;
-        }
+    remove(shop) {
+        if (shop.num > 1) {    
+            shop.num = parseInt(shop.num) - 1;
+        } 
     }
 
-    add() {
-        if (this.years !== 12) {
-            this.addHigh = 1;
-            this.remHigh = 1;
-            // tslint:disable-next-line:radix
-            this.years = parseInt(this.years) + 1;
+    add(shop) {
+        if (shop.num !== 12) {
+            shop.num = parseInt(shop.num) + 1;
         } else {
-            this.addHigh = 0;
-        }
-    }
-
-    selected(shop?) {
-        if (shop) {
-            shop.isSelected = shop.isSelected ? 0 : 1;
-        } else {
-            this.isAllSelected = this.isAllSelected ? 0 : 1;
         }
     }
 
     settlement() {
         this.router.navigate(['/wait_pay/1']);
+    }
+
+    sumTotalCount(){
+        let sum = 0
+        this.shopCardData.filter(shop=>shop.isSelected).forEach(shop => {
+            sum = sum + shop.num * shop.product.price
+        });
+        return sum
+    }
+
+    isAllSelected(){
+        return !(this.shopCardData.find(shop=>!shop.isSelected))
     }
 
 }

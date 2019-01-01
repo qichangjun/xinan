@@ -21,4 +21,6 @@ export class apiUrlService{
     setAsDefault = 'api/user/setcontact'
     deleteAddress = 'api/user/delcontact'
     getAllOrder = 'api/order/index'
+    addOrder = 'api/order/add'
+    Pay = 'api/order/pay'
 }

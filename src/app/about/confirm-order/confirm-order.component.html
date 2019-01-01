@@ -16,18 +16,29 @@
                 </div>
             </ion-col>
             <ion-col size="10">
-                <ion-text class="name">林慧光
-                    <span>13999542266</span>
+                <ion-text class="name">{{this.address.name}}
+                    <span>{{this.address.phone}}</span>
                 </ion-text>
                 <ion-text class="add">
-                    广东省珠海市香洲区唐家湾镇高新区大道新世纪大厦 其他楼层 1608楼
+                    {{this.address.province + this.address.city + this.address.district + this.address.address}}
                 </ion-text>
             </ion-col>
         </ion-row>
     </div>
     <div class="pro-list">
         <ion-card *ngFor="let list of lists">
-            <pay-goods [data]="list"></pay-goods>
+                <ion-row  [routerLink]="'/details/' + list.id">
+                        <ion-col no-padding size="4">
+                            <ion-img [src]="list.img"></ion-img>
+                        </ion-col>
+                        <ion-col no-padding size="8" class="pro-name">
+                            <ion-text class="name">{{list.title}}</ion-text>
+                            <ion-text class="add">
+                                ￥{{list.price}}
+                                <span>x{{list.num}}</span>
+                            </ion-text>
+                        </ion-col>
+                    </ion-row>
         </ion-card>
     </div>
     <div class="lable">
@@ -44,10 +55,10 @@
 <ion-footer>
     <ion-row align-items-center class="total">
         <ion-text>
-            合计：<span>￥168.00</span>
+            合计：<span>￥{{totalPrice}}</span>
         </ion-text>
         <ion-col size="6">
-            <ion-button (click)="alertMes()" expand="block">支付</ion-button>
+            <ion-button (click)="payNow()" expand="block">支付</ion-button>
         </ion-col>
     </ion-row>
 </ion-footer>

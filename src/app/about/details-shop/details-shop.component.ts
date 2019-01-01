@@ -100,9 +100,9 @@ export class DetailsShopComponent implements OnInit {
         }
     }
 
-    // buyNow() {
-    //     this.router.navigate(['/confirm_order']);
-    // }
+    buyNow() {
+        this.router.navigate(['/confirm_order'], { queryParams: { id:this.id,count:this.years } });
+    }
 
     shoppingCart() {
         this.router.navigate(['/card']);
@@ -117,28 +117,28 @@ export class DetailsShopComponent implements OnInit {
         });
         await alert.present();
     }
-    buyNow() {
-        const header = '提示！';
-        const message = '商城尚未开放购买权限，请耐心等待。';
-        const buttons = [
-            {
-                text: '取消',
-                role: 'cancel',
-                cssClass: 'secondary',
-                handler: (blah) => {
-                    console.log('Confirm Cancel: blah');
-                }
-            }, {
-                text: '返回商城',
-                // role: '',
-                handler: () => {
-                    this.router.navigate(['tabs']);
-                    // this.navCtrl.navigateForward('tabs');
-                }
-            }
-        ];
-        this.alertMessage(header, message, buttons);
-    }
+    // buyNow() {
+    //     const header = '提示！';
+    //     const message = '商城尚未开放购买权限，请耐心等待。';
+    //     const buttons = [
+    //         {
+    //             text: '取消',
+    //             role: 'cancel',
+    //             cssClass: 'secondary',
+    //             handler: (blah) => {
+    //                 console.log('Confirm Cancel: blah');
+    //             }
+    //         }, {
+    //             text: '返回商城',
+    //             // role: '',
+    //             handler: () => {
+    //                 this.router.navigate(['tabs']);
+    //                 // this.navCtrl.navigateForward('tabs');
+    //             }
+    //         }
+    //     ];
+    //     this.alertMessage(header, message, buttons);
+    // }
     
     async alertMessage(header, message, buttons) {
         const alert = await this.alertController.create({

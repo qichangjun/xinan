@@ -121,4 +121,56 @@ export class AboutService {
             );
     }
 
+    addOrder(cart,contact_id ){
+        let parameter = new URLSearchParams()
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'));
+        let post_data = {
+            cart : cart,
+            payment_id : 4,
+            contact_id  : contact_id,
+            remark : ''
+        }
+        return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.addOrder, 
+            post_data,
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
+    Pay(orderId ){
+        let parameter = new URLSearchParams()
+        parameter.set('orderId',orderId)
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.Pay, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
 }
