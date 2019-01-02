@@ -1,30 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopData } from '../../common/interface';
-
+import { Router,ActivatedRoute } from '@angular/router';
+import { apiUrlService } from '../../shared/apiUrl.service'
+import { AboutService } from '../about.service'
 @Component({
     selector: 'app-more-list',
     templateUrl: './more-list.component.html',
     styleUrls: ['./more-list.component.scss']
 })
 export class MoreListComponent implements OnInit {
-
-    shopData;
-
-    constructor() {
+    page : number = 1;
+    totalCount : number = 0
+    shopData = [];
+    menu_id : any = undefined;
+    menu_name : string = '';
+    constructor(
+        private _AboutService : AboutService,
+        private _Router : Router,
+        public _apiUrlService : apiUrlService,
+        public activeRoute: ActivatedRoute,
+    ) {
+        this.activeRoute.params.subscribe(params=>{
+            this.menu_id = params.id
+            this.menu_name = params.name
+        })
     }
 
     ngOnInit() {
-        this.shopData = Array.from({ length: 10 }, (_, k) => createShopData(k + 1));
+        this.getShopListsByMenuId()
     }
 
+    async getShopListsByMenuId(){
+        let res = await this._AboutService.getShopListsByMenuId(this.menu_id)
+        this.shopData = res.product
+        this.page = res.pageinfo.page
+        this.totalCount = res.pageinfo.rowCount
+    }
+
+    goDetails(id){
+        this._Router.navigate(['/details/' + id])
+    }
+
+    loadData(event) {
+        setTimeout(() => {
+            event.target.complete();
+            if (this.shopData.length >= this.totalCount) {
+                event.target.disabled = true;
+            }
+            this.getShopListsByMenuId()
+        }, 500);
+    }
 }
 
-function createShopData(id: number): ShopData {
 
-    return {
-        id: id.toString(),
-        imageurl: '../../assets/imgs/img_product.png',
-        title: '努比亚（nubia）Z17 无边框 曜石黑 6GB+64GB 全网通',
-        price: '￥2,299.00',
-    };
-}

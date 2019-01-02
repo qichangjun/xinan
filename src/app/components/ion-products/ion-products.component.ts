@@ -18,8 +18,8 @@ export class IonProductsComponent {
     ) {
     }
 
-    goDetails(id) {
-        this.router.navigate(['/details/' + id]);
+    goDetails(data) {
+        this.router.navigate(['/more_list/' + data.id + '/' + data.name]);
     }
 
 }

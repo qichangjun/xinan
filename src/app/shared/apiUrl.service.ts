@@ -23,4 +23,7 @@ export class apiUrlService{
     getAllOrder = 'api/order/index'
     addOrder = 'api/order/add'
     Pay = 'api/order/pay'
+    cancelOrder = 'api/order/cancel'
+    cleanShopCart = 'api/cart/del'
+    getShopListsByMenuId = 'api/product/index'
 }

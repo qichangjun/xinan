@@ -6,16 +6,16 @@
         complete : false 
     })" ></ion-back-button>
     </ion-buttons>
-    <ion-title>确认支付</ion-title>
+    <ion-title>支付</ion-title>
 
   </ion-toolbar>
 </ion-header>
 <ion-content no-padding>
   <div class="content">
     <ion-col no-padding>
-      <h1 class="name">订单1245679523568578</h1>
+      <h1 class="name">订单{{orderInfo.orderId}}</h1>
       <P>
-        ￥3329.00
+        ￥{{totalPrice}}
       </P>
     </ion-col>
   </div>

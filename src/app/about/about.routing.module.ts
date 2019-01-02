@@ -15,7 +15,7 @@ import { ClassifyComponent } from './classify/classify.component';
 const routes: Routes = [
     { path: '', component: AboutPage },
     { path: 'classify', component: ClassifyComponent },　 // 全部分类
-    { path: 'more_list', component: MoreListComponent }, // 查看更多
+    { path: 'more_list/:id/:name', component: MoreListComponent }, // 查看更多
     { path: 'details/:id', component: DetailsShopComponent }, // 商品详情
     { path: 'card', component: ShoppingCardComponent }, // 商品购物车
 

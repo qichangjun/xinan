@@ -39,8 +39,7 @@ export class httpHanldeService {
         if (error.statusText == "Unauthorized" || error.statusText == 'Invalid token'){
             localStorage.removeItem('token');
             localStorage.removeItem('userInfo');
-            this.router.navigate(['/auth/sign-in']);
-            this.showToast('请先登陆')
+            this.showToast('请重新登陆')
         }
 
         return Promise.reject(error.msg || error.statusText || error);

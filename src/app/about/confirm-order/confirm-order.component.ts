@@ -32,7 +32,10 @@ export class ConfirmOrderComponent implements OnInit {
             if(params.id){
                 this.id = params.id 
                 this.count = params.count
-                this.getShopsDetail(params.id,params.count)
+                for(let i = 0;i < this.id.length;i++){
+                    this.getShopsDetail(this.id[i],this.count[i])
+                }
+               
             }
         })
     }
@@ -46,14 +49,13 @@ export class ConfirmOrderComponent implements OnInit {
             price : res.price,
             id : res.id
         })
-        this.lists.forEach(list=>{
-            this.totalPrice = this.totalPrice + list.price*list.num 
-        })
+        this.totalPrice = Number((this.totalPrice + res.price*count ).toFixed(2))
     }
 
     async getAddressList(){
         let res = await this._MeService.getAddressList()
-        this.address = res[0]
+        let contact_id = JSON.parse(window.localStorage.getItem('userInfo')).contact_id
+        this.address = res.find(address=>address.id == contact_id)
     }
     alertMes() {
         const header = '提示！';
@@ -77,11 +79,19 @@ export class ConfirmOrderComponent implements OnInit {
     }
 
     async payNow(){
+        let cart = []
+        for(let i = 0;i < this.id.length;i++){
+            cart.push({
+                id : this.id[i],
+                num : this.count[i]
+            })
+        }
         const modal = await this.modalController.create({
             component: PayComponent,
             componentProps: { 
-                cart: [{id:this.id,num:this.count}],
-                contact_id : this.address.id
+                cart: cart,
+                contact_id : this.address.id,
+                totalPrice : this.totalPrice
             }
           });
         modal.present();

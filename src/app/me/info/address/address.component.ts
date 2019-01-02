@@ -19,7 +19,6 @@ export class AddressComponent implements OnInit {
 
   ngOnInit() {
     this.contact_id = JSON.parse(window.localStorage.getItem('userInfo')).contact_id
-    console.log(this.contact_id)
     this.getAddressList()
   }
 
@@ -40,6 +39,10 @@ export class AddressComponent implements OnInit {
   async setAsDefault(id){
     await this._meService.setAsDefault(id)
     this._httpHanldeService.showToast('设置成功')
+    let userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
+    userInfo.contact_id = id 
+    this.contact_id = id 
+    localStorage.setItem('userInfo', JSON.stringify(userInfo));
     this.getAddressList()
   }
 

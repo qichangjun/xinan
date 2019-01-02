@@ -45,8 +45,36 @@ export class AllOrderComponent implements OnInit {
         this.getAllOrder()
     }
 
-    cancel() {
-        this.presentAlert('此功能正在拼命开发中，请等待。');
+    cancel(id) {
+        const header = '提示！';
+        const message = '确定要取消该订单吗？';
+        const buttons = [
+            {
+                text: '我再看看',
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: (blah) => {
+                    console.log('Confirm Cancel: blah');
+                }
+            }, {
+                text: '是的',
+                handler: async () => {
+                    await this._AboutService.cancelOrder(id)
+                    this.getAllOrder()
+                }
+            }
+        ];
+        this.alertMessage(header, message, buttons);      
+    }
+
+    async alertMessage(header, message, buttons) {
+        const alert = await this.alertController.create({
+            header,
+            message,
+            buttons
+        });
+
+        await alert.present();
     }
 
     async presentAlert(message) {

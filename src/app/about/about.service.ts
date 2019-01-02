@@ -150,6 +150,29 @@ export class AboutService {
             );
     }
 
+    cancelOrder(orderId){
+        let parameter = new URLSearchParams()
+        parameter.set('id',orderId)
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.cancelOrder, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
     Pay(orderId ){
         let parameter = new URLSearchParams()
         parameter.set('orderId',orderId)
@@ -173,4 +196,49 @@ export class AboutService {
             );
     }
 
+    cleanShopCart(id?){
+        let parameter = new URLSearchParams()
+        parameter.set('id',id)
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.cleanShopCart, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
+    getShopListsByMenuId(menu_id?){
+        let parameter = new URLSearchParams()
+        parameter.set('menu_id',menu_id)
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.getShopListsByMenuId, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
 }

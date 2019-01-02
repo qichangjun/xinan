@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AboutService} from '../about.service';
 import { ShopCardData } from '../../common/interface';
 import { apiUrlService } from '../../shared/apiUrl.service'
+import { ModalController } from '@ionic/angular';
+import { WaitPayComponent } from '../wait-pay/wait-pay.component';
 @Component({
     selector: 'app-shopping-card',
     templateUrl: './shopping-card.component.html',
@@ -12,6 +14,7 @@ export class ShoppingCardComponent implements OnInit {
     shopCardData : any = [];
 
     constructor(
+        public modalController: ModalController,
         public _apiUrlService : apiUrlService,
         private _aboutService : AboutService,
         private router: Router,
@@ -40,16 +43,23 @@ export class ShoppingCardComponent implements OnInit {
         }
     }
 
-    settlement() {
-        this.router.navigate(['/wait_pay/1']);
+    async settlement() {
+        await this._aboutService.cleanShopCart()
+        let id = this.shopCardData.filter(shop=>shop.isSelected).map(shop=>shop.product_id)
+        let count = this.shopCardData.filter(shop=>shop.isSelected).map(shop=>shop.num)
+        this.router.navigate(['/confirm_order'],{queryParams:{id:id,count:count}})
     }
 
     sumTotalCount(){
-        let sum = 0
+        let sum : any = 0
         this.shopCardData.filter(shop=>shop.isSelected).forEach(shop => {
-            sum = sum + shop.num * shop.product.price
+            sum = Number(sum + shop.num*shop.product.price)
         });
-        return sum
+        return sum.toFixed(2)
+    }
+
+    disableSettlement(){
+        return !this.shopCardData.find(shop=>shop.isSelected)
     }
 
     isAllSelected(){

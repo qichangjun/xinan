@@ -1,6 +1,6 @@
 <div class="product">
     <ion-row>
-        <ion-col size="6" *ngFor="let data of products" (click)="goDetails(data.id)">
+        <ion-col size="6" *ngFor="let data of products" (click)="goDetails(data)">
             <ion-row align-items-center justify-content-center>
                 <img [src]="_apiUrlService.baseUrl + 'public/uploads/' + data.file.savepath + data.file.savename" />
             </ion-row>

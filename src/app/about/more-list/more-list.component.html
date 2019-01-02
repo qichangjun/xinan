@@ -3,14 +3,38 @@
         <ion-buttons slot="start">
             <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(about:about)"></ion-back-button>
         </ion-buttons>
-        <ion-title>数码３C</ion-title>
+        <ion-title>{{menu_name}}</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content no-padding>
     <div class="content">
         <ion-card no-margin>
             <ion-card-content no-padding>
-                <ion-products [products]="shopData"></ion-products>
+                    <div class="product">
+                            <ion-row>
+                                <ion-col size="6" *ngFor="let data of shopData" (click)="goDetails(data.id)">
+                                    <ion-row align-items-center justify-content-center>
+                                        <img [src]="_apiUrlService.baseUrl + 'public/uploads/' + data.file.savepath + data.file.savename" />
+                                    </ion-row>
+                                    <ion-row class="car_tit">
+                                        <p>{{data.name}}</p>
+                                    </ion-row>
+                                    <!-- <ion-row class="car_prc">
+                                        <p>{{data.rank}}</p>
+                                    </ion-row> -->
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                    <ion-col class="nodata" *ngIf="shopData.length == 0" text-center>
+                                        没有商品啦 ♪(^∇^*)
+                                    </ion-col>
+                                   
+                                </ion-row>
+                        </div>
+                        <ion-infinite-scroll #infiniteScroll  threshold="100px" (ionInfinite)="loadData($event)">
+                                <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载更多...">
+                                </ion-infinite-scroll-content>
+                            </ion-infinite-scroll>
             </ion-card-content>
         </ion-card>
     </div>

@@ -1,4 +1,4 @@
-<ion-row *ngIf="data" (click)="details(data.id)">
+<ion-row *ngIf="data" (click)="details(data.product_id)">
     <ion-col no-padding size="4">
         <ion-img [src]="_apiUrlService.baseUrl + 'public/uploads/' + data.product.file.savepath + data.product.file.savename"></ion-img>
     </ion-col>
