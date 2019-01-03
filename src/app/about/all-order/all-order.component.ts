@@ -89,11 +89,11 @@ export class AllOrderComponent implements OnInit {
 
     async pay(id){
         let payInfo = await this._AboutService.Pay(id)
+        let _self = this 
         cordova.plugins.ali.pay(payInfo.res,async function success(result){    
             if (result.resultStatus == 9000){
-                this.showToast('支付成功')
                 //验证用户认证状态
-                this.getAllOrder()
+                _self.getAllOrder()
             }else{
                 alert(result.memo)
             }

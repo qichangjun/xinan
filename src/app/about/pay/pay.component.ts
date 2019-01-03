@@ -31,15 +31,18 @@ export class PayComponent implements OnInit {
 
     async aliPay() {
         let payInfo = await this._AboutService.Pay(this.orderInfo.id)
+        let _self = this
         cordova.plugins.ali.pay(payInfo.res,async function success(result){    
             if (result.resultStatus == 9000){
-                this.showToast('支付成功')
                 //验证用户认证状态
-                this._ModalController.dismiss({
+                _self._ModalController.dismiss({
                     complete : true 
                 })
             }else{
                 alert(result.memo)
+                _self._ModalController.dismiss({
+                    complete : true 
+                })
             }
         },function error(error){
             alert(error)
