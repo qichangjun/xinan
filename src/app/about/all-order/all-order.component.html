@@ -11,7 +11,7 @@
     <ion-segment (ionChange)="segmentChanged($event)" mode="md" value="payment" color="primary">
         <ion-segment-button value="payment">待付款</ion-segment-button>
         <ion-segment-button value="harvest">待收货</ion-segment-button>
-        <ion-segment-button value="all">全部订单</ion-segment-button>
+        <ion-segment-button value="finish">已完成</ion-segment-button>
     </ion-segment>
     
         <ng-container *ngIf="type === 'payment'"  >
@@ -33,7 +33,7 @@
                             <ion-button (click)="cancel(orderList.id)" fill="outline" class="white" expand="block">取消订单</ion-button>
                         </ion-col>
                         <ion-col size="3">
-                            <ion-button  (click)="pay(orderList.orderid)" expand="block">支付</ion-button>
+                            <ion-button  (click)="pay(orderList.id)" expand="block">支付</ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-card>
@@ -68,7 +68,7 @@
         </ng-container>
        
     
-        <ng-container *ngIf="type === 'all'" >
+        <ng-container *ngIf="type === 'finish'" >
             <div  class="all" *ngFor="let orderList of orderLists" >
                 <ion-card>
                         <ng-container *ngFor="let detail of orderList.detail">
@@ -83,11 +83,8 @@
                             <ion-text>剩余支付时间</ion-text>
                             <ion-text>02小时31分钟26秒</ion-text>
                         </ion-col>
-                        <ion-col size="3">
-                            <ion-button (click)="cancel(orderList.id)" fill="outline" class="white" expand="block">取消订单</ion-button>
-                        </ion-col>
-                        <ion-col size="3">
-                            <ion-button routerLink="/wait_pay/1" expand="block">支付</ion-button>
+                        <ion-col size="4">
+                            <ion-button routerLink="/wait_pay/2" fill="outline" class="white" expand="block">订单详情</ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-card>
@@ -107,7 +104,7 @@
     </ion-infinite-scroll>
 </ion-content>
 
-<ion-footer *ngIf="type === 'payment'">
+<!-- <ion-footer *ngIf="type === 'payment'">
     <ion-row align-items-center>
         <ion-col size="5" class="col_total">
             <ion-text>
@@ -120,4 +117,4 @@
             <ion-button routerLink="/pay" expand="block">全部支付</ion-button>
         </ion-col>
     </ion-row>
-</ion-footer>
+</ion-footer> -->

@@ -51,9 +51,10 @@ export class AboutService {
             );
     }
 
-    addToShopcar(id){
+    addToShopcar(id,num){
         let parameter = new URLSearchParams()
         parameter.set('id',id)
+        parameter.set('num',num)
         const myHeaders: Headers = new Headers();
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
         return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.addToShopcar, 
@@ -99,7 +100,13 @@ export class AboutService {
 
     getAllOrder(status,page){
         let parameter = new URLSearchParams()
-        parameter.set('status',status)
+        if (status == 'payment'){
+            parameter.set('status','0')
+        }else if (status == 'harvest'){
+            parameter.set('status','1')
+        }else if (status == 'finish'){
+            parameter.set('status','2')
+        }
         parameter.set('page',page)
         const myHeaders: Headers = new Headers();
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
@@ -129,7 +136,7 @@ export class AboutService {
             cart : cart,
             payment_id : 4,
             contact_id  : contact_id,
-            remark : ''
+            remark : ' '
         }
         return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.addOrder, 
             post_data,
@@ -175,7 +182,8 @@ export class AboutService {
 
     Pay(orderId ){
         let parameter = new URLSearchParams()
-        parameter.set('orderId',orderId)
+        parameter.set('id',orderId)
+        parameter.set('remark',' ')
         const myHeaders: Headers = new Headers();
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
         return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.Pay, 

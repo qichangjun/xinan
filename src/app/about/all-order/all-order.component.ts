@@ -86,8 +86,9 @@ export class AllOrderComponent implements OnInit {
         await alert.present();
     }
 
-    pay(){
-        
+    async pay(id){
+        await this._AboutService.Pay(id)
+        this.getAllOrder()
     }
 
     loadData(event) {

@@ -152,7 +152,7 @@ export class DetailsShopComponent implements OnInit {
 
     async addToShopcar(){
         try{
-            let res = await this._aboutService.addToShopcar(this.id)
+            let res = await this._aboutService.addToShopcar(this.id,this.years)
             this.presentAlert(res.info,res.msg)
         }catch(err){
             this.alertMessage('提示', '出错了', this.buttons);

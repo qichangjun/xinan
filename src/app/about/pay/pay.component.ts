@@ -29,7 +29,7 @@ export class PayComponent implements OnInit {
     }
 
     async aliPay() {
-        await this._AboutService.Pay(this.orderInfo.orderId)
+        await this._AboutService.Pay(this.orderInfo.id)
         this._ModalController.dismiss({
             complete : true 
         })

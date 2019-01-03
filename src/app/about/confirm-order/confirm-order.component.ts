@@ -30,8 +30,13 @@ export class ConfirmOrderComponent implements OnInit {
         this.getAddressList()
         this._ActivatedRoute.queryParams.subscribe(params=>{
             if(params.id){
-                this.id = params.id 
-                this.count = params.count
+                if (typeof(params.id) == 'string'){
+                    this.id = [params.id]   
+                    this.count = [params.count]
+                }else{
+                    this.id = params.id
+                    this.count = params.count
+                } 
                 for(let i = 0;i < this.id.length;i++){
                     this.getShopsDetail(this.id[i],this.count[i])
                 }
