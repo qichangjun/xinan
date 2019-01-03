@@ -27,6 +27,9 @@ export class MeService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -59,6 +62,9 @@ export class MeService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.code == 1) {
                     return body.data;
                 } else {
@@ -82,6 +88,9 @@ export class MeService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.code == 1) {
                     return body.data;
                 } else {
@@ -105,6 +114,9 @@ export class MeService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.code == 1) {
                     return body.data;
                 } else {

@@ -36,10 +36,14 @@ export class httpHanldeService {
     public handleError(error: any): Promise<any> {  
         // this.router.navigate(['/auth/sign-in']);
         // this.showToast('请先登陆')
-        if (error.statusText == "Unauthorized" || error.statusText == 'Invalid token'){
+        
+        if (error.status == "401"){
             localStorage.removeItem('token');
             localStorage.removeItem('userInfo');
             this.showToast('请重新登陆')
+            setTimeout(()=>{
+                this.router.navigate(['/auth/sign-in']);
+            },500)
         }
 
         return Promise.reject(error.msg || error.statusText || error);

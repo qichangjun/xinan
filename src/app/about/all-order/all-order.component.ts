@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { AboutService} from '../about.service';
+declare let cordova;
 @Component({
     selector: 'app-all-order',
     templateUrl: './all-order.component.html',
@@ -87,8 +88,18 @@ export class AllOrderComponent implements OnInit {
     }
 
     async pay(id){
-        await this._AboutService.Pay(id)
-        this.getAllOrder()
+        let payInfo = await this._AboutService.Pay(id)
+        cordova.plugins.ali.pay(payInfo.res,async function success(result){    
+            if (result.resultStatus == 9000){
+                this.showToast('支付成功')
+                //验证用户认证状态
+                this.getAllOrder()
+            }else{
+                alert(result.memo)
+            }
+        },function error(error){
+            alert(error)
+        });
     }
 
     loadData(event) {

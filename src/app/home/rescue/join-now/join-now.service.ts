@@ -25,6 +25,9 @@ export class JoinNowService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -47,6 +50,9 @@ export class JoinNowService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -75,6 +81,9 @@ export class JoinNowService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -97,6 +106,9 @@ export class JoinNowService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {

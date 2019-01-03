@@ -63,6 +63,8 @@ export class DetailsShopComponent implements OnInit {
         
         this.detailInfo = res 
         if (this.detailInfo){
+            var reg = new RegExp( '/public/uploads/' , "g" )
+            this.detailInfo.detail =  this.detailInfo.detail.replace( reg , this._apiUrlService.baseUrl + '/public/uploads/' );
             this.detailInfo.detail = this.sanitizer.bypassSecurityTrustHtml((this.detailInfo.detail));
             this.product_skuItem = this.detailInfo.product_sku[0]
         }

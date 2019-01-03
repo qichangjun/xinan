@@ -64,6 +64,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data && body.data.status == 1) {
                     return body.data;
                 } else {
@@ -87,6 +90,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -117,6 +123,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -134,7 +143,7 @@ export class AboutService {
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'));
         let post_data = {
             cart : cart,
-            payment_id : 4,
+            payment_id : 3,
             contact_id  : contact_id,
             remark : ' '
         }
@@ -146,6 +155,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -169,6 +181,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -193,6 +208,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -216,6 +234,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
@@ -239,6 +260,9 @@ export class AboutService {
             .toPromise()
             .then(res => {
                 let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
                 if (body.data) {
                     return body.data;
                 } else {
