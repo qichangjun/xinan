@@ -34,6 +34,7 @@ export class PayComponent implements OnInit {
         let _self = this
         cordova.plugins.ali.pay(payInfo.res,async function success(result){    
             if (result.resultStatus == 9000){
+                alert('支付成功')
                 //验证用户认证状态
                 _self._ModalController.dismiss({
                     complete : true 

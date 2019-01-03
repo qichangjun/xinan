@@ -93,6 +93,7 @@ export class AllOrderComponent implements OnInit {
         cordova.plugins.ali.pay(payInfo.res,async function success(result){    
             if (result.resultStatus == 9000){
                 //验证用户认证状态
+                alert('支付成功')
                 _self.getAllOrder()
             }else{
                 alert(result.memo)
