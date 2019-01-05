@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content no-padding>
-    <div class="addr">
+    <div class="addr"  [hidden]="!address.name">
         <ion-row>
             <ion-col size="1.5">
                 <div class="serve">
@@ -16,11 +16,11 @@
                 </div>
             </ion-col>
             <ion-col size="10">
-                <ion-text class="name">{{this.address.name}}
-                    <span>{{this.address.phone}}</span>
+                <ion-text class="name">{{address.name}}
+                    <span>{{address.phone}}</span>
                 </ion-text>
                 <ion-text class="add">
-                    {{this.address.province + this.address.city + this.address.district + this.address.address}}
+                    {{address.province + address.city + address.district + address.address}}
                 </ion-text>
             </ion-col>
         </ion-row>
@@ -58,7 +58,7 @@
             合计：<span>￥{{totalPrice}}</span>
         </ion-text>
         <ion-col size="6">
-            <ion-button (click)="payNow()" expand="block">支付</ion-button>
+            <ion-button (click)="payNow()" [disabled]="!address.id" expand="block">支付</ion-button>
         </ion-col>
     </ion-row>
 </ion-footer>

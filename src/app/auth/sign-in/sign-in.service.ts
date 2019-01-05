@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { httpHanldeService } from '../../shared/httpHandle.service'
 import { apiUrlService } from '../../shared/apiUrl.service'
 import { Http, URLSearchParams } from '@angular/http';
+import { e } from '@angular/core/src/render3';
 declare var sha256_digest: any;
 @Injectable({
     providedIn: 'root'
@@ -43,8 +44,15 @@ export class SignService {
         }
         return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.signIn, post_data, {})
             .toPromise()
-            .then(res =>
-                this._httpHanldeService.extractDataSuccess(res)
+            .then(res =>{
+                let body = res.json();
+                if (body.code == 0){
+                    return Promise.reject(body.data)
+                }else{
+                    return body.data 
+                }
+            }
+               
             )
             .catch(error =>
                 this._httpHanldeService.handleError(error)

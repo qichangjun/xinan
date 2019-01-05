@@ -59,9 +59,32 @@ export class ConfirmOrderComponent implements OnInit {
 
     async getAddressList(){
         let res = await this._MeService.getAddressList()
+        console.log(res)
+        if(res.length == 0){
+            const header = '提示！';
+            const message = '您还没有设置收货地址，请先设置一个收货地址';
+            const buttons = [
+                {
+                    text: '一会再说',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        console.log('Confirm Cancel: blah');
+                    }
+                }, {
+                    text: '现在去设置',
+                    handler: () => {
+                        this.router.navigate(['/info/address'])
+                    }
+                }
+            ];
+            this.alertMessage(header, message, buttons);
+            return
+        }
         let contact_id = JSON.parse(window.localStorage.getItem('userInfo')).contact_id
         this.address = res.find(address=>address.id == contact_id)
     }
+
     alertMes() {
         const header = '提示！';
         const message = '您的申请已经提交，现阶段仅向定向通道开放，请耐心等待。';
