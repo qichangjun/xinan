@@ -10,9 +10,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div class="user" [ngStyle]="{'background-image':'url('+userInfo.backgroundImg.value+')'}" (click)="changeBackground()">
+    <div class="user" [ngStyle]="{'background-image':'url('+userInfo.backgroundImg.value+')'}">
         <div class="upLoad-img" *ngIf="!isLogged">
-            <img src="{{this.userInfo.avatar.value}}" />
+            <img src="{{this.userInfo.avatar}}" />
         </div>
         <upload-head *ngIf="isLogged"></upload-head>
         <div class="user-load" (click)="$event.stopPropagation()">
@@ -22,14 +22,14 @@
                 <span>注册</span>
             </p>
             <p *ngIf="isLogged" class="name_create">
-                <span class="name" (click)="jumpTo('/info/name-edit','',userInfo.nickname)">{{this.userInfo.nickname.value}}</span>&nbsp;&nbsp;
-                <ion-icon class="sex" name="{{userInfo.sex.value === 'female' ? 'female' : 'male'}}"></ion-icon>
+                <span class="name" (click)="jumpTo('/info/name-edit','',userInfo.nickname)">{{userInfo.nickname || '心安天使'}}</span>&nbsp;&nbsp;
+                <ion-icon class="sex" name="{{userInfo.sex === '0' ? 'female' : 'male'}}"></ion-icon>
                 <ion-chip class="position">
                     <ion-icon name="pin"></ion-icon>
                     <ion-text>陕西省</ion-text>
                 </ion-chip>
                 <br />
-                <span class="account">心安号：{{userInfo.heartSafteyAccount.value}}</span>
+                <span class="account">心安号：{{userInfo.identify_number}}</span>
                 <br />
                 <span class="span_btn" (click)="jumpTo('/homepage')">
                     <ion-text>个人主页</ion-text>
@@ -77,9 +77,9 @@
         </ion-row>
     </ion-grid>
     <ion-list lines="none" class="nav-list" no-margin>
-        <ion-item no-padding justify-content-between (click)="jumpTo('/info/phone-change', userInfo.mobile)">
+        <ion-item no-padding justify-content-between (click)="jumpTo('/info/phone-change', userInfo.phone)">
             <ion-label>手机号</ion-label>
-            <ion-label text-right>{{this.userInfo.mobile}}
+            <ion-label text-right>{{userInfo.phone}}
             </ion-label>
             <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>
@@ -92,8 +92,8 @@
         <ion-item no-padding justify-content-between (click)="jumpTo('/info/authentication')">
             <ion-label>身份认证</ion-label>
             <ion-label text-right>
-                {{this.userInfo.nickname.value}}
-                <small class="cert-status2">{{this.userInfo.certifying ? '已实名' : '去认证'}}</small>
+                {{this.userInfo.nickname}}
+                <small class="cert-status2">{{this.userInfo.authenticate_status ? '已实名' : '去认证'}}</small>
             </ion-label>
             <ion-icon name="ios-arrow-forward" slot="end"></ion-icon>
         </ion-item>

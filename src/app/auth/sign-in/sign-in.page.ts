@@ -198,16 +198,7 @@ export class SignInPage implements OnInit {
                     this.showToast('登陆成功')
                     let token = res.token
                     localStorage.setItem('token', token);
-                    localStorage.setItem('userInfo', JSON.stringify({
-                        mobile: res.user.phone,
-                        username: res.user.username,
-                        identityNumber: res.user.identify_number,
-                        nickname: res.user.nickname || '心安天使',
-                        address: res.user.address,
-                        weChatBindField: res.user.weChatBindField,
-                        certifying : res.user.authenticate_status,
-                        contact_id : res.user.contact_id
-                    }));
+                    localStorage.setItem('userInfo', JSON.stringify(res.user));
                     this.back();
                 }
             } catch (err) {

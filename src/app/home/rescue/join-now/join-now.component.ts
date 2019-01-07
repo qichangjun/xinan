@@ -198,16 +198,7 @@ export class JoinNowComponent implements OnInit {
                     _self.showToast('交易成功，若认证状态未改变请稍等后重新登陆')
                     //验证用户认证状态
                     let userInfo = await _self._joinNowService.checkUserInfo()
-                    localStorage.setItem('userInfo', JSON.stringify({
-                        mobile: userInfo.user.phone,
-                        username: userInfo.user.username,
-                        identityNumber: userInfo.user.identify_number,
-                        nickname: userInfo.user.nickname || '心安天使',
-                        address: userInfo.user.address,
-                        weChatBindField: userInfo.user.weChatBindField,
-                        certifying : userInfo.user.authenticate_status,
-                        contact_id : userInfo.user.contact_id
-                    }));
+                    localStorage.setItem('userInfo', JSON.stringify(userInfo.user));          
                     _self.router.navigate(['/tabs/(me:me)']);
                 }else{
                     alert(result.memo)

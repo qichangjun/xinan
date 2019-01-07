@@ -4,6 +4,7 @@ import { Router,ActivatedRoute } from '@angular/router';
 import { AboutService } from '../about.service'
 import { apiUrlService} from '../../shared/apiUrl.service'
 import { DomSanitizer } from '@angular/platform-browser';
+import { MeService } from '../../me/me.service'
 @Component({
     selector: 'app-details-shop',
     templateUrl: './details-shop.component.html',
@@ -39,8 +40,9 @@ export class DetailsShopComponent implements OnInit {
     years: any = 1;
     remHigh: Number = 0;
     addHigh: Number = 1;
-
+    cartNumb : Number = 0;
     constructor(
+        private _MeService : MeService,
         private router: Router,
         public alertController: AlertController,
         public activeRoute: ActivatedRoute,
@@ -52,10 +54,16 @@ export class DetailsShopComponent implements OnInit {
             (params) => {
                this.id = params.id  
                this.getShopDetail()
+               this.getShopCartList()
             });
      }
 
     ngOnInit() {
+    }
+
+    async getShopCartList(){
+        let res = await this._aboutService.getShoCardData()
+        this.cartNumb = res.cartNumb
     }
 
     async getShopDetail(){
@@ -119,28 +127,7 @@ export class DetailsShopComponent implements OnInit {
         });
         await alert.present();
     }
-    // buyNow() {
-    //     const header = '提示！';
-    //     const message = '商城尚未开放购买权限，请耐心等待。';
-    //     const buttons = [
-    //         {
-    //             text: '取消',
-    //             role: 'cancel',
-    //             cssClass: 'secondary',
-    //             handler: (blah) => {
-    //                 console.log('Confirm Cancel: blah');
-    //             }
-    //         }, {
-    //             text: '返回商城',
-    //             // role: '',
-    //             handler: () => {
-    //                 this.router.navigate(['tabs']);
-    //                 // this.navCtrl.navigateForward('tabs');
-    //             }
-    //         }
-    //     ];
-    //     this.alertMessage(header, message, buttons);
-    // }
+   
     
     async alertMessage(header, message, buttons) {
         const alert = await this.alertController.create({
@@ -156,6 +143,7 @@ export class DetailsShopComponent implements OnInit {
         try{
             let res = await this._aboutService.addToShopcar(this.id,this.years)
             this.presentAlert(res.info,res.msg)
+            this.getShopCartList()
         }catch(err){
             this.alertMessage('提示', '出错了', this.buttons);
         }

@@ -127,4 +127,55 @@ export class MeService {
                 this._httpHanldeService.handleError(error)
             );
     }
+
+    updateUserInfo(userInfo){
+        let parameter = new URLSearchParams()
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.post(this._apiUrlService.baseUrl + this._apiUrlService.updateUserInfo, 
+            userInfo,
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
+                if (body.code == 1) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
+    checkUserInfo(){
+        let parameter = new URLSearchParams()
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.checkUserInfo, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
 }

@@ -157,95 +157,13 @@ export class MePage implements OnInit, OnEnter, OnDestroy {
     }
 
     getUserInfo() {
-        let userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
-        console.log(userInfo)
-        this.userInfo.mobile = userInfo.mobile
-        this.userInfo.nickname.value = userInfo.nickname
-        // var user = wilddog.auth().currentUser;
-        // if (user != null) {
-        //     this.userInfo.email  = user.email;
-        //     this.userInfo.mobile  = user.phone
-        //     this.userInfo.userId = user.uid; 
-        // } else {
-        // // 没有用户信息
-        //     let userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
-        //     this.userInfo.mobile =  userInfo.phone
-        // }
-        // this.apollo.watchQuery<any>({
-        //     query: findCurrentUserInfo
-        // }).valueChanges.subscribe((val) => {
-        //     console.log(val);
-        //     if (val && val.data && val.data.findCurrentUserInfo) {
-        //         const user = val.data.findCurrentUserInfo;
-        //         if (user && user.data) {
-        //             const info = user.data;
-        //             this.userInfo.userId = info.userId;
-        //             this.userInfo.mobile = info.mobile;
-        //             this.userInfo.email = info.email;
-        //             this.userInfo.createTime = info.createTime;
-        //             this.userInfo.openId = info.openId;
-        //             info.userInfos.forEach((item) => {
-        //                 switch (item.name) {
-        //                     case 'nickname':
-        //                         this.userInfo.nickname = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || '我的昵称'
-        //                         };
-        //                         break;
-        //                     case 'avatar':
-        //                         this.userInfo.avatar = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || '../../assets/imgs/img_avatar_default.png'
-        //                         };
-        //                         break;
-        //                     case 'backgroundImg':
-        //                         this.userInfo.backgroundImg = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || '../../assets/imgs/donationed.png'
-        //                         };
-        //                         break;
-        //                     case 'sex':
-        //                         this.userInfo.sex = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || 'male'
-        //                         };
-        //                         break;
-        //                     case 'profile':
-        //                         this.userInfo.profile = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || ''
-        //                         };
-        //                         break;
-        //                     case 'qrcode':
-        //                         this.userInfo.qrcode = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value
-        //                         };
-        //                         break;
-        //                     case 'heartSafteyAccount':
-        //                         this.userInfo.qrcode = {
-        //                             id: item.id,
-        //                             relationId: item.relationId,
-        //                             value: item.value || '--'
-        //                         };
-        //                         break;
-        //                 }
-        //             });
-
-        //             this.storeUserInfo();
-        //         }
-        //     }
-        // }, () => {
-        //     if (window.localStorage.getItem('userInfo')) {
-        //         this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'));
-        //     }
-        // });
+        this.userInfo =  JSON.parse(window.localStorage.getItem('userInfo'))
+        console.log(this.userInfo)
+        this.userInfo.backgroundImg ={ // 背景图
+            id: null,
+            relationId: 3,
+            value: '../../assets/imgs/donationed.png'
+        }
     }
 
     // 存储userInfo

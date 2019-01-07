@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController, AlertController } from '@ionic/angular';
 import { Apollo } from 'apollo-angular';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { MeService } from '../../me.service'
 import { updateCurrentUserInfo } from '../../../shared/graphql-tag';
 
 @Component({
@@ -11,29 +11,20 @@ import { updateCurrentUserInfo } from '../../../shared/graphql-tag';
     styleUrls: ['./name-edit.component.scss']
 })
 export class NameEditComponent implements OnInit {
-    name;
-    nickname = {
-        id: null,
-        relationId: 1,
-        value: ''
-    };
-
+    userInfo : any = {}
     constructor(
+        public _MeService : MeService,
         private toastCtrl: ToastController,
         private alertCtrl: AlertController,
         private apollo: Apollo,
         private router: Router,
         private activedRoute: ActivatedRoute
     ) {
-        const param = this.activedRoute.queryParams['value'];
-        this.nickname = {
-            id: param.id === null ? null : Number(param.id),
-            relationId: Number(param.relationId),
-            value: param.value
-        };
+        
     }
 
     ngOnInit() {
+        this.userInfo = JSON.parse(window.localStorage.getItem('userInfo'))
     }
 
     async showToast(msg: string, pos: any = 'bottom') {
@@ -58,35 +49,15 @@ export class NameEditComponent implements OnInit {
         toast.present();
     }
 
-    // 提交
-    up() {
-        if (this.nickname.value === '') {
-            this.showErrorToast('请输入昵称');
-        } else {
-            this.apollo.mutate({
-                mutation: updateCurrentUserInfo,
-                variables: {
-                    updateCurrentUserInput: {
-                        infoKVs: [{
-                            key: this.nickname.id,
-                            value: this.nickname.value,
-                            relationId: this.nickname.relationId
-                        }]
-                    }
-                }
-            }).subscribe((val) => {
-                console.log(val);
-                if (val && val.data && val.data.updateCurrentUserInfo) {
-                    const send = val.data.updateCurrentUserInfo;
-                    if (send.code === 200) {
-                        this.back();
-                        this.showToast('昵称修改成功');
-                    } else {
-                        this.showErrorToast(send.message);
-                    }
-                }
-            });
+    async update(){
+        try{
+            await this._MeService.updateUserInfo(this.userInfo)
+            this.showToast('设置成功')
+            await this._MeService.checkUserInfo()
+        }catch(err){
+            this.showErrorToast(err)
         }
+        
     }
 
     back() {

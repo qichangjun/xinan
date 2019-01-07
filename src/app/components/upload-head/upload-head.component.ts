@@ -4,7 +4,8 @@ import Hammer from 'hammerjs';
 import { CameraAndImagePickerServices } from '../../shared/cameraAndImagePickers.service';
 import { FileUploadService } from '../../shared/file-upload.service';
 import { LoadingController, ActionSheetController } from '@ionic/angular';
-
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer/ngx';
+import { apiUrlService } from '../../shared/apiUrl.service'
 @Component({
     selector: 'upload-head',
     templateUrl: './upload-head.component.html',
@@ -19,6 +20,8 @@ export class UploadHeadComponent implements OnInit {
     loading;
 
     constructor(
+        public _apiUrlService:apiUrlService,
+        private transfer: FileTransfer,
         public actionSheetController: ActionSheetController,
         private fileUpload: FileUploadService,
         private cameraAndImagePicker: CameraAndImagePickerServices,
@@ -28,7 +31,7 @@ export class UploadHeadComponent implements OnInit {
 
     ngOnInit() {
     }
-
+    fileTransfer: FileTransferObject = this.transfer.create();
     async presentActionSheet() {
         console.log('开始更换头像');
         const actionSheet = await this.actionSheetController.create({
@@ -74,18 +77,34 @@ export class UploadHeadComponent implements OnInit {
 
     // 上传图片
     doUpload(filePath) {
-        this.fileUpload.startUpload(filePath);
-        this.fileUpload.getFileUploadChange().subscribe((fileObj) => {
-            if (fileObj) {
-                const url = 'http://' + fileObj;
-                this.userInfo.avatar = url;
-                // this.imgs.push(url);
-                // if (this.imgs.length > 1) {
-                //     this.isAdd = false;
-                // }
-                this.loading.dismiss();
+        let options: FileUploadOptions = {
+            fileKey: 'file',
+            fileName: 'avater.jpg',
+            headers: {
+                Authorization : "Bearer "+window.localStorage.getItem('token')
             }
-        });
+         }
+         this.fileTransfer.upload(filePath, this._apiUrlService.baseUrl + this._apiUrlService.uploadAvater, options)
+          .then((data) => {
+            // success
+            this.loading.dismiss();
+          }, (err) => {
+            // error
+            alert(err)
+            this.loading.dismiss();
+          })
+        // this.fileUpload.startUpload(filePath);
+        // this.fileUpload.getFileUploadChange().subscribe((fileObj) => {
+        //     if (fileObj) {
+        //         const url = 'http://' + fileObj;
+        //         this.userInfo.avatar = url;
+        //         // this.imgs.push(url);
+        //         // if (this.imgs.length > 1) {
+        //         //     this.isAdd = false;
+        //         // }
+        //         this.loading.dismiss();
+        //     }
+        // });
     }
 
     async presentLoadingWithOptions() {

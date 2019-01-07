@@ -3,29 +3,29 @@
         <ion-buttons slot="start">
             <ion-back-button text="" icon="md-arrow-back" default-href="tabs/(me:me)"></ion-back-button>
         </ion-buttons>
-        <!-- <ion-buttons slot="end" margin-right class="end">
-            <ion-button routerLink="/info/signature-edit">
+        <ion-buttons style="color:white" slot="end" margin-right class="end">
+            <ion-button routerLink="/info/name-edit">
                 <ion-icon name="md-create"></ion-icon>
             </ion-button>
-        </ion-buttons> -->
+        </ion-buttons> 
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <div class="user">
-        <img [src]="userInfo.avatar.value" />
+        <img [src]="userInfo.avatar" onerror="this.src = '../../assets/imgs/img_avatar_default.png'"/>
     </div>
     <ion-row justify-content-center>
         <ion-col size="5" text-center>
             <span>
-                <ion-text>{{userInfo.nickname.value}}</ion-text>
-                <ion-icon name="{{userInfo.sex.value === 'female' ? 'female' : 'male'}}"></ion-icon>
+                <ion-text>{{userInfo.nickname}}</ion-text>
+                <ion-icon name="{{userInfo.sex === '0' ? 'female' : 'male'}}"></ion-icon>
             </span><br>
             <ion-chip class="position">
                 <ion-icon name="pin"></ion-icon>
-                <ion-text>陕西省</ion-text>
+                <ion-text>{{userInfo.city}}</ion-text>
             </ion-chip>
         </ion-col>
     </ion-row>
-    <p>{{userInfo.profile.value}}</p>
+   
 </ion-content>

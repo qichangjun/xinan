@@ -26,4 +26,6 @@ export class apiUrlService{
     cancelOrder = 'api/order/cancel'
     cleanShopCart = 'api/cart/del'
     getShopListsByMenuId = 'api/product/index'
+    uploadAvater = 'api/user/set_avater'
+    updateUserInfo = 'api/user/personaldata'
 }
