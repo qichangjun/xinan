@@ -19,7 +19,7 @@ declare var wilddog: any;
 })
 export class MePage implements OnInit, OnEnter, OnDestroy {
 
-    userInfo = {
+    userInfo : any = {
         userId: '', // 用户id
         certifying: false,
         mobile: '去绑定', // 手机号

@@ -147,10 +147,17 @@ ion-content {
                         float: right;
                         color: #e83030;
                         display: flex;
-                        align-items: center
+                        align-items: center;
+                        font-size: 14px;
+                        border-radius: 15px;
+                        background: #e83030;
+                        color: white;
+                        padding: 5px;
+                        line-height: 10px;
                     }
 
                     ion-icon {
+                        color: #e83030;
                         width: 18px;
                         height: 18px;
                         margin-left: 5px;

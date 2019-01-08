@@ -41,9 +41,6 @@ export class httpHanldeService {
             localStorage.removeItem('token');
             localStorage.removeItem('userInfo');
             this.showToast('请重新登陆')
-            setTimeout(()=>{
-                this.router.navigate(['/auth/sign-in']);
-            },500)
         }
 
         return Promise.reject(error.msg || error.statusText || error);
