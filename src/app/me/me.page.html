@@ -22,14 +22,14 @@
                 <span>注册</span>
             </p>
             <p *ngIf="isLogged" class="name_create">
-                <span class="name" (click)="jumpTo('/info/name-edit','',userInfo.nickname)">{{userInfo.nickname || '心安天使'}}</span>&nbsp;&nbsp;
+                <span class="name" (click)="jumpTo('/info/name-edit','',userInfo.username)">{{userInfo.username || '心安天使'}}</span>&nbsp;&nbsp;
                 <ion-icon class="sex" name="{{userInfo.sex === '0' ? 'female' : 'male'}}"></ion-icon>
                 <ion-chip class="position">
                     <ion-icon name="pin"></ion-icon>
                     <ion-text>陕西省</ion-text>
                 </ion-chip>
                 <br />
-                <span class="account">心安号：{{userInfo.identify_number}}</span>
+                <span class="account">心安号：{{userInfo.anxin_id}}</span>
                 <br />
                 <span class="span_btn" (click)="jumpTo('/homepage')">
                     <ion-text>个人主页</ion-text>

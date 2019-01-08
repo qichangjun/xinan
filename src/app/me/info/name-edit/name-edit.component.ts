@@ -53,7 +53,8 @@ export class NameEditComponent implements OnInit {
         try{
             await this._MeService.updateUserInfo(this.userInfo)
             this.showToast('设置成功')
-            await this._MeService.checkUserInfo()
+        
+            localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
         }catch(err){
             this.showErrorToast(err)
         }

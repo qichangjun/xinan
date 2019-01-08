@@ -10,7 +10,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "emulate": "ionic cordova emulate android -lc --debug",
+        "emulate": "ionic cordova run android -lc --debug --emulate",
         "sign": "jarsigner -verbose -keystore com.xinan.one.keystore -signedjar  xinan.apk app-release-unsigned.apk mykey",
         "signjks": "jarsigner -verbose -keystore xinan.jks -signedjar  xinan.apk app-release-unsigned.apk xinan"
     },
