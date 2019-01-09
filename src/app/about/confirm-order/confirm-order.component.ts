@@ -59,7 +59,6 @@ export class ConfirmOrderComponent implements OnInit {
 
     async getAddressList(){
         let res = await this._MeService.getAddressList()
-        console.log(res)
         if(res.length == 0){
             const header = '提示！';
             const message = '您还没有设置收货地址，请先设置一个收货地址';
@@ -69,7 +68,7 @@ export class ConfirmOrderComponent implements OnInit {
                     role: 'cancel',
                     cssClass: 'secondary',
                     handler: (blah) => {
-                        console.log('Confirm Cancel: blah');
+                        this.router.navigate(['/tabs/(home:home)'])
                     }
                 }, {
                     text: '现在去设置',
