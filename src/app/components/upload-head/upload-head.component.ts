@@ -42,6 +42,9 @@ export class UploadHeadComponent implements OnInit {
                     this.cameraAndImagePicker.takePicture().then((imageData) => {
                         const res = [];
                         res.push(imageData);
+                        if(!res || res.length == 0){
+                            return 
+                        }
                         this.doUpload(res);
                         this.presentLoadingWithOptions();
                         // imageData is either a base64 encoded string or a file URI
@@ -57,6 +60,9 @@ export class UploadHeadComponent implements OnInit {
                     console.log('从相册选择图片');
                     this.cameraAndImagePicker.imageFun(1).then((results) => {
                         // for (let i = 0; i < results.length; i++) {
+                        if (!results || results.length == 0){
+                            return 
+                        }
                         this.doUpload(results);
                         this.presentLoadingWithOptions();
                         // }
@@ -84,7 +90,10 @@ export class UploadHeadComponent implements OnInit {
                 Authorization : "Bearer "+window.localStorage.getItem('token')
             }
          }
-         this.fileTransfer.upload(filePath, this._apiUrlService.baseUrl + this._apiUrlService.uploadAvater, options)
+         if (!filePath[0]){
+             return 
+         }
+         this.fileTransfer.upload(filePath[0], this._apiUrlService.baseUrl + this._apiUrlService.uploadAvater, options)
           .then((data) => {
             // success
             this.loading.dismiss();
