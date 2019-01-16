@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController,ModalController } from '@ionic/angular';
 import { AboutService} from '../about.service';
+import { PayComponent } from '../pay/pay.component'
 declare let cordova;
 @Component({
     selector: 'app-all-order',
@@ -17,6 +18,7 @@ export class AllOrderComponent implements OnInit {
     list = { img: '../../../assets/imgs/bag1.png', title: '女士个性标语肩带单肩包时尚便携真皮手提包', price: '3319.00', num: '1', id: 1 };
 
     constructor(
+        public modalController: ModalController,
         public _AboutService : AboutService,
         public alertController: AlertController,
     ) { }
@@ -87,20 +89,26 @@ export class AllOrderComponent implements OnInit {
         await alert.present();
     }
 
-    async pay(id){
-        let payInfo = await this._AboutService.Pay(id)
-        let _self = this 
-        cordova.plugins.ali.pay(payInfo.res,async function success(result){    
-            if (result.resultStatus == 9000){
-                //验证用户认证状态
-                alert('支付成功')
-                _self.getAllOrder()
-            }else{
-                alert(result.memo)
+    async pay(order){
+        console.log(order)
+        let orderInfo = {
+            id : order.id,
+            orderId : order.orderid,
+            money : order.totalprice
+        }
+        const modal = await this.modalController.create({
+            component: PayComponent,
+            componentProps: { 
+                orderInfo : orderInfo
             }
-        },function error(error){
-            alert(error)
-        });
+          });
+        modal.present();
+        const { data } = await modal.onDidDismiss();
+        if(data){
+           if(data.complete){
+               return
+           }
+        }
     }
 
     loadData(event) {

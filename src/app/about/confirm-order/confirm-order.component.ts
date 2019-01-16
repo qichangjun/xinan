@@ -113,12 +113,11 @@ export class ConfirmOrderComponent implements OnInit {
                 num : this.count[i]
             })
         }
+        let orderInfo = await this._AboutService.addOrder(cart,this.address.id)
         const modal = await this.modalController.create({
             component: PayComponent,
             componentProps: { 
-                cart: cart,
-                contact_id : this.address.id,
-                totalPrice : this.totalPrice
+                orderInfo : orderInfo
             }
           });
         modal.present();
@@ -132,6 +131,8 @@ export class ConfirmOrderComponent implements OnInit {
 
         // console.log(res)
     }
+
+
 
     async alertMessage(header, message, buttons) {
         const alert = await this.alertController.create({

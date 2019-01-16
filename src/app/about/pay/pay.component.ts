@@ -9,10 +9,7 @@ declare let cordova;
     styleUrls: ['./pay.component.scss']
 })
 export class PayComponent implements OnInit {
-    @Input() cart: any;
-    @Input() contact_id : any;
-    @Input() totalPrice : any = 0;
-    orderInfo : any = {}
+    @Input() orderInfo : any;
     constructor(
         private _AboutService : AboutService,
         public _ModalController : ModalController,
@@ -22,11 +19,7 @@ export class PayComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-      this.addOrder() 
-    }
-
-    async addOrder(){
-        this.orderInfo = await this._AboutService.addOrder(this.cart,this.contact_id)
+        console.log(this.orderInfo)
     }
 
     async aliPay() {

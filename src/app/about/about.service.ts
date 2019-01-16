@@ -143,7 +143,7 @@ export class AboutService {
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'));
         let post_data = {
             cart : cart,
-            payment_id : 3,
+            
             contact_id  : contact_id,
             remark : ' '
         }
@@ -199,6 +199,7 @@ export class AboutService {
         let parameter = new URLSearchParams()
         parameter.set('id',orderId)
         parameter.set('remark',' ')
+        parameter.set('payment_id','3')
         const myHeaders: Headers = new Headers();
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
         return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.Pay, 
