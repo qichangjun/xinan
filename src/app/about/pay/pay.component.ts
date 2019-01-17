@@ -42,4 +42,8 @@ export class PayComponent implements OnInit {
             alert(error)
         });
     }
+
+    async weChatPay(){
+        let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
+    }
 }
