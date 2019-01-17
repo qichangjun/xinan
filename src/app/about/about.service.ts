@@ -223,6 +223,34 @@ export class AboutService {
             );
     }
 
+    weChatPay(orderId ){
+        let parameter = new URLSearchParams()
+        parameter.set('id',orderId)
+        parameter.set('remark',' ')
+        parameter.set('payment_id','2')
+        const myHeaders: Headers = new Headers();
+        myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.Pay, 
+            { 
+            headers: myHeaders,
+            search: parameter })
+            .toPromise()
+            .then(res => {
+                let body = res.json();
+                if(body.status == 401){
+                    return Promise.reject(body);
+                }
+                if (body.data) {
+                    return body.data;
+                } else {
+                    return Promise.reject(body.msg);
+                }
+            })
+            .catch(error =>
+                this._httpHanldeService.handleError(error)
+            );
+    }
+
     cleanShopCart(id?){
         let parameter = new URLSearchParams()
         parameter.set('id',id)

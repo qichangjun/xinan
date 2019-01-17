@@ -25,7 +25,7 @@ export class PayComponent implements OnInit {
     async aliPay() {
         let payInfo = await this._AboutService.Pay(this.orderInfo.id)
         let _self = this
-        cordova.plugins.ali.pay(payInfo.res,async function success(result){    
+        cordova.plugins.alipay.payment(payInfo.res,async function success(result){    
             if (result.resultStatus == 9000){
                 alert('支付成功')
                 //验证用户认证状态
@@ -33,7 +33,7 @@ export class PayComponent implements OnInit {
                     complete : true 
                 })
             }else{
-                alert(result.memo)
+                alert('支付失败')
                 _self._ModalController.dismiss({
                     complete : true 
                 })
@@ -41,5 +41,9 @@ export class PayComponent implements OnInit {
         },function error(error){
             alert(error)
         });
+    }
+
+    async weChatPay(){
+        let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
     }
 }

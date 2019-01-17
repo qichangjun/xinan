@@ -193,7 +193,7 @@ export class JoinNowComponent implements OnInit {
         try{
             let _self = this
             let orderInfo = await this._joinNowService.join(this.userName,this.number)
-            cordova.plugins.ali.pay(orderInfo.res,async function success(result){    
+            cordova.plugins.alipay.payment(orderInfo.res,async function success(result){    
                 if (result.resultStatus == 9000){
                     _self.showToast('交易成功，若认证状态未改变请稍等后重新登陆')
                     //验证用户认证状态
@@ -201,7 +201,7 @@ export class JoinNowComponent implements OnInit {
                     localStorage.setItem('userInfo', JSON.stringify(userInfo.user));          
                     _self.router.navigate(['/tabs/(me:me)']);
                 }else{
-                    alert(result.memo)
+                    alert('支付失败')
                 }
             },function error(error){
                 alert(error)
