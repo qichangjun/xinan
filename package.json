@@ -12,7 +12,7 @@
         "e2e": "ng e2e",
         "emulate": "ionic cordova run android -lc --debug --emulate",
         "sign": "jarsigner -verbose -keystore com.xinan.one.keystore -signedjar  xinan.apk app-release-unsigned.apk mykey",
-        "signjks": "jarsigner -verbose -keystore xinan.jks -signedjar  xinan.apk app-release-unsigned.apk xinan"
+        "signjks": "jarsigner -verbose -keystore xinan.jks -signedjar  xinan.apk platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk xinan"
     },
     "private": true,
     "dependencies": {
@@ -44,7 +44,7 @@
         "apollo-link-error": "^1.1.1",
         "call-number": "0.0.2",
         "com-badrit-base64": "^0.2.0",
-        "cordova-android": "7.0.0",
+        "cordova-android": "^7.1.4",
         "cordova-ios": "4.5.5",
         "cordova-plugin-advanced-http": "2.0.1",
         "cordova-plugin-camera": "^4.0.3",
@@ -121,8 +121,8 @@
             }
         },
         "platforms": [
-            "android",
-            "ios"
+            "ios",
+            "android"
         ]
     }
 }
