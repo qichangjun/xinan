@@ -33,7 +33,7 @@ export class PayComponent implements OnInit {
                     complete : true 
                 })
             }else{
-                alert(result.memo)
+                alert('支付失败')
                 _self._ModalController.dismiss({
                     complete : true 
                 })

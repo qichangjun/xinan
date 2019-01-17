@@ -201,7 +201,7 @@ export class JoinNowComponent implements OnInit {
                     localStorage.setItem('userInfo', JSON.stringify(userInfo.user));          
                     _self.router.navigate(['/tabs/(me:me)']);
                 }else{
-                    alert(result.memo)
+                    alert('支付失败')
                 }
             },function error(error){
                 alert(error)
