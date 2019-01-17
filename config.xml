@@ -97,7 +97,7 @@
     <allow-navigation href="http://120.79.0.57:3000" />
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
-    <plugin name="cordova-plugin-gubnoi-alipay" spec="0.0.4">
+    <plugin name="cordova-plugin-alipay-v2" spec="^1.0.0">
         <variable name="APP_ID" value="2018102761911005" />
     </plugin>
     <engine name="android" spec="7.0.0" />

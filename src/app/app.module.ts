@@ -6,7 +6,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Alipay } from '@ionic-native/alipay/ngx';
+// import { Alipay } from '@ionic-native/alipay/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { FileTransfer } from '@ionic-native/file-transfer/ngx';
@@ -48,8 +48,7 @@ import { HTTP } from '@ionic-native/http/ngx';
         Camera,
         CallNumber,
         FileTransfer,
-        Base64,
-        Alipay,
+        Base64,        
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
         // Wechat
         HTTP,
