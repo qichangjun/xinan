@@ -195,7 +195,7 @@ export class AboutService {
             );
     }
 
-    Pay(orderId ){
+    Pay(orderId){
         let parameter = new URLSearchParams()
         parameter.set('id',orderId)
         parameter.set('remark',' ')
@@ -223,14 +223,13 @@ export class AboutService {
             );
     }
 
-    weChatPay(orderId ){
+    weChatPay(orderId){
         let parameter = new URLSearchParams()
         parameter.set('id',orderId)
-        parameter.set('remark',' ')
-        parameter.set('payment_id','2')
+        
         const myHeaders: Headers = new Headers();
         myHeaders.set('Authorization', "Bearer "+window.localStorage.getItem('token'))
-        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.Pay, 
+        return this.http.get(this._apiUrlService.baseUrl + this._apiUrlService.weChatPay, 
             { 
             headers: myHeaders,
             search: parameter })
@@ -240,8 +239,8 @@ export class AboutService {
                 if(body.status == 401){
                     return Promise.reject(body);
                 }
-                if (body.data) {
-                    return body.data;
+                if (body) {
+                    return body;
                 } else {
                     return Promise.reject(body.msg);
                 }
