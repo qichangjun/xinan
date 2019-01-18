@@ -49,14 +49,19 @@ export class PayComponent implements OnInit {
     async weChatPay(){
         let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
         let prepayid = payInfo.package.replace('prepay_id=','')
+        console.log(prepayid)
         this.wechat.sendPaymentRequest({
             partnerid: payInfo.mch_id, // merchant id
             prepayid: prepayid, // prepay id
             noncestr: payInfo.nonceStr, // nonce
             timestamp: payInfo.timeStamp, // timestamp
             sign: payInfo.paySign, // signed string
-        })
-        .then((res: any) => console.log(res))
-        .catch((error: any) => console.error(error));
+        }).then((res: any) => {
+            this._ModalController.dismiss({
+                complete : true 
+            })
+        }).catch((error: any) => {
+            alert("支付失败:" + error)
+        });
     }
 }
