@@ -28,4 +28,5 @@ export class apiUrlService{
     getShopListsByMenuId = 'api/product/index'
     uploadAvater = 'api/user/set_avater'
     updateUserInfo = 'api/user/personaldata'
+    weChatPay = 'api/pay/wxpay'
 }

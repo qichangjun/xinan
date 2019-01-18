@@ -50,7 +50,7 @@ ion-content {
 
     ion-item {
         --ion-item-border-color: #e6e6e6;
-        background: #fff;
+        background: var(--background);
         padding: 0 0 0 16px;
 
         .name {

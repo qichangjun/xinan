@@ -2,6 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { AlertController,ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AboutService } from '../about.service'
+// import { Wechat } from '@ionic-native/wechat/ngx';
+declare let Wechat;
 declare let cordova;
 @Component({
     selector: 'app-pay',
@@ -44,6 +46,27 @@ export class PayComponent implements OnInit {
     }
 
     async weChatPay(){
-        let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
+        try{
+            let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
+            let prepayid = payInfo.package.replace('prepay_id=','')
+            Wechat.sendPaymentRequest({
+                appid : payInfo.appId,
+                mch_id: payInfo.mchId, // merchant id
+                prepay_id: prepayid, // prepay id
+                nonce: payInfo.nonceStr, // nonce
+                timestamp: payInfo.timeStamp, // timestamp
+                sign: payInfo.paySign, // signed string
+            }, () =>{
+                this._ModalController.dismiss({
+                    complete : true 
+                })
+            }, (error) =>{
+                alert("支付失败:" + error)
+            });
+        }catch(err){
+            alert(err)
+        }
+        
     }
+
 }

@@ -117,6 +117,7 @@ export class AllOrderComponent implements OnInit {
             if (this.orderLists.length >= this.totalCount) {
                 event.target.disabled = true;
             }
+            this.page++
             this.getAllOrder('changePage')
         }, 500);
     }
