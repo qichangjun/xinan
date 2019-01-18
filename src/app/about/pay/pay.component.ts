@@ -49,15 +49,8 @@ export class PayComponent implements OnInit {
         try{
             let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
             let prepayid = payInfo.package.replace('prepay_id=','')
-            console.log({
-                partnerid: payInfo.mchId, // merchant id
-                prepayid: prepayid, // prepay id
-                noncestr: payInfo.nonceStr, // nonce
-                timestamp: payInfo.timeStamp, // timestamp
-                sign: payInfo.paySign, // signed string
-            })
             Wechat.sendPaymentRequest({
-                appid : 'wxa6695df04b8942a5',
+                appid : payInfo.appId,
                 mch_id: payInfo.mchId, // merchant id
                 prepay_id: prepayid, // prepay id
                 nonce: payInfo.nonceStr, // nonce
