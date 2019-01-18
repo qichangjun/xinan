@@ -100,12 +100,9 @@
     <plugin name="cordova-plugin-alipay-v2" spec="^1.0.0">
         <variable name="APP_ID" value="2018102761911005" />
     </plugin>
-    <engine name="ios" spec="4.5.5" />
-<<<<<<< HEAD
     <plugin name="cordova-plugin-wechat" spec="^2.6.0">
         <variable name="WECHATAPPID" value="wxa6695df04b8942a5" />
     </plugin>
-=======
-    <engine name="android" spec="~7.1.4" />
->>>>>>> a49fa4a685231cdf021bc1d3887df0447577362b
+    <engine name="android" spec="^7.1.4" />
+    <engine name="ios" spec="4.5.5" />
 </widget>

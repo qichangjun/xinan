@@ -2,8 +2,8 @@ import { Component, OnInit,Input } from '@angular/core';
 import { AlertController,ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AboutService } from '../about.service'
-import { Wechat } from '@ionic-native/wechat/ngx';
-
+// import { Wechat } from '@ionic-native/wechat/ngx';
+declare let Wechat;
 declare let cordova;
 @Component({
     selector: 'app-pay',
@@ -13,7 +13,6 @@ declare let cordova;
 export class PayComponent implements OnInit {
     @Input() orderInfo : any;
     constructor(
-        private wechat: Wechat,
         private _AboutService : AboutService,
         public _ModalController : ModalController,
         public alertController: AlertController,
@@ -47,21 +46,34 @@ export class PayComponent implements OnInit {
     }
 
     async weChatPay(){
-        let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
-        let prepayid = payInfo.package.replace('prepay_id=','')
-        console.log(prepayid)
-        this.wechat.sendPaymentRequest({
-            partnerid: payInfo.mch_id, // merchant id
-            prepayid: prepayid, // prepay id
-            noncestr: payInfo.nonceStr, // nonce
-            timestamp: payInfo.timeStamp, // timestamp
-            sign: payInfo.paySign, // signed string
-        }).then((res: any) => {
-            this._ModalController.dismiss({
-                complete : true 
+        try{
+            let payInfo = await this._AboutService.weChatPay(this.orderInfo.id)
+            let prepayid = payInfo.package.replace('prepay_id=','')
+            console.log({
+                partnerid: payInfo.mchId, // merchant id
+                prepayid: prepayid, // prepay id
+                noncestr: payInfo.nonceStr, // nonce
+                timestamp: payInfo.timeStamp, // timestamp
+                sign: payInfo.paySign, // signed string
             })
-        }).catch((error: any) => {
-            alert("支付失败:" + error)
-        });
+            Wechat.sendPaymentRequest({
+                appid : 'wxa6695df04b8942a5',
+                mch_id: payInfo.mchId, // merchant id
+                prepay_id: prepayid, // prepay id
+                nonce: payInfo.nonceStr, // nonce
+                timestamp: payInfo.timeStamp, // timestamp
+                sign: payInfo.paySign, // signed string
+            }, () =>{
+                this._ModalController.dismiss({
+                    complete : true 
+                })
+            }, (error) =>{
+                alert("支付失败:" + error)
+            });
+        }catch(err){
+            alert(err)
+        }
+        
     }
+
 }

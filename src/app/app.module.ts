@@ -23,7 +23,7 @@ import { GraphQLModule } from './shared/graphql.module';
 import { IonicGestureConfig } from './shared/ionic-gesture-config.service';
 import { HttpModule } from '@angular/http';
 import { HTTP } from '@ionic-native/http/ngx';
-import { Wechat } from '@ionic-native/wechat/ngx';
+// import { Wechat } from '@ionic-native/wechat/ngx';
 
 
 // import { MultiPickerModule } from 'ion-multi-picker';
@@ -51,7 +51,7 @@ import { Wechat } from '@ionic-native/wechat/ngx';
         FileTransfer,
         Base64,        
         { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        Wechat,
+        // Wechat,
         HTTP,
         {
             provide: HAMMER_GESTURE_CONFIG,
