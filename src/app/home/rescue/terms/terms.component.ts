@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { JoinNowService } from '../join-now/join-now.service'
-import { Alipay } from '@ionic-native/alipay/ngx';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 declare let cordova;
@@ -18,7 +17,6 @@ export class TermsComponent implements OnInit {
     constructor(
         public toastCtrl: ToastController,
         private router: Router,
-        private alipay: Alipay,
         public _joinNowService : JoinNowService,
         public alertController: AlertController,
         public activeRoute: ActivatedRoute

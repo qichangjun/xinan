@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController,NavController,NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { JoinNowService } from './join-now.service';
-import { Alipay } from '@ionic-native/alipay/ngx';
 import { ToastController } from '@ionic/angular';
 declare let cordova;
 @Component({
@@ -51,7 +50,6 @@ export class JoinNowComponent implements OnInit {
     constructor(
         public _joinNowService : JoinNowService,
         public alertController: AlertController,
-        private alipay: Alipay,
         private router: Router,
         public toastCtrl: ToastController,
         private navCtrl: NavController

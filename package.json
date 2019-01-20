@@ -10,6 +10,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
+        "androidDebug": "ionic cordova run android --device",
         "emulate": "ionic cordova run android -lc --debug --emulate",
         "sign": "jarsigner -verbose -keystore com.xinan.one.keystore -signedjar  xinan.apk app-release-unsigned.apk mykey",
         "signjks": "jarsigner -verbose -keystore xinan.jks -signedjar  xinan.apk platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk xinan"
@@ -23,7 +24,6 @@
         "@angular/platform-browser": "~6.1.1",
         "@angular/platform-browser-dynamic": "~6.1.1",
         "@angular/router": "~6.1.1",
-        "@ionic-native/alipay": "^5.0.0-beta.23",
         "@ionic-native/base64": "^5.0.0-beta.21",
         "@ionic-native/call-number": "^5.0.0-beta.21",
         "@ionic-native/camera": "^5.0.0-beta.21",
@@ -45,7 +45,7 @@
         "apollo-link-error": "^1.1.1",
         "call-number": "0.0.2",
         "com-badrit-base64": "^0.2.0",
-        "cordova-android": "^7.1.4",
+        "cordova-android": "7.1.4",
         "cordova-ios": "4.5.5",
         "cordova-plugin-advanced-http": "^2.0.1",
         "cordova-plugin-alipay-v2": "^1.0.0",
@@ -118,11 +118,11 @@
             "mx.ferreyra.callnumber": {},
             "call-number": {},
             "cordova-plugin-advanced-http": {},
-            "cordova-plugin-alipay-v2": {
-                "APP_ID": "2018102761911005"
-            },
             "cordova-plugin-wechat": {
                 "WECHATAPPID": "wxa6695df04b8942a5"
+            },
+            "cordova-plugin-alipay-v2": {
+                "APP_ID": "2018102761911005"
             }
         },
         "platforms": [
