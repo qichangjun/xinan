@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController,NavController,NavParams } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { JoinNowService } from './join-now.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController,ActionSheetController } from '@ionic/angular';
 declare let cordova;
+declare let Wechat;
 @Component({
     selector: 'join-now',
     templateUrl: './join-now.component.html',
@@ -48,6 +49,7 @@ export class JoinNowComponent implements OnInit {
     number;
 
     constructor(
+        public actionSheetController: ActionSheetController,
         public _joinNowService : JoinNowService,
         public alertController: AlertController,
         private router: Router,
@@ -190,7 +192,7 @@ export class JoinNowComponent implements OnInit {
     async aliPay(){
         try{
             let _self = this
-            let orderInfo = await this._joinNowService.join(this.userName,this.number)
+            let orderInfo = await this._joinNowService.join(4,this.userName,this.number)
             cordova.plugins.alipay.payment(orderInfo.res,async function success(result){    
                 if (result.resultStatus == 9000){
                     _self.showToast('交易成功，若认证状态未改变请稍等后重新登陆')
@@ -209,6 +211,35 @@ export class JoinNowComponent implements OnInit {
             this.router.navigate(['/auth/sign-in']);
             this.showToast('请先登陆')
         }
+    }
+
+    async weChatPay(){
+        try{
+            let _self = this
+            let orderInfo = await this._joinNowService.join(2,this.userName,this.number)
+            let prepayid = orderInfo.package.replace('prepay_id=','')
+            Wechat.sendPaymentRequest({
+                appid : orderInfo.appId,
+                mch_id: orderInfo.mchId, // merchant id
+                prepay_id: prepayid, // prepay id
+                nonce: orderInfo.nonceStr, // nonce
+                timestamp: orderInfo.timeStamp, // timestamp
+                sign: orderInfo.paySign, // signed string
+            }, async () =>{
+                _self.showToast('交易成功，若认证状态未改变请稍等后重新登陆')
+                    //验证用户认证状态
+                let userInfo = await _self._joinNowService.checkUserInfo()
+                localStorage.setItem('userInfo', JSON.stringify(userInfo.user));          
+                _self.router.navigate(['/tabs/(me:me)']);
+            }, (error) =>{
+                alert("支付失败:" + error)
+            });
+        }catch(err){
+            alert(err)
+            this.router.navigate(['/auth/sign-in']);
+            this.showToast('请先登陆')
+        }
+
     }
 
 }

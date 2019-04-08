@@ -64,10 +64,10 @@ export class JoinNowService {
             );
     }
 
-    async join(certification_username: string,certification_number:string) {
+    async join(payment_id,certification_username: string,certification_number:string) {
         let parameter = new URLSearchParams()
         let post_data = {
-            payment_id : 4,
+            payment_id : payment_id,
             certification:{
                 certification_username : certification_username,
                 certification_number : certification_number

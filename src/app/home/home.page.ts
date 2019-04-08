@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
     isPublic = false;
     tag = '公告中';
     items;
-    carLable = '已救助';
+    carLable = '救助人数';
     options: {
         autoplay: true,
         effect: 'flip',

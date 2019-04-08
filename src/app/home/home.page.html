@@ -14,8 +14,8 @@
 
 <ion-content>
     <ion-segment (ionChange)="segmentChanged($event)" mode="md" value="rescue">
-        <ion-segment-button value="rescue">救助</ion-segment-button>
-        <ion-segment-button value="giving">乐捐</ion-segment-button>
+        <ion-segment-button value="rescue">心安救助</ion-segment-button>
+        <ion-segment-button value="giving">公益乐捐</ion-segment-button>
     </ion-segment>
 
     <div class="slides">
@@ -28,30 +28,60 @@
 
     <div class="cont">
         <ion-card class="car_s" no-margin>
-            <ion-row align-items-center>
+            <ion-row style="background: rgb(247,247,247)" align-items-center>
                 <ion-col (click)="alert()">
                     <ion-label class="num">已加入</ion-label>
                     <ion-label>
-                        <span>34</span>
-                        万人
+                        <span>256 万人</span>
+                        
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="pool()">
-                    <ion-label class="num">资金池</ion-label>
+                    <ion-label class="num">权益金</ion-label>
                     <ion-label>
-                        <span>658</span>
-                        万人
+                        <span>4000 万人</span>
+                        
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="allType();">
                     <ion-label class="num">{{carLable}}</ion-label>
                     <ion-label>
-                        <span>256</span>
-                        人
+                        <span>200 人</span>                        
                     </ion-label>
                 </ion-col>
             </ion-row>
         </ion-card>
+
+        <ion-card class="car_s" no-margin>
+            <ion-row align-items-center>
+                <ion-col (click)="alert()">
+                    <ion-label class="num"></ion-label>
+                    <ion-label>
+                        <span>服务帮助</span>
+                    </ion-label>
+                </ion-col>
+                <ion-col (click)="pool()">
+                    <ion-label class="num"></ion-label>
+                    <ion-label>
+                        <span>服务公示</span>
+                        
+                    </ion-label>
+                </ion-col>
+                <ion-col (click)="allType();">
+                    <ion-label class="num"></ion-label>
+                    <ion-label>
+                        <span>服务明细</span>                        
+                    </ion-label>
+                </ion-col>
+                <ion-col (click)="allType();">
+                    <ion-label class="num"></ion-label>
+                    <ion-label>
+                        <span>机构声明</span>                        
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
         <div *ngIf="isShow === false">
             <h1>
                 心安大病救助服务
