@@ -120,9 +120,9 @@ ion-content {
         margin: 13.5px 12px;
         background-color: #fff;
         position: relative;
-
+        height: 153px;
         ion-col {
-            height: 116px;
+            height: 149px;
             padding: 10px;
 
             img {
@@ -150,11 +150,11 @@ ion-content {
                         color: #e83030;
                         display: flex;
                         align-items: center;
-                        font-size: 14px;
+                        font-size: 13px;
                         border-radius: 15px;
                         background: #e83030;
                         color: white;
-                        padding: 5px;
+                        padding: 8px;
                         line-height: 10px;
                     }
 
@@ -329,11 +329,12 @@ ion-content {
 
         .num {
             color: #bdbdbd;
-            font-size: 11px;
-            .num_icon_img{
-                margin : auto;
-                width: 50%;
-            }
+            font-size: 11px;       
         }
     }
+}
+
+.num_icon_img{
+    margin : auto;
+    width: 50%;
 }
