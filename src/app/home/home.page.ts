@@ -22,7 +22,7 @@ export class HomePage implements OnInit {
         effect: 'flip',
     };
     imgs = [
-        '../../assets/imgs/banner_shangcheng@2x.png',
+        '../../assets/imgs/banner1@2x.png',
         '../../assets/imgs/img_01@3x.png',
         '../../assets/imgs/img_jifen@2x.png'
     ];

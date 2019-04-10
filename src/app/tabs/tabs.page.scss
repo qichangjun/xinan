@@ -1,1 +1,41 @@
 
+.tab-selected{
+    .tab_icon_xinan_toggle{       
+        background-image : url('../../assets/icon/xinan.png') !important
+    }
+    .tab_icon_shopping_toggle{
+        background-image : url('../../assets/icon/shangcheng.png')  
+    }
+    .tab_icon_discover_toggle{
+        background-image : url('../../assets/icon/faxian.png')  
+    }
+    .tab_icon_personal_toggle{
+        background-image : url('../../assets/icon/wode.png')  
+    }
+}
+
+.tab_icon_xinan_toggle{
+    background-image : url('../../assets/icon/xinan-@2x.png')  
+}
+
+.tab_icon_shopping_toggle{
+    background-image : url('../../assets/icon/shangcheng-@2x.png')  
+}
+
+.tab_icon_discover_toggle{
+    background-image : url('../../assets/icon/faxian-@2x.png')  
+}
+
+.tab_icon_personal_toggle{
+    background-image : url('../../assets/icon/wode-@2x.png')  
+}
+
+.tab_icon{
+    height: 30px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    
+}
+

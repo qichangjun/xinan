@@ -33,20 +33,20 @@
                     <ion-label class="num">已加入</ion-label>
                     <ion-label>
                         <span>256 万人</span>
-                        
+
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="pool()">
                     <ion-label class="num">权益金</ion-label>
                     <ion-label>
                         <span>4000 万人</span>
-                        
+
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="allType();">
                     <ion-label class="num">{{carLable}}</ion-label>
                     <ion-label>
-                        <span>200 人</span>                        
+                        <span>200 人</span>
                     </ion-label>
                 </ion-col>
             </ion-row>
@@ -55,34 +55,75 @@
         <ion-card class="car_s" no-margin>
             <ion-row align-items-center>
                 <ion-col (click)="alert()">
-                    <ion-label class="num"></ion-label>
+                    <ion-label class="num">
+                        <span class="num_icon">
+                            <img class="num_icon_img" src="../../assets/icon/bangzhu@2x.png" />
+                        </span>
+                    </ion-label>
                     <ion-label>
                         <span>服务帮助</span>
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="pool()">
-                    <ion-label class="num"></ion-label>
+                    <ion-label class="num">
+                        <span class="num_icon">
+                            <img class="num_icon_img" src="../../assets/icon/gongshi@2x.png" />
+                        </span>
+
+                    </ion-label>
                     <ion-label>
                         <span>服务公示</span>
-                        
+
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="allType();">
-                    <ion-label class="num"></ion-label>
+                    <ion-label class="num">
+                        <span class="num_icon">
+                            <img class="num_icon_img" src="../../assets/icon/mingxi@2x.png" />
+                        </span>
+
+                    </ion-label>
                     <ion-label>
-                        <span>服务明细</span>                        
+                        <span>服务明细</span>
                     </ion-label>
                 </ion-col>
                 <ion-col (click)="allType();">
-                    <ion-label class="num"></ion-label>
+                    <ion-label class="num">
+                        <span class="num_icon">
+                            <img class="num_icon_img" src="../../assets/icon/shengming@2x.png" />
+                        </span>
+
+                    </ion-label>
                     <ion-label>
-                        <span>机构声明</span>                        
+                        <span>机构声明</span>
                     </ion-label>
                 </ion-col>
             </ion-row>
         </ion-card>
 
-        <div *ngIf="isShow === false">
+        <ion-card class="car_l car_an" [routerLink]="['/details_publicity']">
+            <ion-row align-items-center>
+                <ion-col size="4.2">
+                    <img src="../../assets/imgs/摄图网_500081596_wx@2x.png" />
+                </ion-col>
+                <ion-col size="7.8">
+                    <h1>心安会员大病互助服务</h1>
+                    <h3>全国涵盖包含癌症在哪的90种大疾病</h3>
+                    <h3>60岁一下均可加入，90天观察期</h3>
+                    <h3>最高150万大病互助金</h3>
+                    <div>
+                        <span>全国性公募基金监管</span>
+                        <p>
+                            <span class="ljgm" tappable>
+                                立即加入                                
+                            </span>
+                        </p>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+
+        <!-- <div *ngIf="isShow === false">
             <h1>
                 心安大病救助服务
                 <span class="h_s">
@@ -165,7 +206,7 @@
                     </ion-col>
                 </ion-row>
                 <ion-row class="info" *ngIf="isPublic === false">
-                    <!-- <ngb-progressbar height=".5rem" type="info" [value]="25"></ngb-progressbar> -->
+                    
                     <ion-row align-items-center>
                         <ion-col *ngFor="let dat of item.data">
                             <ion-label class="num">{{dat.name}}</ion-label>
@@ -175,6 +216,6 @@
                 </ion-row>
                 <ion-row class="sign">{{item.introduce}}</ion-row>
             </ion-card-content>
-        </ion-card>
+        </ion-card> -->
     </div>
 </ion-content>
